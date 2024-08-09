@@ -1,0 +1,49 @@
+---
+import { astroCount, astroIncrement, astroDecrement } from '@stores/isoCounterStore.ts';
+---
+
+<div class="rounded-lg bg-indigo-100 p-4 shadow-md">
+  <h2 class="mb-2 text-xl font-bold text-indigo-800">Independent Astro Counter</h2>
+  <p id="astroCount-iso" class="mb-4 text-2xl font-semibold text-indigo-600">{astroCount.get()}</p>
+  <div class="flex space-x-2">
+    <button
+      id="astroDecrement-iso"
+      class="rounded bg-indigo-500 px-4 py-2 text-white transition-colors hover:bg-indigo-600"
+    >
+      -
+    </button>
+    <button
+      id="astroIncrement-iso"
+      class="rounded bg-indigo-500 px-4 py-2 text-white transition-colors hover:bg-indigo-600"
+    >
+      +
+    </button>
+  </div>
+</div>
+
+<script>
+  import { astroCount, astroIncrement, astroDecrement } from '@stores/isoCounterStore.ts';
+
+  const decrementBtn = document.getElementById('astroDecrement-iso');
+  const incrementBtn = document.getElementById('astroIncrement-iso');
+  const countDisplay = document.getElementById('astroCount-iso');
+
+  decrementBtn?.addEventListener('click', () => {
+    astroDecrement();
+    updateCount();
+  });
+
+  incrementBtn?.addEventListener('click', () => {
+    astroIncrement();
+    updateCount();
+  });
+
+  function updateCount() {
+    if (countDisplay) {
+      countDisplay.textContent = astroCount.get().toString();
+    }
+  }
+
+  // Subscribe to store changes
+  astroCount.subscribe(updateCount);
+</script>

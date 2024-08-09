@@ -1,6 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import AstroCounter from '@components/AstroCounter.astro';
+import SvelteCounter from '@components/SvelteCounter.svelte';
+import { ReactCounter } from '@components/ReactCounter';
+import IndependentAstroCounter from '@components/IndependentAstroCounter.astro';
+import IndependentSvelteCounter from '@components/IndependentSvelteCounter.svelte';
+import { IndependentReactCounter } from '@components/IndependentReactCounter';
 ---
 
 <Layout title="Welcome to Astro.">
@@ -34,6 +40,27 @@ import Card from '../components/Card.astro';
       </defs>
     </svg>
     <h1>Welcome to <span class="text-gradient">Astro</span></h1>
+    <h2 class="my-4 rounded-xl bg-amber-100/10 py-4 text-center text-4xl text-amber-100">
+      Test Tailwind
+    </h2>
+    <div class="my-8 flex flex-col gap-4">
+      <h2 class="text-2xl">Shard State</h2>
+      <h3 class="text-xl">AstroCounter</h3>
+      <AstroCounter />
+      <h3 class="text-xl">SvelteCounter</h3>
+      <SvelteCounter client:idle />
+      <h3 class="text-xl">ReactCounter</h3>
+      <ReactCounter client:idle />
+    </div>
+    <div class="my-8 flex flex-col gap-4">
+      <h2 class="text-2xl">Isolatd State</h2>
+      <h3 class="text-xl">AstroCounter</h3>
+      <IndependentAstroCounter />
+      <h3 class="text-xl">SvelteCounter</h3>
+      <IndependentSvelteCounter client:idle />
+      <h3 class="text-xl">ReactCounter</h3>
+      <IndependentReactCounter client:idle />
+    </div>
     <p class="instructions">
       To get started, open the directory <code>src/pages</code> in your project.<br />
       <strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.

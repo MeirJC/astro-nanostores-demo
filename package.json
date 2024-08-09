@@ -1,0 +1,35 @@
+{
+  "name": "demos-astro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "format": "prettier --write .",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.2",
+    "@astrojs/react": "^3.6.1",
+    "@astrojs/svelte": "^5.7.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "@nanostores/react": "^0.7.3",
+    "@types/react-dom": "^18.3.0",
+    "astro": "^4.13.2",
+    "nanostores": "^0.11.2",
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "svelte": "^4.2.18",
+    "tailwindcss": "^3.4.9",
+    "typescript": "^5.5.4"
+  },
+  "packageManager": "pnpm@9.7.0+sha512.dc09430156b427f5ecfc79888899e1c39d2d690f004be70e05230b72cb173d96839587545d09429b55ac3c429c801b4dc3c0e002f653830a420fa2dd4e3cf9cf",
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1"
+  }
+}

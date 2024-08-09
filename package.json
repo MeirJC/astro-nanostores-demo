@@ -17,6 +17,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@astrojs/vue": "^4.5.0",
     "@nanostores/react": "^0.7.3",
+    "@nanostores/vue": "^0.10.0",
     "@types/react-dom": "^18.3.0",
     "astro": "^4.13.2",
     "nanostores": "^0.11.2",

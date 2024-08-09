@@ -23,3 +23,4 @@ const createFormStore = () => {
 export const reactFormState = createFormStore();
 export const svelteFormState = createFormStore();
 export const astroFormState = createFormStore();
+export const vueFormState = createFormStore();

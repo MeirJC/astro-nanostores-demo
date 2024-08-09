@@ -34,3 +34,14 @@ export function astroIncrement() {
 export function astroDecrement() {
   astroCount.set(astroCount.get() - 1);
 }
+
+// Add Vue counter
+export const vueCount = atom(0);
+
+export function vueIncrement() {
+  vueCount.set(vueCount.get() + 1);
+}
+
+export function vueDecrement() {
+  vueCount.set(vueCount.get() - 1);
+}

@@ -14,6 +14,10 @@ import AstroForm from '@components/AstroForm.astro';
 import { IndependentReactForm } from '@components/IndependentReactForm';
 import IndependentSvelteForm from '@components/IndependentSvelteForm.svelte';
 import IndependentAstroForm from '@components/IndependentAstroForm.astro';
+import IndependentVueForm from '@components/IndependentVueForm.vue';
+import VueForm from '@components/VueForm.vue';
+import IndependentVueCounter from '@components/IndependentVueCounter.vue';
+import VueCounter from '@components/VueCounter.vue';
 ---
 
 <Layout title="Welcome to Astro.">
@@ -58,6 +62,8 @@ import IndependentAstroForm from '@components/IndependentAstroForm.astro';
       <SvelteCounter client:idle />
       <h3 class="text-xl">ReactCounter</h3>
       <ReactCounter client:idle />
+      <h3 class="text-xl">VueCounter</h3>
+      <VueCounter client:load />
     </div>
     <div class="my-8 flex flex-col gap-4">
       <h2 class="text-2xl">Isolatd State</h2>
@@ -67,6 +73,8 @@ import IndependentAstroForm from '@components/IndependentAstroForm.astro';
       <IndependentSvelteCounter client:idle />
       <h3 class="text-xl">ReactCounter</h3>
       <IndependentReactCounter client:idle />
+      <h3 class="text-xl">IndependentVueCounter</h3>
+      <IndependentVueCounter client:load />
     </div>
     <main class="container mx-auto p-4">
       <h1 class="mb-6 text-center text-3xl font-bold">Form Components</h1>
@@ -77,6 +85,7 @@ import IndependentAstroForm from '@components/IndependentAstroForm.astro';
           <AstroForm />
           <SvelteForm client:idle />
           <ReactForm client:idle />
+          <VueForm client:load />
         </div>
       </div>
 
@@ -86,6 +95,7 @@ import IndependentAstroForm from '@components/IndependentAstroForm.astro';
           <IndependentAstroForm />
           <IndependentSvelteForm client:idle />
           <IndependentReactForm client:idle />
+          <IndependentVueForm client:load />
         </div>
       </div>
     </main>

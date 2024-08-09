@@ -1,0 +1,88 @@
+---
+import { formState } from '@stores/formStore';
+---
+
+<form id="astroForm" class="space-y-4 rounded-lg bg-purple-100 p-6 text-slate-800 shadow-md">
+  <h2 class="mb-4 text-2xl font-bold text-purple-800">Astro Form (Shared State)</h2>
+  <div>
+    <label for="astro-firstName" class="block text-sm font-medium text-purple-700">First Name</label
+    >
+    <input
+      type="text"
+      id="astro-firstName"
+      name="firstName"
+      value={formState.get().firstName}
+      class="mt-1 block w-full rounded-md border-purple-300 shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-200"
+    />
+  </div>
+  <div>
+    <label for="astro-lastName" class="block text-sm font-medium text-purple-700">Last Name</label>
+    <input
+      type="text"
+      id="astro-lastName"
+      name="lastName"
+      value={formState.get().lastName}
+      class="mt-1 block w-full rounded-md border-purple-300 shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-200"
+    />
+  </div>
+  <div>
+    <label for="astro-email" class="block text-sm font-medium text-purple-700">Email</label>
+    <input
+      type="email"
+      id="astro-email"
+      name="email"
+      value={formState.get().email}
+      class="mt-1 block w-full rounded-md border-purple-300 shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-200"
+    />
+  </div>
+  <div>
+    <label for="astro-password" class="block text-sm font-medium text-purple-700">Password</label>
+    <input
+      type="password"
+      id="astro-password"
+      name="password"
+      value={formState.get().password}
+      class="mt-1 block w-full rounded-md border-purple-300 shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-200"
+    />
+  </div>
+  <div class="flex items-center">
+    <input
+      type="checkbox"
+      id="astro-agreeTerms"
+      name="agreeTerms"
+      checked={formState.get().agreeTerms}
+      class="h-4 w-4 rounded border-purple-300 text-purple-600 focus:ring-purple-500"
+    />
+    <label for="astro-agreeTerms" class="ml-2 block text-sm text-purple-700"
+      >I agree to the terms and conditions</label
+    >
+  </div>
+</form>
+
+<script>
+  import { formState } from '@stores/formStore';
+
+  const form = document.getElementById('astroForm');
+
+  form?.addEventListener('input', (event) => {
+    const target = event.target as HTMLInputElement;
+    const { name, value, type, checked } = target;
+    formState.set({
+      ...formState.get(),
+      [name]: type === 'checkbox' ? checked : value,
+    });
+  });
+
+  formState.subscribe((state) => {
+    Object.entries(state).forEach(([key, value]) => {
+      const element = document.getElementById(`astro-${key}`) as HTMLInputElement;
+      if (element) {
+        if (element.type === 'checkbox') {
+          element.checked = value as boolean;
+        } else {
+          element.value = value as string;
+        }
+      }
+    });
+  });
+</script>

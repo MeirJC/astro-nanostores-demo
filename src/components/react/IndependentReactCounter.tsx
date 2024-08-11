@@ -1,4 +1,3 @@
-import React from 'react';
 import { useStore } from '@nanostores/react';
 import { reactCount, reactIncrement, reactDecrement } from '@stores/isoCounterStore.ts';
 

@@ -1,6 +1,6 @@
-// src/stores/reactCounterStore.ts
 import { atom } from 'nanostores';
 
+// React counter - Not shared
 export const reactCount = atom(0);
 
 export function reactIncrement() {
@@ -8,11 +8,10 @@ export function reactIncrement() {
 }
 
 export function reactDecrement() {
-  reactCount.set(reactCount.get() - 1);
+  if (reactCount.value > 0) reactCount.set(reactCount.get() - 1);
 }
 
-// src/stores/svelteCounterStore.ts
-
+// Svelte counter - Not shared
 export const svelteCount = atom(0);
 
 export function svelteIncrement() {
@@ -20,11 +19,10 @@ export function svelteIncrement() {
 }
 
 export function svelteDecrement() {
-  svelteCount.set(svelteCount.get() - 1);
+  if (svelteCount.value > 0) svelteCount.set(svelteCount.get() - 1);
 }
 
-// src/stores/astroCounterStore.ts
-
+// Astro counter - Not shared
 export const astroCount = atom(0);
 
 export function astroIncrement() {
@@ -32,10 +30,9 @@ export function astroIncrement() {
 }
 
 export function astroDecrement() {
-  astroCount.set(astroCount.get() - 1);
+  if (astroCount.value > 0) astroCount.set(astroCount.get() - 1);
 }
-
-// Add Vue counter
+// Vue counter - Not shared
 export const vueCount = atom(0);
 
 export function vueIncrement() {
@@ -43,5 +40,5 @@ export function vueIncrement() {
 }
 
 export function vueDecrement() {
-  vueCount.set(vueCount.get() - 1);
+  if (vueCount.value > 0) vueCount.set(vueCount.get() - 1);
 }

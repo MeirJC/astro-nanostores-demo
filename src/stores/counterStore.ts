@@ -7,5 +7,5 @@ export function increment() {
 }
 
 export function decrement() {
-  count.set(count.get() - 1);
+  if (count.value > 0) count.set(count.get() - 1);
 }

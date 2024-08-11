@@ -1,20 +1,21 @@
 ---
-import { astroCount, astroIncrement, astroDecrement } from '@stores/isoCounterStore.ts';
+import { astroCount } from '@stores/isoCounterStore.ts';
 ---
 
-<div class="rounded-lg bg-indigo-100 p-4 shadow-md">
-  <h2 class="mb-2 text-xl font-bold text-indigo-800">Independent Astro Counter</h2>
-  <p id="astroCount-iso" class="mb-4 text-2xl font-semibold text-indigo-600">{astroCount.get()}</p>
-  <div class="flex space-x-2">
+<div class="rounded-lg bg-astro-100 p-4 shadow-md">
+  <h2 class="mb-4 text-center text-2xl font-bold text-astro-800">Independent Astro Counter</h2>
+  <div class="flex items-center justify-center gap-6 text-3xl font-semibold">
     <button
       id="astroDecrement-iso"
-      class="rounded bg-indigo-500 px-4 py-2 text-white transition-colors hover:bg-indigo-600"
+      class="rounded bg-astro-500 px-4 py-2 text-white transition-colors hover:bg-astro-600"
     >
       -
     </button>
+    <p id="astroCount-iso" class="text-astro-600">{astroCount.get()}</p>
+
     <button
       id="astroIncrement-iso"
-      class="rounded bg-indigo-500 px-4 py-2 text-white transition-colors hover:bg-indigo-600"
+      class="rounded bg-astro-500 px-4 py-2 text-white transition-colors hover:bg-astro-600"
     >
       +
     </button>

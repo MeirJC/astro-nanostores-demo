@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import AstroCounter from '@components/astro/AstroCounter.astro';
+import SvelteCounter from '@components/svelte/SvelteCounter.svelte';
+import { ReactCounter } from '@components/react/ReactCounter';
+import VueCounter from '@components/vue/VueCounter.vue';
+//
+import { ReactForm } from '@components/react/ReactForm';
+import SvelteForm from '@components/svelte/SvelteForm.svelte';
+import AstroForm from '@components/astro/AstroForm.astro';
+import VueForm from '@components/vue/VueForm.vue';
+---
+
+<Layout title="SHARED Welcome to Astro.">
+  <h1>Welcome to <span class="text-gradient">SHARED</span></h1>
+  <div class="gric-cols-1 my-8 grid gap-4 md:grid-cols-2">
+    <div>
+      <h3 class="text-xl">AstroCounter</h3>
+      <AstroCounter />
+    </div>
+    <div>
+      <h3 class="text-xl">SvelteCounter</h3>
+      <SvelteCounter client:idle />
+    </div>
+    <div>
+      <h3 class="text-xl">ReactCounter</h3>
+      <ReactCounter client:idle />
+    </div>
+    <div>
+      <h3 class="text-xl">IndependentVueCounter</h3>
+      <VueCounter client:load />
+    </div>
+  </div>
+  <h2 class="text-xl">Isolated State Forms</h2>
+  <div class="my-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div>
+      <h3 class="text-xl">IndependentAstroForm</h3>
+      <AstroForm />
+    </div>
+    <div>
+      <h3 class="text-xl">IndependentSvelteForm</h3>
+      <SvelteForm client:idle />
+    </div>
+    <div>
+      <h3 class="text-xl">IndependentReactForm</h3>
+      <ReactForm client:idle />
+    </div>
+    <div>
+      <h3 class="text-xl">IndependentVueForm</h3>
+      <VueForm client:load />
+    </div>
+  </div>
+</Layout>

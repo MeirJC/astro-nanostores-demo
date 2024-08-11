@@ -1,0 +1,108 @@
+---
+import { astroFormState } from '@stores/isoFormStore';
+---
+
+<form id="astroIsoForm" class="rounded-lg bg-astro-100 p-4 shadow-md">
+  <h2 class="mb-4 text-center text-2xl font-bold text-astro-800">Independent Astro Form</h2>
+  <div class="space-y-4">
+    <div>
+      <label for="astro-iso-firstName" class="block text-sm font-medium text-astro-700"
+        >First Name</label
+      >
+      <input
+        type="text"
+        id="astro-iso-firstName"
+        name="firstName"
+        value={astroFormState.get().firstName}
+        class="mt-1 block w-full rounded-md border-astro-300 shadow-sm focus:border-astro-500 focus:ring focus:ring-astro-200"
+      />
+    </div>
+    <div>
+      <label for="astro-iso-lastName" class="block text-sm font-medium text-astro-700"
+        >Last Name</label
+      >
+      <input
+        type="text"
+        id="astro-iso-lastName"
+        name="lastName"
+        value={astroFormState.get().lastName}
+        class="mt-1 block w-full rounded-md border-astro-300 shadow-sm focus:border-astro-500 focus:ring focus:ring-astro-200"
+      />
+    </div>
+    <div>
+      <label for="astro-iso-email" class="block text-sm font-medium text-astro-700">Email</label>
+      <input
+        type="email"
+        id="astro-iso-email"
+        name="email"
+        value={astroFormState.get().email}
+        class="mt-1 block w-full rounded-md border-astro-300 shadow-sm focus:border-astro-500 focus:ring focus:ring-astro-200"
+      />
+    </div>
+    <div>
+      <label for="astro-iso-password" class="block text-sm font-medium text-astro-700"
+        >Password</label
+      >
+      <input
+        type="password"
+        id="astro-iso-password"
+        name="password"
+        value={astroFormState.get().password}
+        class="mt-1 block w-full rounded-md border-astro-300 shadow-sm focus:border-astro-500 focus:ring focus:ring-astro-200"
+      />
+    </div>
+    <div class="flex items-center">
+      <input
+        type="checkbox"
+        id="astro-iso-agreeTerms"
+        name="agreeTerms"
+        checked={astroFormState.get().agreeTerms}
+        class="h-4 w-4 rounded border-astro-300 text-astro-600 focus:ring-astro-500"
+      />
+      <label for="astro-iso-agreeTerms" class="ml-2 block text-sm text-astro-700"
+        >I agree to the terms and conditions</label
+      >
+    </div>
+  </div>
+  <div class="mt-6">
+    <button
+      type="submit"
+      class="w-full rounded bg-astro-500 px-4 py-2 text-white transition-colors hover:bg-astro-600"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+
+<script>
+  import { astroFormState } from '@stores/isoFormStore';
+
+  const form = document.getElementById('astroIsoForm');
+
+  form?.addEventListener('input', (event) => {
+    const target = event.target as HTMLInputElement;
+    const { name, value, type, checked } = target;
+    astroFormState.set({
+      ...astroFormState.get(),
+      [name]: type === 'checkbox' ? checked : value,
+    });
+  });
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    console.log('Astro Form Submitted:', astroFormState.get());
+  });
+
+  astroFormState.subscribe((state) => {
+    Object.entries(state).forEach(([key, value]) => {
+      const element = document.getElementById(`astro-iso-${key}`) as HTMLInputElement;
+      if (element) {
+        if (element.type === 'checkbox') {
+          element.checked = value as boolean;
+        } else {
+          element.value = value as string;
+        }
+      }
+    });
+  });
+</script>

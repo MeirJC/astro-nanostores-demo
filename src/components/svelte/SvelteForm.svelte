@@ -16,7 +16,7 @@
   }
 </script>
 
-<form on:submit={handleSubmit} class="p-4 bg-svelte-100 rounded-lg shadow-md">
+<form on:submit={handleSubmit} class="p-4 bg-svelte-100 rounded-lg shadow-md text-black">
   <h2 class="mb-4 text-center text-2xl font-bold text-svelte-800">Svelte Form (Shared State)</h2>
   <div class="space-y-4">
     <div>

@@ -19,7 +19,7 @@ export function IndependentReactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-lg bg-react-100 p-4 shadow-md">
+    <form onSubmit={handleSubmit} className="rounded-lg bg-react-100 p-4 text-black shadow-md">
       <h2 className="mb-4 text-center text-2xl font-bold text-react-800">Independent React Form</h2>
       <div className="space-y-4">
         <div>

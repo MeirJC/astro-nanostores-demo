@@ -2,7 +2,7 @@
 import { formState } from '@stores/formStore';
 ---
 
-<form id="astroForm" class="rounded-lg bg-astro-100 p-4 shadow-md">
+<form id="astroForm" class="rounded-lg bg-astro-100 p-4 text-gray-900 shadow-md">
   <h2 class="mb-4 text-center text-2xl font-bold text-astro-800">Astro Form (Shared State)</h2>
   <div class="space-y-4">
     <div>
@@ -14,7 +14,7 @@ import { formState } from '@stores/formStore';
         id="astro-firstName"
         name="firstName"
         value={formState.get().firstName}
-        class="mt-1 block w-full rounded-md border-astro-300 shadow-sm focus:border-astro-500 focus:ring focus:ring-astro-200"
+        class="mt-1 block w-full rounded-md border-astro-300 shadow-sm focus:outline-none focus:ring focus:ring-astro-200"
       />
     </div>
     <div>
@@ -24,7 +24,7 @@ import { formState } from '@stores/formStore';
         id="astro-lastName"
         name="lastName"
         value={formState.get().lastName}
-        class="mt-1 block w-full rounded-md border-astro-300 shadow-sm focus:border-astro-500 focus:ring focus:ring-astro-200"
+        class="mt-1 block w-full rounded-md border-astro-300 shadow-sm focus:outline-none focus:ring focus:ring-astro-200"
       />
     </div>
     <div>
@@ -34,7 +34,7 @@ import { formState } from '@stores/formStore';
         id="astro-email"
         name="email"
         value={formState.get().email}
-        class="mt-1 block w-full rounded-md border-astro-300 shadow-sm focus:border-astro-500 focus:ring focus:ring-astro-200"
+        class="mt-1 block w-full rounded-md border-astro-300 shadow-sm focus:outline-none focus:ring focus:ring-astro-200"
       />
     </div>
     <div>
@@ -44,7 +44,7 @@ import { formState } from '@stores/formStore';
         id="astro-password"
         name="password"
         value={formState.get().password}
-        class="mt-1 block w-full rounded-md border-astro-300 shadow-sm focus:border-astro-500 focus:ring focus:ring-astro-200"
+        class="mt-1 block w-full rounded-md border-astro-300 shadow-sm focus:outline-none focus:ring focus:ring-astro-200"
       />
     </div>
     <div class="flex items-center">

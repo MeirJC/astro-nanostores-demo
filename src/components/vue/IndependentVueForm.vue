@@ -19,7 +19,7 @@ function handleSubmit(event: Event) {
 </script>
 
 <template>
-  <form @submit="handleSubmit" class="p-4 bg-vue-100 rounded-lg shadow-md">
+  <form @submit="handleSubmit" class="p-4 bg-vue-100 rounded-lg shadow-md text-black">
     <h2 class="mb-4 text-center text-2xl font-bold text-vue-800">Independent Vue Form</h2>
     <div class="space-y-4">
       <div>

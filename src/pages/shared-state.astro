@@ -1,15 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-import AstroCounter from '@components/astro/AstroCounter.astro';
-import SvelteCounter from '@components/svelte/SvelteCounter.svelte';
-import { ReactCounter } from '@components/react/ReactCounter';
-import VueCounter from '@components/vue/VueCounter.vue';
+import AstroCounterShared from '@components/astro/AstroCounterShared.astro';
+import SvelteCounterShared from '@components/svelte/SvelteCounterShared.svelte';
+import { ReactCounterShared } from '@components/react/ReactCounterShared';
+import VueCounter from '@components/vue/VueCounterShared.vue';
 //
-import { ReactForm } from '@components/react/ReactForm';
-import SvelteForm from '@components/svelte/SvelteForm.svelte';
-import AstroForm from '@components/astro/AstroForm.astro';
-import VueForm from '@components/vue/VueForm.vue';
+import { ReactFormShared } from '@components/react/ReactFormShared';
+import SvelteFormShared from '@components/svelte/SvelteFormShared.svelte';
+import AstroFormShared from '@components/astro/AstroFormShared.astro';
+import VueFormShared from '@components/vue/VueFormShared.vue';
 ---
 
 <Layout title="SHARED Welcome to Astro.">
@@ -17,15 +17,15 @@ import VueForm from '@components/vue/VueForm.vue';
   <div class="gric-cols-1 my-8 grid gap-4 md:grid-cols-2">
     <div>
       <h3 class="text-xl">AstroCounter</h3>
-      <AstroCounter />
+      <AstroCounterShared />
     </div>
     <div>
       <h3 class="text-xl">SvelteCounter</h3>
-      <SvelteCounter client:idle />
+      <SvelteCounterShared client:idle />
     </div>
     <div>
       <h3 class="text-xl">ReactCounter</h3>
-      <ReactCounter client:idle />
+      <ReactCounterShared client:idle />
     </div>
     <div>
       <h3 class="text-xl">IndependentVueCounter</h3>
@@ -36,19 +36,19 @@ import VueForm from '@components/vue/VueForm.vue';
   <div class="my-8 grid grid-cols-1 gap-4 md:grid-cols-2">
     <div>
       <h3 class="text-xl">IndependentAstroForm</h3>
-      <AstroForm />
+      <AstroFormShared />
     </div>
     <div>
       <h3 class="text-xl">IndependentSvelteForm</h3>
-      <SvelteForm client:idle />
+      <SvelteFormShared client:idle />
     </div>
     <div>
       <h3 class="text-xl">IndependentReactForm</h3>
-      <ReactForm client:idle />
+      <ReactFormShared client:idle />
     </div>
     <div>
       <h3 class="text-xl">IndependentVueForm</h3>
-      <VueForm client:load />
+      <VueFormShared client:load />
     </div>
   </div>
 </Layout>

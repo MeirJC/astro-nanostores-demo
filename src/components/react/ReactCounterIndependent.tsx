@@ -1,24 +1,24 @@
 import { useStore } from '@nanostores/react';
-import { count, increment, decrement } from '@stores/counterStore';
+import { reactCount, reactIncrement, reactDecrement } from '@stores/independentCounterStore';
 
-export function ReactCounter() {
-  const $count = useStore(count);
+export function ReactCounterIndependent() {
+  const $count = useStore(reactCount);
 
   return (
     <div className="rounded-lg bg-react-100 p-4 shadow-md">
       <h2 className="mb-4 text-center text-2xl font-bold text-react-800">
-        React Counter (Shared State)
+        Independent React Counter
       </h2>
       <div className="flex items-center justify-center gap-6 text-3xl font-semibold">
         <button
-          onClick={decrement}
+          onClick={reactDecrement}
           className="rounded bg-react-500 px-4 py-2 text-white transition-colors hover:bg-react-600"
         >
           -
         </button>
         <p className="text-react-600">{$count}</p>
         <button
-          onClick={increment}
+          onClick={reactIncrement}
           className="rounded bg-react-500 px-4 py-2 text-white transition-colors hover:bg-react-600"
         >
           +

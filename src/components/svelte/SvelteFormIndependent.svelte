@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { svelteFormState } from '@stores/isoFormStore';
+  import { svelteFormState } from '@stores/independentFormStore';
 
   function handleChange(event: Event) {
     const target = event.target as HTMLInputElement;

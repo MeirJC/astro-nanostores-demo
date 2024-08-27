@@ -1,8 +1,8 @@
 import React from 'react';
 import { useStore } from '@nanostores/react';
-import { formState } from '@stores/formStore';
+import { formState } from '@stores/sharedFormStore';
 
-export function ReactForm() {
+export function ReactFormShared() {
   const $form = useStore(formState);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

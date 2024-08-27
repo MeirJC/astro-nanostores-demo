@@ -4,6 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "format": "prettier --write .",
+    "clean": "rm -rf pnpm-lock.yaml dist .astro",
+    "clean-build": "pnpm run clean && pnpm run build",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
@@ -31,7 +33,6 @@
     "typescript": "^5.5.4",
     "vue": "^3.4.37"
   },
-  "packageManager": "pnpm@9.7.0+sha512.dc09430156b427f5ecfc79888899e1c39d2d690f004be70e05230b72cb173d96839587545d09429b55ac3c429c801b4dc3c0e002f653830a420fa2dd4e3cf9cf",
   "devDependencies": {
     "@types/react": "^18.3.3",
     "prettier": "^3.3.3",

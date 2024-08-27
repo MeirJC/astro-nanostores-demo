@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useStore } from '@nanostores/vue';
-import { vueFormState } from '@stores/isoFormStore';
+import { vueFormState } from '@stores/independentFormStore';
 
 const form = useStore(vueFormState);
 

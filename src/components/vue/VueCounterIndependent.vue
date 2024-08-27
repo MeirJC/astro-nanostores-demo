@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useStore } from '@nanostores/vue';
-import { vueCount, vueIncrement, vueDecrement } from '@stores/isoCounterStore';
+import { vueCount, vueIncrement, vueDecrement } from '@stores/independentCounterStore';
 
 const count = useStore(vueCount);
 </script>

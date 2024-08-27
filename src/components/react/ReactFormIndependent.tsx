@@ -1,8 +1,8 @@
 import React from 'react';
 import { useStore } from '@nanostores/react';
-import { reactFormState } from '@stores/isoFormStore';
+import { reactFormState } from '@stores/independentFormStore';
 
-export function IndependentReactForm() {
+export function ReactFormIndependent() {
   const $form = useStore(reactFormState);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

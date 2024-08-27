@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { formState } from '@stores/formStore';
+  import { formState } from '@stores/sharedFormStore';
 
   function handleChange(event: Event) {
     const target = event.target as HTMLInputElement;

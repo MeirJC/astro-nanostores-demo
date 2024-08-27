@@ -1,5 +1,5 @@
 ---
-import { count } from '@stores/counterStore';
+import { count } from '@stores/sharedCounterStore';
 ---
 
 <div class="rounded-lg bg-astro-100 p-4 shadow-md">
@@ -22,7 +22,7 @@ import { count } from '@stores/counterStore';
 </div>
 
 <script>
-  import { count, increment, decrement } from '@stores/counterStore';
+  import { count, increment, decrement } from '@stores/sharedCounterStore';
 
   const decrementBtn = document.getElementById('astroDecrement');
   const incrementBtn = document.getElementById('astroIncrement');

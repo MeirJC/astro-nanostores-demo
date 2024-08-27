@@ -1,5 +1,5 @@
 ---
-import { formState } from '@stores/formStore';
+import { formState } from '@stores/sharedFormStore';
 ---
 
 <form id="astroForm" class="rounded-lg bg-astro-100 p-4 text-gray-900 shadow-md">
@@ -71,7 +71,7 @@ import { formState } from '@stores/formStore';
 </form>
 
 <script>
-  import { formState } from '@stores/formStore';
+  import { formState } from '@stores/sharedFormStore';
 
   const form = document.getElementById('astroForm');
 

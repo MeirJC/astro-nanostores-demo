@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useStore } from '@nanostores/vue';
-import { count, increment, decrement } from '@stores/counterStore';
+import { count, increment, decrement } from '@stores/sharedCounterStore';
 
 const $count = useStore(count);
 </script>

@@ -1,5 +1,5 @@
 ---
-import { astroCount } from '@stores/isoCounterStore.ts';
+import { astroCount } from '@stores/independentCounterStore';
 ---
 
 <div class="rounded-lg bg-astro-100 p-4 shadow-md">
@@ -23,7 +23,7 @@ import { astroCount } from '@stores/isoCounterStore.ts';
 </div>
 
 <script>
-  import { astroCount, astroIncrement, astroDecrement } from '@stores/isoCounterStore.ts';
+  import { astroCount, astroIncrement, astroDecrement } from '@stores/independentCounterStore';
 
   const decrementBtn = document.getElementById('astroDecrement-iso');
   const incrementBtn = document.getElementById('astroIncrement-iso');

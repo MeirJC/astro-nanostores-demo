@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 
 import AstroCounterShared from '@components/astro/AstroCounterShared.astro';
 import SvelteCounterShared from '@components/svelte/SvelteCounterShared.svelte';
@@ -13,7 +13,7 @@ import VueFormShared from '@components/vue/VueFormShared.vue';
 ---
 
 <Layout title="SHARED Welcome to Astro.">
-  <h1>Welcome to <span class="text-gradient">SHARED</span></h1>
+  <h1>Welcome to SHARED</h1>
   <div class="gric-cols-1 my-8 grid gap-4 md:grid-cols-2">
     <div>
       <h3 class="text-xl">AstroCounter</h3>
@@ -32,7 +32,7 @@ import VueFormShared from '@components/vue/VueFormShared.vue';
       <VueCounter client:load />
     </div>
   </div>
-  <h2 class="text-xl">Isolated State Forms</h2>
+  <h2 class="text-xl">Independent State Forms</h2>
   <div class="my-8 grid grid-cols-1 gap-4 md:grid-cols-2">
     <div>
       <h3 class="text-xl">IndependentAstroForm</h3>

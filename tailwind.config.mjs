@@ -7,7 +7,7 @@ export default {
     },
     extend: {
       colors: {
-        beige: '#F9F4DA',
+        beige: '#fbf8e9',
         astro: {
           50: '#F3E8FF',
           100: '#E1CFFF',

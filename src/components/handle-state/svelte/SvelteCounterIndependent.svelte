@@ -1,5 +1,9 @@
 <script lang="ts">
-  import { svelteCount, svelteIncrement, svelteDecrement } from '@stores/independentCounterStore';
+  import {
+    svelteCount,
+    svelteIncrement,
+    svelteDecrement,
+  } from "@stores/handeling-state/independentCounterStore";
 </script>
 
 <div class="p-4 bg-svelte-100 rounded-lg shadow-md">

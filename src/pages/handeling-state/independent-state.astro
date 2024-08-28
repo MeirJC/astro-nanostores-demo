@@ -1,55 +1,64 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import AstroCounterIndependent from "@components/astro/AstroCounterIndependent.astro";
-import SvelteCounterIndependent from "@components/svelte/SvelteCounterIndependent.svelte";
-import { ReactCounterIndependent } from "@components/react/ReactCounterIndependent";
-import VueCounterIndependent from "@components/vue/VueCounterIndependent.vue";
+import SectionContainer from "@layouts/SectionContainer.astro";
+// import PersistentCounter from "@components/handle-state/persistent/PersistentCounter.astro";
+
+import AstroCounterIndependent from "@components/handle-state/astro/AstroCounterIndependent.astro";
+import SvelteCounterIndependent from "@components/handle-state/svelte/SvelteCounterIndependent.svelte";
+import { ReactCounterIndependent } from "@components/handle-state/react/ReactCounterIndependent";
+import VueCounterIndependent from "@components/handle-state/vue/VueCounterIndependent.vue";
 //
-import { ReactFormIndependent } from "@components/react/ReactFormIndependent";
-import SvelteFormIndependent from "@components/svelte/SvelteFormIndependent.svelte";
-import AstroFormIndependent from "@components/astro/AstroFormIndependent.astro";
-import VueFormIndependent from "@components/vue/VueFormIndependent.vue";
+import { ReactFormIndependent } from "@components/handle-state/react/ReactFormIndependent";
+import SvelteFormIndependent from "@components/handle-state/svelte/SvelteFormIndependent.svelte";
+import AstroFormIndependent from "@components/handle-state/astro/AstroFormIndependent.astro";
+import VueFormIndependent from "@components/handle-state/vue/VueFormIndependent.vue";
 ---
 
 <Layout title="Independent state -  Welcome to Astro.">
-  <h1>Welcome to Independent</h1>
-
-  <h2 class="text-2xl">Independent State Counters</h2>
-  <div class="my-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-    <div>
-      <h3 class="text-xl">AstroCounter</h3>
-      <AstroCounterIndependent />
+  <SectionContainer>
+    <h1 class="mb-6 text-4xl font-bold">Welcome to Independent State</h1>
+    <!-- <PersistentCounter /> -->
+  </SectionContainer>
+  <SectionContainer>
+    <h2 class="text-2xl">Independent State Counters</h2>
+    <div class="my-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div>
+        <h3 class="text-xl">AstroCounter</h3>
+        <AstroCounterIndependent />
+      </div>
+      <div>
+        <h3 class="text-xl">SvelteCounter</h3>
+        <SvelteCounterIndependent client:idle />
+      </div>
+      <div>
+        <h3 class="text-xl">ReactCounter</h3>
+        <ReactCounterIndependent client:idle />
+      </div>
+      <div>
+        <h3 class="text-xl">IndependentVueCounter</h3>
+        <VueCounterIndependent client:load />
+      </div>
     </div>
-    <div>
-      <h3 class="text-xl">SvelteCounter</h3>
-      <SvelteCounterIndependent client:idle />
+  </SectionContainer>
+  <SectionContainer>
+    <h2 class="text-xl">Independent State Forms</h2>
+    <div class="my-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div>
+        <h3 class="text-xl">IndependentAstroForm</h3>
+        <AstroFormIndependent />
+      </div>
+      <div>
+        <h3 class="text-xl">IndependentSvelteForm</h3>
+        <SvelteFormIndependent client:idle />
+      </div>
+      <div>
+        <h3 class="text-xl">IndependentReactForm</h3>
+        <ReactFormIndependent client:idle />
+      </div>
+      <div>
+        <h3 class="text-xl">IndependentVueForm</h3>
+        <VueFormIndependent client:load />
+      </div>
     </div>
-    <div>
-      <h3 class="text-xl">ReactCounter</h3>
-      <ReactCounterIndependent client:idle />
-    </div>
-    <div>
-      <h3 class="text-xl">IndependentVueCounter</h3>
-      <VueCounterIndependent client:load />
-    </div>
-  </div>
-  <h2 class="text-xl">Independent State Forms</h2>
-  <div class="my-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-    <div>
-      <h3 class="text-xl">IndependentAstroForm</h3>
-      <AstroFormIndependent />
-    </div>
-    <div>
-      <h3 class="text-xl">IndependentSvelteForm</h3>
-      <SvelteFormIndependent client:idle />
-    </div>
-    <div>
-      <h3 class="text-xl">IndependentReactForm</h3>
-      <ReactFormIndependent client:idle />
-    </div>
-    <div>
-      <h3 class="text-xl">IndependentVueForm</h3>
-      <VueFormIndependent client:load />
-    </div>
-  </div>
+  </SectionContainer>
 </Layout>

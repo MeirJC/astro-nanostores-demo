@@ -1,0 +1,18 @@
+---
+
+---
+
+<button
+  id="resetButton"
+  class="rounded-lg bg-astro-500 px-4 py-2 font-bold text-gray-900 transition-colors hover:bg-astro-600"
+>
+  Reset
+</button>
+
+<script>
+  import { resetPersistent } from "@stores/handeling-state/persistentConterStore";
+
+  document.getElementById("resetButton").addEventListener("click", () => {
+    resetPersistent();
+  });
+</script>

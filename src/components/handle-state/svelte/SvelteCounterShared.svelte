@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { count, increment, decrement } from '@stores/sharedCounterStore';
+  import { count, increment, decrement } from "@stores/handeling-state/sharedCounterStore";
 </script>
 
 <div class="p-4 bg-svelte-100 rounded-lg shadow-md">

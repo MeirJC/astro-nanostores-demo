@@ -1,6 +1,5 @@
-import React from "react";
 import { useStore } from "@nanostores/react";
-import { reactFormState } from "@stores/independentFormStore";
+import { reactFormState } from "@stores/handeling-state/independentFormStore";
 
 export function ReactFormIndependent() {
   const $form = useStore(reactFormState);

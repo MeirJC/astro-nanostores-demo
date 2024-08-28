@@ -1,0 +1,14 @@
+---
+import { twMerge } from "tailwind-merge";
+const { outerClasses = "", innerClasses = "" } = Astro.props;
+export type SectionProps = {
+  outerClasses: string;
+  innerClasses: string;
+};
+---
+
+<section class={twMerge("relative w-full overflow-hidden py-12 lg:py-16", outerClasses)}>
+  <div class={twMerge("container mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24", innerClasses)}>
+    <slot />
+  </div>
+</section>

@@ -1,54 +1,63 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro";
+import SectionContainer from "@layouts/SectionContainer.astro";
+// import PersistentCounter from "@components/handle-state/persistent/PersistentCounter.astro";
 
-import AstroCounterShared from "@components/astro/AstroCounterShared.astro";
-import SvelteCounterShared from "@components/svelte/SvelteCounterShared.svelte";
-import { ReactCounterShared } from "@components/react/ReactCounterShared";
-import VueCounter from "@components/vue/VueCounterShared.vue";
+import AstroCounterShared from "@components/handle-state/astro/AstroCounterShared.astro";
+import SvelteCounterShared from "@components/handle-state/svelte/SvelteCounterShared.svelte";
+import { ReactCounterShared } from "@components/handle-state/react/ReactCounterShared";
+import VueCounter from "@components/handle-state/vue/VueCounterShared.vue";
 
-import { ReactFormShared } from "@components/react/ReactFormShared";
-import SvelteFormShared from "@components/svelte/SvelteFormShared.svelte";
-import AstroFormShared from "@components/astro/AstroFormShared.astro";
-import VueFormShared from "@components/vue/VueFormShared.vue";
+import { ReactFormShared } from "@components/handle-state/react/ReactFormShared";
+import SvelteFormShared from "@components/handle-state/svelte/SvelteFormShared.svelte";
+import AstroFormShared from "@components/handle-state/astro/AstroFormShared.astro";
+import VueFormShared from "@components/handle-state/vue/VueFormShared.vue";
 ---
 
 <Layout title="SHARED Welcome to Astro.">
-  <h1>Welcome to SHARED</h1>
-  <div class="gric-cols-1 my-8 grid gap-4 md:grid-cols-2">
-    <div>
-      <h3 class="text-xl">AstroCounter</h3>
-      <AstroCounterShared />
+  <SectionContainer>
+    <h1 class="mb-6 text-4xl font-bold">Welcome to SHARED State</h1>
+    <!-- <PersistentCounter /> -->
+  </SectionContainer>
+  <SectionContainer>
+    <div class="gric-cols-1 my-8 grid gap-4 md:grid-cols-2">
+      <div>
+        <h3 class="text-xl">AstroCounter</h3>
+        <AstroCounterShared />
+      </div>
+      <div>
+        <h3 class="text-xl">SvelteCounter</h3>
+        <SvelteCounterShared client:idle />
+      </div>
+      <div>
+        <h3 class="text-xl">ReactCounter</h3>
+        <ReactCounterShared client:idle />
+      </div>
+      <div>
+        <h3 class="text-xl">IndependentVueCounter</h3>
+        <VueCounter client:load />
+      </div>
     </div>
-    <div>
-      <h3 class="text-xl">SvelteCounter</h3>
-      <SvelteCounterShared client:idle />
+  </SectionContainer>
+  <SectionContainer>
+    <h2 class="text-xl">Independent State Forms</h2>
+    <div class="my-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div>
+        <h3 class="text-xl">IndependentAstroForm</h3>
+        <AstroFormShared />
+      </div>
+      <div>
+        <h3 class="text-xl">IndependentSvelteForm</h3>
+        <SvelteFormShared client:idle />
+      </div>
+      <div>
+        <h3 class="text-xl">IndependentReactForm</h3>
+        <ReactFormShared client:idle />
+      </div>
+      <div>
+        <h3 class="text-xl">IndependentVueForm</h3>
+        <VueFormShared client:load />
+      </div>
     </div>
-    <div>
-      <h3 class="text-xl">ReactCounter</h3>
-      <ReactCounterShared client:idle />
-    </div>
-    <div>
-      <h3 class="text-xl">IndependentVueCounter</h3>
-      <VueCounter client:load />
-    </div>
-  </div>
-  <h2 class="text-xl">Independent State Forms</h2>
-  <div class="my-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-    <div>
-      <h3 class="text-xl">IndependentAstroForm</h3>
-      <AstroFormShared />
-    </div>
-    <div>
-      <h3 class="text-xl">IndependentSvelteForm</h3>
-      <SvelteFormShared client:idle />
-    </div>
-    <div>
-      <h3 class="text-xl">IndependentReactForm</h3>
-      <ReactFormShared client:idle />
-    </div>
-    <div>
-      <h3 class="text-xl">IndependentVueForm</h3>
-      <VueFormShared client:load />
-    </div>
-  </div>
+  </SectionContainer>
 </Layout>

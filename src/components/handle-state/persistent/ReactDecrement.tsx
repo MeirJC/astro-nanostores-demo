@@ -8,7 +8,7 @@ export default function ReactDecrement() {
   return (
     <button
       onClick={decrement}
-      className="flex size-10 items-center justify-center rounded-lg border-2 border-react-500 px-4 transition-colors hover:border-react-600 hover:bg-react-500/20"
+      className="flex size-10 items-center justify-center rounded-lg border-2 border-react-500 px-4 transition-colors hover:border-react-600 hover:bg-react-500/20 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-react-300"
     >
       -
     </button>

@@ -2,7 +2,8 @@
 import SvelteDisplay from "./SvelteDisplay.svelte";
 import VueIncrement from "./VueIncrement.vue";
 import ReactDecrement from "./ReactDecrement.tsx";
-import SvelteReset from "./SvelteReset.svelte";
+// import SvelteReset from "./SvelteReset.svelte";
+import AstroReset from "./AstroReset.astro";
 ---
 
 <div
@@ -11,7 +12,8 @@ import SvelteReset from "./SvelteReset.svelte";
   <p class="text-xl font-bold leading-tight">I'm persistent</p>
   <p class="text-sm font-bold leading-none">(And have some suprises 🤭)</p>
   <div class="flex items-center gap-2 text-lg font-bold">
-    <SvelteReset client:load />
+    <!-- <SvelteReset client:load /> -->
+    <AstroReset />
     <ReactDecrement client:load />
     <SvelteDisplay client:load />
     <VueIncrement client:load />

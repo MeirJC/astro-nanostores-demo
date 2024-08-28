@@ -1,71 +1,79 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import { Code } from 'astro:components';
-import { snippets } from '@data/snippets';
+import Layout from "@layouts/Layout.astro";
+import { Code } from "astro:components";
+import { snippets } from "@data/snippets";
 const articleLink = "#"; // Placeholder for the actual article link
 const githubRepoLink = "#"; // Placeholder for the GitHub repository link
 ---
 
 <Layout title="Preface: Nanostores in Astro">
   <main class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-6">Nanostores in Astro: A Multi-Framework Adventure</h1>
-    
+    <h1 class="mb-6 text-4xl font-bold">Nanostores in Astro: A Multi-Framework Adventure</h1>
+
     <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-4">Preface: Handling State in Astro</h2>
+      <h2 class="mb-4 text-2xl font-semibold">Preface: Handling State in Astro</h2>
       <p class="mb-4">
-        Welcome to the first article in our series "Nanostores in Astro: A Multi-Framework Adventure". 
-        In this series, we'll explore how to effectively manage state in Astro projects, especially 
-        when working with multiple frameworks. Our journey begins with an introduction to state 
-        management in Astro and how Nanostores can simplify this process.
+        Welcome to the first article in our series "Nanostores in Astro: A Multi-Framework
+        Adventure". In this series, we'll explore how to effectively manage state in Astro projects,
+        especially when working with multiple frameworks. Our journey begins with an introduction to
+        state management in Astro and how Nanostores can simplify this process.
       </p>
       <p class="mb-4">
-        Astro's component islands architecture allows us to use different frameworks within the same 
-        project. However, this flexibility can make state management challenging. That's where 
+        Astro's component islands architecture allows us to use different frameworks within the same
+        project. However, this flexibility can make state management challenging. That's where
         Nanostores comes in, offering a lightweight and framework-agnostic solution.
       </p>
     </section>
 
     <section class="mb-8">
-      <h3 class="text-xl font-semibold mb-4">Basic Nanostores Usage in Astro</h3>
+      <h3 class="mb-4 text-xl font-semibold">Basic Nanostores Usage in Astro</h3>
       <p class="mb-4">Here's a simple example of how to use Nanostores in an Astro component:</p>
-      <Code class='rounded-lg px-6' code={snippets.basicNanostoresUsage} lang="astro" />
+      <Code class="rounded-lg px-6" code={snippets.basicNanostoresUsage} lang="astro" />
     </section>
 
     <section class="mb-8">
-      <h3 class="text-xl font-semibold mb-4">Using Nanostores with Different Frameworks in Astro</h3>
-      <p class="mb-4">Nanostores seamlessly integrates with various frameworks. Here are quick examples:</p>
-
-      <h4 class="text-lg font-semibold mt-4 mb-2">React:</h4>
-      <Code class='rounded-lg p-4' code={snippets.react} lang="jsx" />
-
-      <h4 class="text-lg font-semibold mt-4 mb-2">Svelte:</h4>
-      <Code class='rounded-lg p-4' code={snippets.svelte} lang="svelte" />
-
-      <h4 class="text-lg font-semibold mt-4 mb-2">Vue:</h4>
-      <Code class='rounded-lg p-4' code={snippets.vue} lang="vue" />
-    </section>
-
-    <section class="mb-8">
-      <h3 class="text-xl font-semibold mb-4">What's Next?</h3>
+      <h3 class="mb-4 text-xl font-semibold">
+        Using Nanostores with Different Frameworks in Astro
+      </h3>
       <p class="mb-4">
-        In the full article, we'll dive deeper into Nanostores, exploring advanced usage patterns, 
-        best practices for state management in Astro, and how to effectively share state between 
+        Nanostores seamlessly integrates with various frameworks. Here are quick examples:
+      </p>
+
+      <h4 class="mb-2 mt-4 text-lg font-semibold">React:</h4>
+      <Code class="rounded-lg p-4" code={snippets.react} lang="jsx" />
+
+      <h4 class="mb-2 mt-4 text-lg font-semibold">Svelte:</h4>
+      <Code class="rounded-lg p-4" code={snippets.svelte} lang="svelte" />
+
+      <h4 class="mb-2 mt-4 text-lg font-semibold">Vue:</h4>
+      <Code class="rounded-lg p-4" code={snippets.vue} lang="vue" />
+    </section>
+
+    <section class="mb-8">
+      <h3 class="mb-4 text-xl font-semibold">What's Next?</h3>
+      <p class="mb-4">
+        In the full article, we'll dive deeper into Nanostores, exploring advanced usage patterns,
+        best practices for state management in Astro, and how to effectively share state between
         different framework components.
       </p>
       <p class="mb-4">
-        We'll also look at real-world examples and discuss the benefits and potential pitfalls of 
+        We'll also look at real-world examples and discuss the benefits and potential pitfalls of
         using Nanostores in multi-framework Astro projects.
       </p>
     </section>
 
-    <section class="bg-gray-100 p-4 rounded-lg">
-      <h3 class="text-xl font-semibold mb-4">Resources</h3>
-      <ul class="list-disc list-inside">
+    <section class="rounded-lg bg-gray-100 p-4">
+      <h3 class="mb-4 text-xl font-semibold">Resources</h3>
+      <ul class="list-inside list-disc">
         <li>
-          Full Article: <a href={articleLink} class="text-blue-500 hover:underline">Read the complete guide here</a>
+          Full Article: <a href={articleLink} class="text-blue-500 hover:underline"
+            >Read the complete guide here</a
+          >
         </li>
         <li>
-          GitHub Repository: <a href={githubRepoLink} class="text-blue-500 hover:underline">View the code examples</a>
+          GitHub Repository: <a href={githubRepoLink} class="text-blue-500 hover:underline"
+            >View the code examples</a
+          >
         </li>
       </ul>
     </section>

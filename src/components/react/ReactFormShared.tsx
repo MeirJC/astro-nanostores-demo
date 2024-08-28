@@ -1,6 +1,6 @@
-import React from 'react';
-import { useStore } from '@nanostores/react';
-import { formState } from '@stores/sharedFormStore';
+import React from "react";
+import { useStore } from "@nanostores/react";
+import { formState } from "@stores/sharedFormStore";
 
 export function ReactFormShared() {
   const $form = useStore(formState);
@@ -9,13 +9,13 @@ export function ReactFormShared() {
     const { name, value, type, checked } = e.target;
     formState.set({
       ...$form,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('React Form Submitted:', $form);
+    console.log("React Form Submitted:", $form);
   };
 
   return (

@@ -1,5 +1,5 @@
 ---
-import { astroCount } from '@stores/independentCounterStore';
+import { astroCount } from "@stores/independentCounterStore";
 ---
 
 <div class="rounded-lg bg-astro-100 p-4 shadow-md">
@@ -23,18 +23,18 @@ import { astroCount } from '@stores/independentCounterStore';
 </div>
 
 <script>
-  import { astroCount, astroIncrement, astroDecrement } from '@stores/independentCounterStore';
+  import { astroCount, astroIncrement, astroDecrement } from "@stores/independentCounterStore";
 
-  const decrementBtn = document.getElementById('astroDecrement-iso');
-  const incrementBtn = document.getElementById('astroIncrement-iso');
-  const countDisplay = document.getElementById('astroCount-iso');
+  const decrementBtn = document.getElementById("astroDecrement-iso");
+  const incrementBtn = document.getElementById("astroIncrement-iso");
+  const countDisplay = document.getElementById("astroCount-iso");
 
-  decrementBtn?.addEventListener('click', () => {
+  decrementBtn?.addEventListener("click", () => {
     astroDecrement();
     updateCount();
   });
 
-  incrementBtn?.addEventListener('click', () => {
+  incrementBtn?.addEventListener("click", () => {
     astroIncrement();
     updateCount();
   });

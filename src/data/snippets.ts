@@ -24,9 +24,8 @@ const user = map({ name: 'Astro Fan', loggedIn: false })
     counterBtn.textContent = \`Count: \${value}\`
   })
 </script>
-`
-,
-react: `
+`,
+  react: `
 import { useStore } from '@nanostores/react'
 import { count } from './stores'
 
@@ -35,7 +34,7 @@ export function Counter() {
   return <button onClick={() => count.set($count + 1)}>Count: {$count}</button>
 }
 `,
-svelte: `
+  svelte: `
 <script>
   import { count } from './stores'
 </script>
@@ -44,7 +43,7 @@ svelte: `
   Count: {$count}
 </button>
 `,
-vue: `
+  vue: `
 <script setup>
 import { useStore } from '@nanostores/vue'
 import { count } from './stores'
@@ -55,7 +54,5 @@ const $count = useStore(count)
 <button on:click={() => $count++}>
   Count: {$count}
 </button>
-`
-}
-
-
+`,
+};

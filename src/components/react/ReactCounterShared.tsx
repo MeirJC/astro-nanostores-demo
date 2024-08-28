@@ -1,5 +1,5 @@
-import { useStore } from '@nanostores/react';
-import { count, increment, decrement } from '@stores/sharedCounterStore';
+import { useStore } from "@nanostores/react";
+import { count, increment, decrement } from "@stores/sharedCounterStore";
 
 export function ReactCounterShared() {
   const $count = useStore(count);

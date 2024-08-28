@@ -1,4 +1,4 @@
-import { atom } from 'nanostores';
+import { atom } from "nanostores";
 
 export interface FormData {
   firstName: string;
@@ -9,9 +9,9 @@ export interface FormData {
 }
 
 export const formState = atom<FormData>({
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
   agreeTerms: false,
 });

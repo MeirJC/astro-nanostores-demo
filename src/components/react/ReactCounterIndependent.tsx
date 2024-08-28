@@ -1,5 +1,5 @@
-import { useStore } from '@nanostores/react';
-import { reactCount, reactIncrement, reactDecrement } from '@stores/independentCounterStore';
+import { useStore } from "@nanostores/react";
+import { reactCount, reactIncrement, reactDecrement } from "@stores/independentCounterStore";
 
 export function ReactCounterIndependent() {
   const $count = useStore(reactCount);

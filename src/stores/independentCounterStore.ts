@@ -1,4 +1,4 @@
-import { atom } from 'nanostores';
+import { atom } from "nanostores";
 
 // React counter - Not shared
 export const reactCount = atom(0);

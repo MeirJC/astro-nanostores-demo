@@ -1,6 +1,6 @@
-import React from 'react';
-import { useStore } from '@nanostores/react';
-import { reactFormState } from '@stores/independentFormStore';
+import React from "react";
+import { useStore } from "@nanostores/react";
+import { reactFormState } from "@stores/independentFormStore";
 
 export function ReactFormIndependent() {
   const $form = useStore(reactFormState);
@@ -9,13 +9,13 @@ export function ReactFormIndependent() {
     const { name, value, type, checked } = e.target;
     reactFormState.set({
       ...$form,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('React Form Submitted:', $form);
+    console.log("React Form Submitted:", $form);
   };
 
   return (

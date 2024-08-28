@@ -1,5 +1,5 @@
 ---
-import { formState } from '@stores/sharedFormStore';
+import { formState } from "@stores/sharedFormStore";
 ---
 
 <form id="astroForm" class="rounded-lg bg-astro-100 p-4 text-gray-900 shadow-md">
@@ -71,29 +71,29 @@ import { formState } from '@stores/sharedFormStore';
 </form>
 
 <script>
-  import { formState } from '@stores/sharedFormStore';
+  import { formState } from "@stores/sharedFormStore";
 
-  const form = document.getElementById('astroForm');
+  const form = document.getElementById("astroForm");
 
-  form?.addEventListener('input', (event) => {
+  form?.addEventListener("input", (event) => {
     const target = event.target as HTMLInputElement;
     const { name, value, type, checked } = target;
     formState.set({
       ...formState.get(),
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     });
   });
 
-  form?.addEventListener('submit', (event) => {
+  form?.addEventListener("submit", (event) => {
     event.preventDefault();
-    console.log('Astro Form Submitted:', formState.get());
+    console.log("Astro Form Submitted:", formState.get());
   });
 
   formState.subscribe((state) => {
     Object.entries(state).forEach(([key, value]) => {
       const element = document.getElementById(`astro-${key}`) as HTMLInputElement;
       if (element) {
-        if (element.type === 'checkbox') {
+        if (element.type === "checkbox") {
           element.checked = value as boolean;
         } else {
           element.value = value as string;

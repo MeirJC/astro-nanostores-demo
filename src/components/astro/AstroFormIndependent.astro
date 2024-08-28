@@ -1,5 +1,5 @@
 ---
-import { astroFormState } from '@stores/independentFormStore';
+import { astroFormState } from "@stores/independentFormStore";
 ---
 
 <form id="astroIsoForm" class="rounded-lg bg-astro-100 p-4 text-black shadow-md">
@@ -75,29 +75,29 @@ import { astroFormState } from '@stores/independentFormStore';
 </form>
 
 <script>
-  import { astroFormState } from '@stores/independentFormStore';
+  import { astroFormState } from "@stores/independentFormStore";
 
-  const form = document.getElementById('astroIsoForm');
+  const form = document.getElementById("astroIsoForm");
 
-  form?.addEventListener('input', (event) => {
+  form?.addEventListener("input", (event) => {
     const target = event.target as HTMLInputElement;
     const { name, value, type, checked } = target;
     astroFormState.set({
       ...astroFormState.get(),
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     });
   });
 
-  form?.addEventListener('submit', (event) => {
+  form?.addEventListener("submit", (event) => {
     event.preventDefault();
-    console.log('Astro Form Submitted:', astroFormState.get());
+    console.log("Astro Form Submitted:", astroFormState.get());
   });
 
   astroFormState.subscribe((state) => {
     Object.entries(state).forEach(([key, value]) => {
       const element = document.getElementById(`astro-iso-${key}`) as HTMLInputElement;
       if (element) {
-        if (element.type === 'checkbox') {
+        if (element.type === "checkbox") {
           element.checked = value as boolean;
         } else {
           element.value = value as string;

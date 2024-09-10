@@ -1,16 +1,18 @@
 ---
 import SpeedInsights from "@vercel/speed-insights/astro";
 import Navbar from "@components/Navbar/Navbar.svelte";
+import Footer from "@components/Footer.astro";
 import PersistentCounter from "@components/handle-state/persistent/PersistentCounter.astro";
 
 interface Props {
   title: string;
   description?: string;
   keywords?: string;
+  showPersistent?: boolean;
 }
 
 // const { title, description = "Default description", keywords = "Default keywords" } = Astro.props;
-const { title } = Astro.props;
+const { title, showPersistent = false } = Astro.props;
 
 import astroLogo from "@assets/astro-logo-white.svg";
 import nanostoresLogo from "@assets/nanostores-logo.svg";
@@ -56,8 +58,9 @@ const currentPath = Astro.url.pathname;
 
     <main class="container relative pt-24">
       <slot />
-      <PersistentCounter />
+      {showPersistent && <PersistentCounter />}
     </main>
+    <Footer />
     <SpeedInsights />
   </body>
 </html>

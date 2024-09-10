@@ -1,0 +1,53 @@
+---
+export interface Props {
+  labels: string[];
+}
+
+const { labels } = Astro.props;
+---
+
+<div class="tab-list-container">
+  <ul role="tablist">
+    {
+      labels.map((label, index) => (
+        <li role="presentation">
+          <button role="tab" aria-controls={`panel-${index}`} id={`tab-${index}`}>
+            {label}
+          </button>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .tab-list-container {
+    background-color: #252526;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    color: #d4d4d4;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0.75rem 1rem;
+    transition: background-color 0.3s;
+  }
+
+  button:hover,
+  button[aria-selected="true"] {
+    background-color: #2d2d2d;
+  }
+
+  button[aria-selected="true"] {
+    border-bottom: 2px solid #007acc;
+  }
+</style>

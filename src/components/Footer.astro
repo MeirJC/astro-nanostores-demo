@@ -1,0 +1,32 @@
+---
+import { socialLinks } from "@data/links";
+
+const { githubProfile, linkedin, hashnodeBlog, x } = socialLinks;
+
+const links = [githubProfile, linkedin, hashnodeBlog, x];
+---
+
+<footer class="mt-auto py-10">
+  <div class="container flex flex-col items-center gap-4">
+    <div class="my-4 flex justify-center gap-8 text-white">
+      {
+        links.map((link) => (
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-300 transition-colors duration-200 hover:text-white"
+            aria-label={link.name}
+          >
+            <img
+              src={link.icon.src}
+              alt={link.name}
+              class="size-9 transition-transform duration-300 hover:scale-110"
+            />
+          </a>
+        ))
+      }
+    </div>
+    <p class="text-center font-mono text-base text-gray-200">Made with 🩵 by MeirJC</p>
+  </div>
+</footer>

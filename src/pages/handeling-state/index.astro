@@ -1,78 +1,136 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import SectionContainer from "@layouts/SectionContainer.astro";
-// import PersistentCounter from "@components/handle-state/persistent/PersistentCounter.astro";
+import Tabs from "@components/Tabs/Tabs.astro";
+import TabPanel from "@components/Tabs/TabPanel.astro";
 import { Code } from "astro:components";
 import { snippets } from "@data/snippets";
-const articleLink = "#"; // Placeholder for the actual article link
-const githubRepoLink = "#"; // Placeholder for the GitHub repository link
+import { Image } from "astro:assets";
+import { socialLinks } from "@data/links";
+const { githubProfile, githubProjectRepo, linkedin, hashnodeBlog, x, hashnodeArticle1 } =
+  socialLinks;
+// bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 bg-clip-text text-transparent
+import partOneHero from "@assets/part-1-hero.png";
+import H1Gradient from "@components/H1Gradient.astro";
 ---
 
 <Layout title="Preface: Nanostores in Astro">
-  <SectionContainer>
-    <h1 class="mb-6 text-4xl font-bold">Nanostores in Astro: A Multi-Framework Adventure</h1>
-    <!-- <PersistentCounter /> -->
+  <SectionContainer innerClasses="flex flex-col items-center justify-center gap-6 text-center">
+    <H1Gradient text="Nanostores in Astro:<br/>A Multi-Framework Adventure" />
+    <div class="relative mx-auto mb-4 mt-12 w-full max-w-4xl">
+      <div
+        class="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 blur"
+      >
+      </div>
+      <div class="relative rounded-lg bg-gray-800 p-1">
+        <Image
+          src={partOneHero}
+          alt="Nanostores in Astro"
+          class="h-auto w-full rounded-lg shadow-lg"
+        />
+      </div>
+    </div>
   </SectionContainer>
-  <SectionContainer>
-    <h2 class="mb-4 text-2xl font-semibold">Preface: Handling State in Astro</h2>
-    <p class="mb-4">
+
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">Preface: Handling State in Astro</h2>
+    <p>
       Welcome to the first article in our series "Nanostores in Astro: A Multi-Framework Adventure".
       In this series, we'll explore how to effectively manage state in Astro projects, especially
       when working with multiple frameworks. Our journey begins with an introduction to state
       management in Astro and how Nanostores can simplify this process.
     </p>
-    <p class="mb-4">
+    <p>
       Astro's component islands architecture allows us to use different frameworks within the same
       project. However, this flexibility can make state management challenging. That's where
       Nanostores comes in, offering a lightweight and framework-agnostic solution.
     </p>
   </SectionContainer>
 
-  <SectionContainer>
-    <h3 class="mb-4 text-xl font-semibold">Basic Nanostores Usage in Astro</h3>
-    <p class="mb-4">Here's a simple example of how to use Nanostores in an Astro component:</p>
-    <Code class="rounded-lg px-6" code={snippets.basicNanostoresUsage} lang="astro" />
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">Installing Nanostores</h2>
+    <Tabs labels={["npm", "pnpm", "yarn"]}>
+      <TabPanel index={0}>
+        <Code
+          code={`npm install nanostores\nnpm install @nanostores/react  # For React\nnpm install @nanostores/vue    # For Vue`}
+          lang="bash"
+        />
+      </TabPanel>
+      <TabPanel index={1}>
+        <Code
+          code={`pnpm add nanostores\npnpm add @nanostores/react  # For React\npnpm add @nanostores/vue    # For Vue`}
+          lang="bash"
+        />
+      </TabPanel>
+      <TabPanel index={2}>
+        <Code
+          code={`yarn add nanostores\nyarn add @nanostores/react  # For React\nyarn add @nanostores/vue    # For Vue`}
+          lang="bash"
+        />
+      </TabPanel>
+    </Tabs>
+    <p class="mt-4">Note: Svelte doesn't require a separate integration package.</p>
   </SectionContainer>
 
-  <SectionContainer>
-    <h3 class="mb-4 text-xl font-semibold">Using Nanostores with Different Frameworks in Astro</h3>
-    <p class="mb-4">
-      Nanostores seamlessly integrates with various frameworks. Here are quick examples:
-    </p>
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h3 class="mb-4 text-xl font-semibold">Basic Nanostores Usage</h3>
+    <Tabs labels={["store.ts", "Astro", "React", "Svelte", "Vue"]}>
+      <TabPanel index={0}>
+        <Code
+          code={`
+import { atom } from 'nanostores'
 
-    <h4 class="mb-2 mt-4 text-lg font-semibold">React:</h4>
-    <Code class="rounded-lg p-4" code={snippets.react} lang="jsx" />
+export const count = atom(0)
 
-    <h4 class="mb-2 mt-4 text-lg font-semibold">Svelte:</h4>
-    <Code class="rounded-lg p-4" code={snippets.svelte} lang="svelte" />
+export function increment() {
+  count.set(count.get() + 1)
+}
 
-    <h4 class="mb-2 mt-4 text-lg font-semibold">Vue:</h4>
-    <Code class="rounded-lg p-4" code={snippets.vue} lang="vue" />
+export function decrement() {
+  count.set(count.get() - 1)
+}
+        `}
+          lang="typescript"
+        />
+      </TabPanel>
+      <TabPanel index={1}>
+        <Code code={snippets.basicNanostoresUsage} lang="astro" />
+      </TabPanel>
+      <TabPanel index={2}>
+        <Code code={snippets.react} lang="jsx" />
+      </TabPanel>
+      <TabPanel index={3}>
+        <Code code={snippets.svelte} lang="svelte" />
+      </TabPanel>
+      <TabPanel index={4}>
+        <Code code={snippets.vue} lang="vue" />
+      </TabPanel>
+    </Tabs>
   </SectionContainer>
 
-  <SectionContainer>
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
     <h3 class="mb-4 text-xl font-semibold">What's Next?</h3>
-    <p class="mb-4">
+    <p>
       In the full article, we'll dive deeper into Nanostores, exploring advanced usage patterns,
       best practices for state management in Astro, and how to effectively share state between
       different framework components.
     </p>
-    <p class="mb-4">
+    <p>
       We'll also look at real-world examples and discuss the benefits and potential pitfalls of
       using Nanostores in multi-framework Astro projects.
     </p>
   </SectionContainer>
 
-  <SectionContainer>
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
     <h3 class="mb-4 text-xl font-semibold">Resources</h3>
     <ul class="list-inside list-disc">
       <li>
-        Full Article: <a href={articleLink} class="text-blue-500 hover:underline"
+        Full Article: <a href={hashnodeArticle1.url} class="text-amber-300 hover:underline"
           >Read the complete guide here</a
         >
       </li>
       <li>
-        GitHub Repository: <a href={githubRepoLink} class="text-blue-500 hover:underline"
+        GitHub Repository: <a href={githubProjectRepo.url} class="text-amber-300 hover:underline"
           >View the code examples</a
         >
       </li>

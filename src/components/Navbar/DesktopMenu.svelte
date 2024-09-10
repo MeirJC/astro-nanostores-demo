@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { slide } from 'svelte/transition';
-  import { navItems } from './navItems';
-  import Submenu from './Submenu.svelte';
+  import { navItems } from "@data/links";
+  import Submenu from "./Submenu.svelte";
 
   export let currentPath: string;
 
@@ -23,10 +22,10 @@
   }
 
   function handleKeydown(event: KeyboardEvent, index: number) {
-    if (event.key === 'Enter' || event.key === ' ') {
+    if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       openSubmenu = openSubmenu === index ? null : index;
-    } else if (event.key === 'Escape') {
+    } else if (event.key === "Escape") {
       openSubmenu = null;
     }
   }
@@ -47,7 +46,7 @@
           ? 'text-astro-500 font-bold'
           : ''}"
         on:keydown={(e) => handleKeydown(e, index)}
-        aria-haspopup={item.subItems ? 'true' : 'false'}
+        aria-haspopup={item.subItems ? "true" : "false"}
         aria-expanded={openSubmenu === index}
       >
         {item.text}

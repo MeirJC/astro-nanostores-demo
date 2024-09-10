@@ -1,7 +1,10 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import SectionContainer from "@layouts/SectionContainer.astro";
-// import PersistentCounter from "@components/handle-state/persistent/PersistentCounter.astro";
+import Tabs from "@components/Tabs/Tabs.astro";
+import TabPanel from "@components/Tabs/TabPanel.astro";
+import { Code } from "astro:components";
+import H1Gradient from "@components/H1Gradient.astro";
 
 import AstroCounterShared from "@components/handle-state/astro/AstroCounterShared.astro";
 import SvelteCounterShared from "@components/handle-state/svelte/SvelteCounterShared.svelte";
@@ -14,50 +17,330 @@ import AstroFormShared from "@components/handle-state/astro/AstroFormShared.astr
 import VueFormShared from "@components/handle-state/vue/VueFormShared.vue";
 ---
 
-<Layout title="SHARED Welcome to Astro.">
-  <SectionContainer>
-    <h1 class="mb-6 text-4xl font-bold">Welcome to SHARED State</h1>
-    <!-- <PersistentCounter /> -->
+<Layout title="Shared State Management with Nanostores in Astro">
+  <SectionContainer
+    innerClasses="flex flex-col items-center justify-center gap-6 text-center text-lg"
+  >
+    <H1Gradient text="Shared State Management" />
+    <p class="text-start">
+      Welcome to the shared state management demonstration! This page showcases how Nanostores can
+      be used to manage shared state across different frameworks within an Astro project. Shared
+      state means that all components, regardless of their framework, can access and modify the same
+      state.
+    </p>
+    <p class="text-start">
+      We'll demonstrate this concept using two common UI patterns: counters and forms. Each example
+      is implemented in Astro, Svelte, React, and Vue, all sharing the same state. This allows you
+      to see how changes in one component immediately reflect in all others, regardless of the
+      framework used.
+    </p>
   </SectionContainer>
-  <SectionContainer>
-    <div class="gric-cols-1 my-8 grid gap-4 md:grid-cols-2">
+
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">Shared State Counters</h2>
+    <p>
+      These counters demonstrate how a single shared state can be accessed and modified by
+      components built with different frameworks. Notice how updating the count in one counter
+      updates all the others simultaneously.
+    </p>
+    <div class="my-8 grid grid-cols-1 gap-4 md:grid-cols-2">
       <div>
-        <h3 class="text-xl">AstroCounter</h3>
+        <h3 class="mb-2 text-xl font-semibold md:text-2xl">Astro Counter</h3>
         <AstroCounterShared />
       </div>
       <div>
-        <h3 class="text-xl">SvelteCounter</h3>
+        <h3 class="mb-2 text-xl font-semibold md:text-2xl">Svelte Counter</h3>
         <SvelteCounterShared client:idle />
       </div>
       <div>
-        <h3 class="text-xl">ReactCounter</h3>
+        <h3 class="mb-2 text-xl font-semibold md:text-2xl">React Counter</h3>
         <ReactCounterShared client:idle />
       </div>
       <div>
-        <h3 class="text-xl">IndependentVueCounter</h3>
+        <h3 class="mb-2 text-xl font-semibold md:text-2xl">Vue Counter</h3>
         <VueCounter client:load />
       </div>
     </div>
   </SectionContainer>
-  <SectionContainer>
-    <h2 class="text-xl">Independent State Forms</h2>
+
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">Shared Counter Code Examples</h2>
+    <Tabs labels={["store.ts", "Astro", "Svelte", "React", "Vue"]}>
+      <TabPanel index={0}>
+        <Code
+          code={`
+import { atom } from 'nanostores'
+
+export const count = atom(0)
+
+export function increment() {
+  count.set(count.get() + 1)
+}
+
+export function decrement() {
+  count.set(count.get() - 1)
+}
+        `}
+          lang="typescript"
+        />
+      </TabPanel>
+      <TabPanel index={1}>
+        <Code
+          code={`
+---
+import { count, increment, decrement } from '../stores/sharedCounterStore'
+---
+
+<div>
+  <button onclick={decrement}>-</button>
+  <span>{count.get()}</span>
+  <button onclick={increment}>+</button>
+</div>
+
+<script>
+  import { count } from '../stores/sharedCounterStore'
+  
+  count.subscribe(value => {
+    document.querySelector('span').textContent = value
+  })
+</script>
+        `}
+          lang="astro"
+        />
+      </TabPanel>
+      <TabPanel index={2}>
+        <Code
+          code={`
+<script>
+import { count, increment, decrement } from '../stores/sharedCounterStore'
+</script>
+
+<div>
+  <button on:click={decrement}>-</button>
+  <span>{$count}</span>
+  <button on:click={increment}>+</button>
+</div>
+        `}
+          lang="svelte"
+        />
+      </TabPanel>
+      <TabPanel index={3}>
+        <Code
+          code={`
+import { useStore } from '@nanostores/react'
+import { count, increment, decrement } from '../stores/sharedCounterStore'
+
+export function ReactCounter() {
+  const $count = useStore(count)
+  
+  return (
+    <div>
+      <button onClick={decrement}>-</button>
+      <span>{$count}</span>
+      <button onClick={increment}>+</button>
+    </div>
+  )
+}
+        `}
+          lang="jsx"
+        />
+      </TabPanel>
+      <TabPanel index={4}>
+        <Code
+          code={`
+<template>
+  <div>
+    <button @click="decrement">-</button>
+    <span>{{ count }}</span>
+    <button @click="increment">+</button>
+  </div>
+</template>
+
+<script setup>
+import { useStore } from '@nanostores/vue'
+import { count, increment, decrement } from '../stores/sharedCounterStore'
+
+const count = useStore(count)
+</script>
+        `}
+          lang="vue"
+        />
+      </TabPanel>
+    </Tabs>
+  </SectionContainer>
+
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">Shared State Forms</h2>
+    <p>
+      These forms demonstrate how complex shared state (multiple form fields) can be managed across
+      different frameworks using Nanostores. Notice how updating a field in one form updates the
+      same field in all other forms instantly.
+    </p>
     <div class="my-8 grid grid-cols-1 gap-4 md:grid-cols-2">
       <div>
-        <h3 class="text-xl">IndependentAstroForm</h3>
+        <h3 class="mb-2 text-xl font-semibold md:text-2xl">Astro Form</h3>
         <AstroFormShared />
       </div>
       <div>
-        <h3 class="text-xl">IndependentSvelteForm</h3>
+        <h3 class="mb-2 text-xl font-semibold md:text-2xl">Svelte Form</h3>
         <SvelteFormShared client:idle />
       </div>
       <div>
-        <h3 class="text-xl">IndependentReactForm</h3>
+        <h3 class="mb-2 text-xl font-semibold md:text-2xl">React Form</h3>
         <ReactFormShared client:idle />
       </div>
       <div>
-        <h3 class="text-xl">IndependentVueForm</h3>
+        <h3 class="mb-2 text-xl font-semibold md:text-2xl">Vue Form</h3>
         <VueFormShared client:load />
       </div>
     </div>
+  </SectionContainer>
+
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">Shared Form Code Examples</h2>
+    <Tabs labels={["store.ts", "Astro", "Svelte", "React", "Vue"]}>
+      <TabPanel index={0}>
+        <Code
+          code={`
+import { map } from 'nanostores'
+
+export const formData = map({ name: '', email: '' })
+
+export function updateForm(field, value) {
+  formData.setKey(field, value)
+}
+        `}
+          lang="typescript"
+        />
+      </TabPanel>
+      <TabPanel index={1}>
+        <Code
+          code={`
+---
+import { formData, updateForm } from '../stores/sharedFormStore'
+---
+
+<form>
+  <input 
+    type="text" 
+    value={formData.get().name} 
+    onchange={(e) => updateForm('name', e.target.value)}
+  />
+  <input 
+    type="email" 
+    value={formData.get().email} 
+    onchange={(e) => updateForm('email', e.target.value)}
+  />
+</form>
+
+<script>
+  import { formData } from '../stores/sharedFormStore'
+  
+  formData.subscribe(value => {
+    console.log('Form updated:', value)
+  })
+</script>
+        `}
+          lang="astro"
+        />
+      </TabPanel>
+      <TabPanel index={2}>
+        <Code
+          code={`
+<script>
+import { formData, updateForm } from '../stores/sharedFormStore'
+</script>
+
+<form>
+  <input 
+    type="text" 
+    bind:value={$formData.name} 
+    on:input={(e) => updateForm('name', e.target.value)}
+  />
+  <input 
+    type="email" 
+    bind:value={$formData.email} 
+    on:input={(e) => updateForm('email', e.target.value)}
+  />
+</form>
+        `}
+          lang="svelte"
+        />
+      </TabPanel>
+      <TabPanel index={3}>
+        <Code
+          code={`
+import { useStore } from '@nanostores/react'
+import { formData, updateForm } from '../stores/sharedFormStore'
+
+export function ReactForm() {
+  const $formData = useStore(formData)
+  
+  return (
+    <form>
+      <input 
+        type="text" 
+        value={$formData.name} 
+        onChange={(e) => updateForm('name', e.target.value)}
+      />
+      <input 
+        type="email" 
+        value={$formData.email} 
+        onChange={(e) => updateForm('email', e.target.value)}
+      />
+    </form>
+  )
+}
+        `}
+          lang="jsx"
+        />
+      </TabPanel>
+      <TabPanel index={4}>
+        <Code
+          code={`
+<template>
+  <form>
+    <input 
+      type="text" 
+      :value="formData.name" 
+      @input="(e) => updateForm('name', e.target.value)"
+    />
+    <input 
+      type="email" 
+      :value="formData.email" 
+      @input="(e) => updateForm('email', e.target.value)"
+    />
+  </form>
+</template>
+
+<script setup>
+import { useStore } from '@nanostores/vue'
+import { formData, updateForm } from '../stores/sharedFormStore'
+
+const formData = useStore(formData)
+</script>
+        `}
+          lang="vue"
+        />
+      </TabPanel>
+    </Tabs>
+  </SectionContainer>
+
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">Thank You!</h2>
+    <p>
+      Thank you for exploring this demonstration of shared state management using Nanostores in
+      Astro! We hope you found this example illuminating and enjoyed seeing how seamlessly different
+      frameworks can work together when sharing state.
+    </p>
+    <p>
+      Remember, this is just the tip of the iceberg when it comes to state management in
+      multi-framework Astro projects. We encourage you to experiment further, try out different
+      scenarios, and see how Nanostores can simplify your state management needs.
+    </p>
+    <p>
+      If you have any questions or want to dive deeper into any aspect of this demo, don't hesitate
+      to reach out or explore the accompanying article and source code. Happy coding!
+    </p>
   </SectionContainer>
 </Layout>

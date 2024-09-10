@@ -1,0 +1,74 @@
+---
+import Layout from "@layouts/Layout.astro";
+import SectionContainer from "@layouts/SectionContainer.astro";
+
+// TODO: Import links from sitelinks.ts once it's created
+// import { hashnode, github, linkedin, twitter } from "@data/sitelinks";
+
+const socialLinks = [
+  { name: "Hashnode", url: "#", icon: "hashnode-icon.svg" },
+  { name: "GitHub", url: "#", icon: "github-icon.svg" },
+  { name: "LinkedIn", url: "#", icon: "linkedin-icon.svg" },
+  { name: "Twitter", url: "#", icon: "twitter-icon.svg" },
+];
+---
+
+<Layout title="About Meir J Cohen - Web Developer & AI Enthusiast">
+  <SectionContainer innerClasses="flex flex-col gap-6">
+    <h1 class="mb-6 text-center text-4xl font-bold">About Meir J Cohen</h1>
+
+    <!-- Image placeholder with styling -->
+    <!-- <div class="relative mx-auto mb-8 h-64 w-64">
+      <div
+        class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 blur"
+      >
+      </div>
+      <div class="relative rounded-full bg-gray-800 p-1">
+        <img src="#" alt="Meir J Cohen" class="h-full w-full rounded-full object-cover" />
+      </div>
+    </div> -->
+  </SectionContainer>
+
+  <SectionContainer innerClasses="flex flex-col gap-4">
+    <h2>Web Developer & AI Enthusiast</h2>
+    <p>
+      Hello! I'm Meir, a passionate full-stack web developer with a keen interest in AI integration.
+      With over 2 years of experience in the field, I specialize in crafting efficient and
+      innovative web solutions that bridge the gap between cutting-edge technology and user-friendly
+      design.
+    </p>
+    <p>My toolkit includes a wide range of technologies, including but not limited to:</p>
+    <ul>
+      <li>Astro</li>
+      <li>Svelte</li>
+      <li>React</li>
+      <li>NextJS</li>
+      <li>JavaScript</li>
+      <li>TypeScript</li>
+    </ul>
+    <p>
+      By day, I'm deeply involved in end-to-end web development projects in Israel, pushing the
+      boundaries of what's possible in web technology. By night, I explore the exciting frontier of
+      AI with a US-based company, constantly learning and adapting to the rapidly evolving tech
+      landscape.
+    </p>
+    <p>
+      My passion lies in creating web solutions that not only meet technical requirements but also
+      delight users with their intuitiveness and efficiency. I believe in the power of clean,
+      maintainable code and the importance of staying up-to-date with the latest industry trends and
+      best practices.
+    </p>
+    <h2>Let's Connect!</h2>
+    <p>
+      I'm always excited to connect with fellow developers, tech enthusiasts, and potential
+      collaborators. Whether you have questions about my projects, want to discuss the latest in web
+      development and AI, or are interested in working together, feel free to reach out!
+    </p>
+  </SectionContainer>
+
+  <SectionContainer innerClasses="text-center">
+    <p class="font-mono text-lg text-gray-300">
+      Thank you for visiting. Let's create something amazing together!
+    </p>
+  </SectionContainer>
+</Layout>

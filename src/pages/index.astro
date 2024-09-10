@@ -1,81 +1,153 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import SectionContainer from "@layouts/SectionContainer.astro";
+import H1Gradient from "@components/H1Gradient.astro";
+import { socialLinks } from "@data/links";
+import { Image } from "astro:assets";
+
+const { githubProfile, githubProjectRepo, linkedin, hashnodeBlog, x, hashnodeArticle1 } =
+  socialLinks;
 ---
 
 <Layout title="Nanostores in Astro: A Multi-Framework Adventure">
-  <SectionContainer>
-    <h1 class="mb-6 text-center text-4xl font-bold">
-      Nanostores in Astro: A Multi-Framework Adventure
-    </h1>
-  </SectionContainer>
-  <SectionContainer>
-    <h2 class="mb-4 text-2xl font-semibold">About This Project</h2>
-    <p class="mb-4">
-      Welcome to the demo site for my upcoming Hashnode article, "[Article Title Placeholder]". This
-      project showcases the power of using <a
-        href="https://github.com/nanostores/nanostores"
-        class="text-blue-500 hover:underline">nanostores</a
-      > in <a href="https://astro.build" class="text-blue-500 hover:underline">Astro</a>,
-      demonstrating how to manage state across multiple frameworks (Astro, Svelte, React, and Vue) -
-      both with their own state and with shared state. It's like a United Nations summit, but for
-      front-end frameworks!
-    </p>
-    <div class="rounded-lg bg-gray-100/10 p-4">
-      <h3 class="mb-2 text-xl font-semibold">Quick Links:</h3>
-      <ul class="list-inside list-disc">
-        <li>
-          Full Article: <a href="#" class="text-blue-500 hover:underline"
-            >[Article Link Placeholder]</a
-          >
-        </li>
-        <li>
-          GitHub Repository: <a href="#" class="text-blue-500 hover:underline"
-            >[GitHub Repo Link Placeholder]</a
-          >
-        </li>
-        <!-- <li>Article Image Preview: [Image Placeholder]</li> -->
-      </ul>
-    </div>
-  </SectionContainer>
-  <SectionContainer>
-    <h2 class="mb-4 text-2xl font-semibold">Why Nanostores in Astro?</h2>
-    <p class="mb-4">
-      Imagine you're at a party (a web development party, of course) and you want to share a juicy
-      piece of gossip (let's call it "state") with your friends who speak different languages
-      (frameworks). Nanostores is like that cool polyglot friend who can translate your gossip into
-      any language effortlessly.
-    </p>
-    <ul class="mb-4 list-inside list-disc">
-      <li>Lightweight and framework-agnostic - it plays nice with everyone!</li>
-      <li>Perfect for Astro's component islands - like little state management oases</li>
-      <li>Shared state across frameworks - because sharing is caring</li>
-      <li>Simple API - no PhD in State Management required</li>
-    </ul>
-    <p>
-      For the full scoop and code examples that'll make you go "Aha!", check out the main article on
-      Hashnode. It's where the real magic happens!
+  <SectionContainer innerClasses="flex flex-col items-center justify-center gap-6 text-center">
+    <H1Gradient text="Nanostores in Astro:<br/>A Multi-Framework Adventure" />
+    <p class="font-mono text-lg italic md:text-xl">
+      Simplifying state management across Astro, React, Vue, and Svelte
     </p>
   </SectionContainer>
 
-  <SectionContainer>
-    <h2 class="mb-4 text-2xl font-semibold">About the Author</h2>
-    <div class="rounded-lg bg-gray-100 bg-gray-100/10 p-6">
-      <h3 class="mb-2 text-xl font-bold">Meir J Cohen</h3>
-      <p class="mb-4">
-        Hey there! I'm Meir, a full-stack web developer with a knack for AI integration. With 2+
-        years of coding under my belt, I'm all about crafting efficient and innovative web solutions
-        that make you go "Wow!"
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">Welcome to the Adventure!</h2>
+    <p>
+      Hey there, fellow web dev enthusiast! You've just stumbled upon the go-to resource I wish I
+      had when I first dived into handling state in Astro. This demo site accompanies my three-part
+      article series on Hashnode, where we're exploring the wild and wonderful world of state
+      management using Nanostores in Astro.
+    </p>
+    <p>
+      In this series, we'll unravel the mysteries of streamlining state management across Astro,
+      React, Vue, and Svelte components. We're talking independent state, shared state, and even
+      throwing some persistent state management into the mix. It's like a state management party,
+      and everyone's invited!
+    </p>
+    <div class="mt-6 rounded-lg bg-gray-100/10 p-4">
+      <h3 class="mb-2 text-xl font-semibold md:text-2xl">Quick Links:</h3>
+      <ul class="list-inside list-disc space-y-2 pl-5">
+        <li>
+          Read Part 1: <a href={hashnodeArticle1.url} class="text-amber-300 hover:underline"
+            >State Management in Astro: A Deep Dive into Nanostores</a
+          >
+        </li>
+        <li>
+          GitHub Repo of this Website: <a
+            href={githubProjectRepo.url}
+            class="text-amber-300 hover:underline">Here</a
+          >
+        </li>
+        <li>
+          Connect with me:
+          <a href={githubProfile.url} class="text-amber-300 hover:underline" target="_blank">
+            <Image
+              class="mx-1.5 inline-block size-7 transition-transform duration-300 hover:scale-110"
+              src={githubProfile.icon}
+              alt={githubProfile.name}
+            />
+          </a> |
+          <a href={linkedin.url} class="text-amber-300 hover:underline" target="_blank">
+            <Image
+              class="mx-1.5 inline-block size-7 transition-transform duration-300 hover:scale-110"
+              src={linkedin.icon}
+              alt={linkedin.name}
+            />
+          </a> |
+          <a href={x.url} class="text-amber-300 hover:underline" target="_blank">
+            <Image
+              class="mx-1.5 inline-block size-7 transition-transform duration-300 hover:scale-110"
+              src={x.icon}
+              alt={x.name}
+            />
+          </a> |
+          <a href={hashnodeBlog.url} class="text-amber-300 hover:underline" target="_blank">
+            <Image
+              class="mx-1.5 inline-block size-7 transition-transform duration-300 hover:scale-110"
+              src={hashnodeBlog.icon}
+              alt={hashnodeBlog.name}
+            />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">What's This All About?</h2>
+    <p class="">
+      Imagine you're at a tech conference (the kind with great coffee and even better wi-fi), and
+      you want to share some exciting state management techniques with your polyglot dev friends.
+      That's where Nanostores comes in - it's like that cool translator app that lets everyone
+      understand each other, no matter what framework they speak!
+    </p>
+    <p class="">Here's why Nanostores in Astro is the talk of the town:</p>
+    <ul class="list-outside list-disc space-y-2 pl-5">
+      <li>Lightweight and framework-agnostic - plays nice with everyone at the party</li>
+      <li>Perfect for Astro's component islands - like state management beach resorts</li>
+      <li>Shared state across frameworks - because good code is meant to be shared</li>
+      <li>
+        Simple API - no computer science degree required (though it might help with the afterparty
+        debugging)
+      </li>
+    </ul>
+    <p>
+      Ready to see Nanostores in action? Dive into the demos and prepare for some "Aha!" moments!
+    </p>
+  </SectionContainer>
+
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">The Tech Stack Powering This Adventure</h2>
+    <p class="">
+      We're not just talking the talk - this entire demo site is built with the very tools we're
+      exploring. Here's what's under the hood:
+    </p>
+    <ul class="list-outside list-disc space-y-2 pl-5">
+      <li>Astro - Our cosmic framework of choice</li>
+      <li>Nanostores & @nanostores/persistent - The state management superheroes</li>
+      <li>React, Vue, and Svelte - Because why choose one when you can have them all?</li>
+      <li>TypeScript - For those who like their types strict and their errors caught early</li>
+      <li>Tailwind CSS - Making things pretty without the CSS headaches</li>
+    </ul>
+  </SectionContainer>
+
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">Who's This For?</h2>
+    <p class="">
+      If you've got some front-end experience under your belt, understand the basics of JavaScript,
+      and have wrapped your head around components and state, you're in the right place! Whether
+      you're a junior dev looking to level up or a seasoned pro curious about Astro and Nanostores,
+      there's something here for you.
+    </p>
+    <p>
+      No advanced degree required - just bring your curiosity and a willingness to try new things!
+    </p>
+  </SectionContainer>
+
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">About the Author</h2>
+    <div class="space-y-4 rounded-lg bg-gray-100/10 p-6">
+      <h3 class="text-xl font-semibold md:text-2xl">Meir J Cohen</h3>
+      <p class="">
+        Hey there! I'm Meir, a full-stack web developer with a passion for AI integration and a
+        habit of turning coffee into code. I'm all about crafting web solutions that make both
+        developers and users go "Wow!"
       </p>
-      <p class="mb-4">
-        My toolbox is packed with Astro, Svelte, React, NextJS, JavaScript, TypeScript, and more.
-        When I'm not juggling end-to-end projects in Israel by day, I'm exploring the AI frontier
-        with a US-based company by night. Sleep? Who needs it!
+      <p class="">
+        Currently, I'm juggling end-to-end projects in Israel by day and exploring AI integrations
+        with a US-based startup by night.
       </p>
       <p>
-        I'm here to share insights, tips, and a sprinkle of coding enthusiasm. Let's learn, grow,
-        and maybe share a laugh or two in this wild tech landscape. Got questions or just want to
-        geek out about code? Drop me a line!
+        I'm here to share insights, sprinkle some coding enthusiasm, and maybe crack a bad
+        programming joke or two. Let's learn, grow, and navigate this wild tech landscape together.
+        Got questions? Want to geek out about code? Don't be shy - drop me a line! 🤙
       </p>
     </div>
   </SectionContainer>

@@ -1,0 +1,19 @@
+---
+export interface Props {
+  index: number;
+}
+
+const { index } = Astro.props;
+---
+
+<div role="tabpanel" id={`panel-${index}`} class="tab-panel">
+  <slot />
+</div>
+
+<style>
+  .tab-panel {
+    color: #d4d4d4;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+</style>

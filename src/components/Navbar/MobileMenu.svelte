@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { slide } from 'svelte/transition';
-  import { navItems } from './navItems';
-  import { createEventDispatcher } from 'svelte';
+  import { slide } from "svelte/transition";
+  import { navItems } from "@data/links";
+  import { createEventDispatcher } from "svelte";
 
   export let currentPath: string;
 
@@ -10,7 +10,11 @@
   const dispatch = createEventDispatcher();
 
   function toggleSubmenu(index: number) {
-    openSubmenu = openSubmenu === index ? null : index;
+    if (index === 0) {
+      window.location.href = navItems[0].href;
+    } else {
+      openSubmenu = openSubmenu === index ? null : index;
+    }
   }
 </script>
 
@@ -21,13 +25,16 @@
   <ul class="container mx-auto px-4 space-y-4">
     {#each navItems as item, index}
       <li>
+        <!-- if index is 0, also navigate to the item.href (homepage)-->
         <button
           class="flex items-center justify-between w-full text-beige text-xl py-2 {currentPath.startsWith(
             item.href
           )
             ? 'text-astro-500 font-bold'
             : ''}"
-          on:click={() => toggleSubmenu(index)}
+          on:click={() => {
+            toggleSubmenu(index);
+          }}
           aria-expanded={openSubmenu === index}
         >
           {item.text}
@@ -57,7 +64,7 @@
                 <a
                   href={subItem.href}
                   class="text-beige hover:text-astro-300 block py-2"
-                  on:click={() => dispatch('close')}
+                  on:click={() => dispatch("close")}
                 >
                   {subItem.text}
                 </a>

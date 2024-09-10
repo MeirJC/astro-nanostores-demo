@@ -1,0 +1,105 @@
+---
+import TabList from "./TabList.astro";
+
+export interface Props {
+  labels: string[];
+}
+
+const { labels } = Astro.props;
+---
+
+<tabs-manager class="tabs-container">
+  <TabList {labels} />
+  <div class="tab-panels">
+    <slot />
+  </div>
+</tabs-manager>
+
+<style>
+  .tabs-container {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: "Consolas", "Monaco", "Andale Mono", "Ubuntu Mono", monospace;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tab-panels {
+    flex-grow: 1;
+    /* padding: 1rem; */
+  }
+</style>
+
+<script>
+  class TabsManager extends HTMLElement {
+    constructor() {
+      super();
+      this.switchTab = this.switchTab.bind(this);
+      this.handleKeydown = this.handleKeydown.bind(this);
+    }
+
+    connectedCallback() {
+      const tabList = this.querySelector('[role="tablist"]');
+      const tabs = [...tabList.querySelectorAll('[role="tab"]')];
+      const panels = [...this.querySelectorAll('[role="tabpanel"]')];
+
+      tabList.addEventListener("click", this.switchTab);
+      tabList.addEventListener("keydown", this.handleKeydown);
+
+      // Show the first tab by default
+      this.switchTab({ target: tabs[0] });
+    }
+
+    switchTab(event) {
+      const tab = event.target.closest('[role="tab"]');
+      if (!tab) return;
+
+      const tabs = [...tab.closest('[role="tablist"]').querySelectorAll('[role="tab"]')];
+      const panels = [...this.querySelectorAll('[role="tabpanel"]')];
+      const targetPanel = this.querySelector(`#${tab.getAttribute("aria-controls")}`);
+
+      tabs.forEach((t) => {
+        t.setAttribute("aria-selected", "false");
+        t.setAttribute("tabindex", "-1");
+      });
+      panels.forEach((p) => p.setAttribute("hidden", "true"));
+
+      tab.setAttribute("aria-selected", "true");
+      tab.setAttribute("tabindex", "0");
+      targetPanel.removeAttribute("hidden");
+    }
+
+    handleKeydown(event) {
+      const tab = event.target.closest('[role="tab"]');
+      if (!tab) return;
+
+      const tabs = [...tab.closest('[role="tablist"]').querySelectorAll('[role="tab"]')];
+      const index = tabs.indexOf(tab);
+
+      let newTab;
+      switch (event.key) {
+        case "ArrowLeft":
+          newTab = tabs[index - 1] || tabs[tabs.length - 1];
+          break;
+        case "ArrowRight":
+          newTab = tabs[index + 1] || tabs[0];
+          break;
+        case "Home":
+          newTab = tabs[0];
+          break;
+        case "End":
+          newTab = tabs[tabs.length - 1];
+          break;
+        default:
+          return;
+      }
+
+      event.preventDefault();
+      this.switchTab({ target: newTab });
+      newTab.focus();
+    }
+  }
+
+  customElements.define("tabs-manager", TabsManager);
+</script>

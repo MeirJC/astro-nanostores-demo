@@ -1,0 +1,71 @@
+---
+import Layout from "@layouts/Layout.astro";
+import SectionContainer from "@layouts/SectionContainer.astro";
+import H1Gradient from "@components/H1Gradient.astro";
+
+const excuses = [
+  "The page got lost in the crypto crash.",
+  "It's stuck in a parallel universe where JavaScript is banned.",
+  "The content was eaten by a wild AI algorithm.",
+  "It's taking a mental health day.",
+  "The page is protesting against bad SEO practices.",
+  "It's busy trying to solve climate change.",
+  "The page is on a coffee break... since 1995.",
+  "It's attending a time management seminar.",
+  "The content is self-isolating due to a virus scare.",
+  "It's out looking for the missing socks from your laundry.",
+  "The page is stuck in a Reddit rabbit hole.",
+  "It's trying to understand TikTok trends.",
+  "The content is on a quest to find the meaning of life.",
+  "It's busy untangling earphone cords.",
+  "The page is recovering from the latest Windows update.",
+  "It's trying to remember its Bitcoin wallet password.",
+];
+
+const randomExcuse = excuses[Math.floor(Math.random() * excuses.length)];
+---
+
+<Layout
+  title="404: Page Not Found"
+  description="The page you are looking for does not exist. Please check the URL and try again."
+>
+  <SectionContainer
+    innerClasses="flex flex-col items-center justify-center gap-8 text-center pt-12"
+  >
+    <H1Gradient text="Oops! Page Not Found" />
+
+    <div class="text-8xl font-bold md:text-9xl">
+      4<span class="inline-block animate-bounce">🙄</span>4
+    </div>
+
+    <p class="max-w-2xl font-mono text-xl italic">
+      {randomExcuse}
+    </p>
+
+    <a
+      href="/"
+      class="mt-8 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 px-6 py-2 text-lg font-semibold tracking-wide text-white shadow-lg transition-all duration-200 hover:from-purple-600 hover:to-indigo-600 hover:shadow-xl"
+      title="Back to Home Page"
+      aria-label="Back to Home Page"
+    >
+      Back to Home Page
+    </a>
+  </SectionContainer>
+</Layout>
+
+<style>
+  .animate-bounce {
+    animation: bounce 1s infinite;
+  }
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+</style>

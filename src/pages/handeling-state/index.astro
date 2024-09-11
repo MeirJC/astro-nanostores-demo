@@ -3,18 +3,17 @@ import Layout from "@layouts/Layout.astro";
 import SectionContainer from "@layouts/SectionContainer.astro";
 import Tabs from "@components/Tabs/Tabs.astro";
 import TabPanel from "@components/Tabs/TabPanel.astro";
-import { Code } from "astro:components";
-import { snippets } from "@data/snippets";
-import { Image } from "astro:assets";
-import { socialLinks } from "@data/links";
-const { githubProfile, githubProjectRepo, linkedin, hashnodeBlog, x, hashnodeArticle1 } =
-  socialLinks;
-// bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 bg-clip-text text-transparent
 import partOneHero from "@assets/part-1-hero.png";
 import H1Gradient from "@components/H1Gradient.astro";
+import { Code } from "astro:components";
+import { installSnippets, basicUsageSnippets } from "@data/snippets";
+import { Image } from "astro:assets";
+import { socialLinks } from "@data/links";
+
+const { githubProjectRepo, hashnodeArticle1 } = socialLinks;
 ---
 
-<Layout title="Preface: Nanostores in Astro">
+<Layout title="Preface: Nanostores in Astro" showPersistent={true}>
   <SectionContainer innerClasses="flex flex-col items-center justify-center gap-6 text-center">
     <H1Gradient text="Nanostores in Astro:<br/>A Multi-Framework Adventure" />
     <div class="relative mx-auto mb-4 mt-12 w-full max-w-4xl">
@@ -27,6 +26,11 @@ import H1Gradient from "@components/H1Gradient.astro";
           src={partOneHero}
           alt="Nanostores in Astro"
           class="h-auto w-full rounded-lg shadow-lg"
+          width={partOneHero.width}
+          height={partOneHero.height}
+          loading="eager"
+          format="webp"
+          quality={90}
         />
       </div>
     </div>
@@ -51,22 +55,13 @@ import H1Gradient from "@components/H1Gradient.astro";
     <h2 class="text-2xl font-semibold md:text-3xl">Installing Nanostores</h2>
     <Tabs labels={["npm", "pnpm", "yarn"]}>
       <TabPanel index={0}>
-        <Code
-          code={`npm install nanostores\nnpm install @nanostores/react  # For React\nnpm install @nanostores/vue    # For Vue`}
-          lang="bash"
-        />
+        <Code code={installSnippets.npm} lang="bash" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={1}>
-        <Code
-          code={`pnpm add nanostores\npnpm add @nanostores/react  # For React\npnpm add @nanostores/vue    # For Vue`}
-          lang="bash"
-        />
+        <Code code={installSnippets.pnpm} lang="bash" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={2}>
-        <Code
-          code={`yarn add nanostores\nyarn add @nanostores/react  # For React\nyarn add @nanostores/vue    # For Vue`}
-          lang="bash"
-        />
+        <Code code={installSnippets.yarn} lang="bash" theme="aurora-x" class="p-4" />
       </TabPanel>
     </Tabs>
     <p class="mt-4">Note: Svelte doesn't require a separate integration package.</p>
@@ -76,34 +71,19 @@ import H1Gradient from "@components/H1Gradient.astro";
     <h3 class="mb-4 text-xl font-semibold">Basic Nanostores Usage</h3>
     <Tabs labels={["store.ts", "Astro", "React", "Svelte", "Vue"]}>
       <TabPanel index={0}>
-        <Code
-          code={`
-import { atom } from 'nanostores'
-
-export const count = atom(0)
-
-export function increment() {
-  count.set(count.get() + 1)
-}
-
-export function decrement() {
-  count.set(count.get() - 1)
-}
-        `}
-          lang="typescript"
-        />
+        <Code code={basicUsageSnippets.typescript} lang="typescript" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={1}>
-        <Code code={snippets.basicNanostoresUsage} lang="astro" />
+        <Code code={basicUsageSnippets.astro} lang="astro" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={2}>
-        <Code code={snippets.react} lang="jsx" />
+        <Code code={basicUsageSnippets.react} lang="jsx" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={3}>
-        <Code code={snippets.svelte} lang="svelte" />
+        <Code code={basicUsageSnippets.svelte} lang="svelte" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={4}>
-        <Code code={snippets.vue} lang="vue" />
+        <Code code={basicUsageSnippets.vue} lang="vue" theme="aurora-x" class="p-4" />
       </TabPanel>
     </Tabs>
   </SectionContainer>

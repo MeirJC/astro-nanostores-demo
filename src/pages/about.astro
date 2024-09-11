@@ -1,51 +1,44 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import SectionContainer from "@layouts/SectionContainer.astro";
-
-// TODO: Import links from sitelinks.ts once it's created
-// import { hashnode, github, linkedin, twitter } from "@data/sitelinks";
-
-const socialLinks = [
-  { name: "Hashnode", url: "#", icon: "hashnode-icon.svg" },
-  { name: "GitHub", url: "#", icon: "github-icon.svg" },
-  { name: "LinkedIn", url: "#", icon: "linkedin-icon.svg" },
-  { name: "Twitter", url: "#", icon: "twitter-icon.svg" },
-];
+import H1Gradient from "@components/H1Gradient.astro";
+import { Image } from "astro:assets";
+// Images
+import astro from "@assets/astro-original.svg";
+import svelte from "@assets/svelte-original.svg";
+import react from "@assets/react-original.svg";
+import vue from "@assets/vuejs-original.svg";
+import typescript from "@assets/typescript-plain.svg";
+import tailwindcss from "@assets/tailwindcss-original.svg";
+import nanostores from "@assets/nanostores-logo.svg";
+import webcomponents from "@assets/web-component.svg";
+import meirJC from "@assets/MeirJC.jpg";
 ---
 
 <Layout title="About Meir J Cohen - Web Developer & AI Enthusiast">
-  <SectionContainer innerClasses="flex flex-col gap-6">
-    <h1 class="mb-6 text-center text-4xl font-bold">About Meir J Cohen</h1>
+  <SectionContainer innerClasses="flex flex-col items-center justify-center gap-6 text-center">
+    <H1Gradient text="<span class='text-beige'>About</span> Meir J Cohen" />
+    <p class="font-mono text-lg italic md:text-xl">Web Developer & AI Enthusiast</p>
 
     <!-- Image placeholder with styling -->
-    <!-- <div class="relative mx-auto mb-8 h-64 w-64">
+    <div class="relative mx-auto h-64 w-64">
       <div
         class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 blur"
       >
       </div>
       <div class="relative rounded-full bg-gray-800 p-1">
-        <img src="#" alt="Meir J Cohen" class="h-full w-full rounded-full object-cover" />
+        <Image src={meirJC} alt="Meir J Cohen" class="h-full w-full rounded-full object-cover" />
       </div>
-    </div> -->
+    </div>
   </SectionContainer>
 
-  <SectionContainer innerClasses="flex flex-col gap-4">
-    <h2>Web Developer & AI Enthusiast</h2>
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
     <p>
       Hello! I'm Meir, a passionate full-stack web developer with a keen interest in AI integration.
       With over 2 years of experience in the field, I specialize in crafting efficient and
       innovative web solutions that bridge the gap between cutting-edge technology and user-friendly
       design.
     </p>
-    <p>My toolkit includes a wide range of technologies, including but not limited to:</p>
-    <ul>
-      <li>Astro</li>
-      <li>Svelte</li>
-      <li>React</li>
-      <li>NextJS</li>
-      <li>JavaScript</li>
-      <li>TypeScript</li>
-    </ul>
     <p>
       By day, I'm deeply involved in end-to-end web development projects in Israel, pushing the
       boundaries of what's possible in web technology. By night, I explore the exciting frontier of
@@ -58,7 +51,131 @@ const socialLinks = [
       maintainable code and the importance of staying up-to-date with the latest industry trends and
       best practices.
     </p>
-    <h2>Let's Connect!</h2>
+  </SectionContainer>
+
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">This site is crafted with:</h2>
+
+    <div class="relative mx-auto mb-4 mt-12 w-fit max-w-xl">
+      <div
+        class="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 blur"
+      >
+      </div>
+
+      <ul
+        class="relative mx-auto grid w-fit max-w-xl grid-cols-2 grid-rows-4 items-center justify-center gap-4 rounded-lg bg-slate-800/90 p-1.5 backdrop-blur-md md:grid-cols-4 md:grid-rows-2"
+      >
+        <li class="flex-col items-center justify-start p-4 text-center">
+          <Image
+            src={astro}
+            alt="Astro"
+            width={64}
+            height={64}
+            format="svg"
+            loading="lazy"
+            quality={100}
+            class="mx-auto size-16"
+          />
+
+          <p>Astro</p>
+        </li>
+        <li class="flex-col items-center justify-start p-4 text-center">
+          <Image
+            src={svelte}
+            alt="Svelte"
+            width={64}
+            height={64}
+            format="svg"
+            loading="lazy"
+            quality={100}
+            class="mx-auto size-16"
+          />
+          <p>Svelte</p>
+        </li>
+        <li class="flex-col items-center justify-start p-4 text-center">
+          <Image
+            src={react}
+            alt="React"
+            width={64}
+            height={64}
+            format="svg"
+            loading="lazy"
+            quality={100}
+            class="mx-auto size-16"
+          />
+          <p>React</p>
+        </li>
+        <li class="flex-col items-center justify-start p-4 text-center">
+          <Image
+            src={vue}
+            alt="Vue"
+            width={64}
+            height={64}
+            format="svg"
+            loading="lazy"
+            quality={100}
+            class="mx-auto size-16"
+          />
+          <p>Vue</p>
+        </li>
+        <li class="flex-col items-center justify-start p-4 text-center">
+          <Image
+            src={typescript}
+            alt="TypeScript"
+            width={64}
+            height={64}
+            format="svg"
+            loading="lazy"
+            quality={100}
+            class="mx-auto size-16"
+          />
+          <p>TypeScript</p>
+        </li>
+        <li class="flex-col items-center justify-start p-4 text-center">
+          <Image
+            src={tailwindcss}
+            alt="TailwindCSS"
+            width={64}
+            height={64}
+            format="svg"
+            loading="lazy"
+            quality={100}
+            class="mx-auto size-16"
+          />
+          <p>TailwindCSS</p>
+        </li>
+        <li class="flex-col items-center justify-start p-4 text-center">
+          <Image
+            src={nanostores}
+            alt="Nanostores"
+            width={64}
+            height={64}
+            format="svg"
+            loading="lazy"
+            quality={100}
+            class="mx-auto size-16"
+          />
+          <p>Nanostores</p>
+        </li>
+        <li class="flex-col items-center justify-start p-4 text-center">
+          <Image
+            src={webcomponents}
+            alt="Web Components"
+            width={64}
+            height={64}
+            format="svg"
+            loading="lazy"
+            quality={100}
+            class="mx-auto size-16"
+          />
+          <p>Web Components</p>
+        </li>
+      </ul>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">Let's Connect!</h2>
     <p>
       I'm always excited to connect with fellow developers, tech enthusiasts, and potential
       collaborators. Whether you have questions about my projects, want to discuss the latest in web

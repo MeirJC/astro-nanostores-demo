@@ -1,54 +1,72 @@
-# Astro Starter Kit: Basics
+# Nanostores in Astro: A Multi-Framework Adventure
 
-```sh
-npm create astro@latest -- --template basics
+![Nanostores in Astro: A Multi-Framework Adventure](src/assets/part-1-hero.png)
+
+## About This Project
+
+This repository contains the demo site for the article series "Nanostores in Astro: A Multi-Framework Adventure". It showcases how to effectively manage state across multiple frameworks (Astro, React, Vue, and Svelte) using Nanostores in an Astro project.
+
+🔗 [Read the full article series on Hashnode](placeholder-for-hashnode-article-link)
+
+## Features
+
+- Independent state management examples
+- Shared state management across frameworks
+- Persistent state demonstration
+- Interactive counters and forms built with multiple frameworks
+
+## Tech Stack
+
+- [Astro](https://astro.build/) - The web framework for content-driven websites
+- [Nanostores](https://github.com/nanostores/nanostores) - A tiny state manager for React, Preact, Vue, Svelte, and vanilla JS
+- [React](https://reactjs.org/) - A JavaScript library for building user interfaces
+- [Vue](https://vuejs.org/) - The Progressive JavaScript Framework
+- [Svelte](https://svelte.dev/) - Cybernetically enhanced web apps
+- [TypeScript](https://www.typescriptlang.org/) - Typed JavaScript at Any Scale
+- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
+- [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) - A suite of technologies for creating reusable custom elements
+
+## Getting Started
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/nanostores-astro-demo.git
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+2. Navigate to the project directory:
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+cd nanostores-astro-demo
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+3. Install dependencies:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+npm install # or pnpm install or yarn install
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+4. Run the development server:
 
-## 🧞 Commands
+```bash
+npm run dev # or pnpm run dev or yarn run dev
+```
 
-All commands are run from the root of the project, from a terminal:
+5. Open your browser and visit `http://localhost:4321`
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Project Structure
 
-## 👀 Want to learn more?
+- `src/pages/` - Astro pages
+- `src/components/` - Reusable components (Astro, React, Vue, Svelte)
+- `src/stores/` - Nanostore definitions
+- `src/layouts/` - Layout components
+- `src/assets/` - Static assets
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Author
+
+**Meir J Cohen**
+
+- GitHub: [@MeirJC](https://github.com/MeirJC)
+- LinkedIn: [Meir Jacob Cohen](https://www.linkedin.com/in/meirjcohen/)
+- Twitter/X: [@MeirJC](https://x.com/MeirJC")
+- Hashnode: [@MeirJC](https://hashnode.com/@MeirJC)

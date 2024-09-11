@@ -3,21 +3,22 @@ import Layout from "@layouts/Layout.astro";
 import SectionContainer from "@layouts/SectionContainer.astro";
 import Tabs from "@components/Tabs/Tabs.astro";
 import TabPanel from "@components/Tabs/TabPanel.astro";
-import { Code } from "astro:components";
 import H1Gradient from "@components/H1Gradient.astro";
-
+import { Code } from "astro:components";
+import { sharedCounterExamples, sharedFormExamples } from "@data/snippets";
+// Counters
 import AstroCounterShared from "@components/handle-state/astro/AstroCounterShared.astro";
 import SvelteCounterShared from "@components/handle-state/svelte/SvelteCounterShared.svelte";
 import { ReactCounterShared } from "@components/handle-state/react/ReactCounterShared";
-import VueCounter from "@components/handle-state/vue/VueCounterShared.vue";
-
+import VueCounterShared from "@components/handle-state/vue/VueCounterShared.vue";
+// Forms
 import { ReactFormShared } from "@components/handle-state/react/ReactFormShared";
 import SvelteFormShared from "@components/handle-state/svelte/SvelteFormShared.svelte";
 import AstroFormShared from "@components/handle-state/astro/AstroFormShared.astro";
 import VueFormShared from "@components/handle-state/vue/VueFormShared.vue";
 ---
 
-<Layout title="Shared State Management with Nanostores in Astro">
+<Layout title="Shared State Management with Nanostores in Astro" showPersistent={true}>
   <SectionContainer
     innerClasses="flex flex-col items-center justify-center gap-6 text-center text-lg"
   >
@@ -58,7 +59,7 @@ import VueFormShared from "@components/handle-state/vue/VueFormShared.vue";
       </div>
       <div>
         <h3 class="mb-2 text-xl font-semibold md:text-2xl">Vue Counter</h3>
-        <VueCounter client:load />
+        <VueCounterShared client:load />
       </div>
     </div>
   </SectionContainer>
@@ -67,104 +68,19 @@ import VueFormShared from "@components/handle-state/vue/VueFormShared.vue";
     <h2 class="text-2xl font-semibold md:text-3xl">Shared Counter Code Examples</h2>
     <Tabs labels={["store.ts", "Astro", "Svelte", "React", "Vue"]}>
       <TabPanel index={0}>
-        <Code
-          code={`
-import { atom } from 'nanostores'
-
-export const count = atom(0)
-
-export function increment() {
-  count.set(count.get() + 1)
-}
-
-export function decrement() {
-  count.set(count.get() - 1)
-}
-        `}
-          lang="typescript"
-        />
+        <Code code={sharedCounterExamples.store} lang="typescript" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={1}>
-        <Code
-          code={`
----
-import { count, increment, decrement } from '../stores/sharedCounterStore'
----
-
-<div>
-  <button onclick={decrement}>-</button>
-  <span>{count.get()}</span>
-  <button onclick={increment}>+</button>
-</div>
-
-<script>
-  import { count } from '../stores/sharedCounterStore'
-  
-  count.subscribe(value => {
-    document.querySelector('span').textContent = value
-  })
-</script>
-        `}
-          lang="astro"
-        />
+        <Code code={sharedCounterExamples.astro} lang="astro" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={2}>
-        <Code
-          code={`
-<script>
-import { count, increment, decrement } from '../stores/sharedCounterStore'
-</script>
-
-<div>
-  <button on:click={decrement}>-</button>
-  <span>{$count}</span>
-  <button on:click={increment}>+</button>
-</div>
-        `}
-          lang="svelte"
-        />
+        <Code code={sharedCounterExamples.svelte} lang="svelte" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={3}>
-        <Code
-          code={`
-import { useStore } from '@nanostores/react'
-import { count, increment, decrement } from '../stores/sharedCounterStore'
-
-export function ReactCounter() {
-  const $count = useStore(count)
-  
-  return (
-    <div>
-      <button onClick={decrement}>-</button>
-      <span>{$count}</span>
-      <button onClick={increment}>+</button>
-    </div>
-  )
-}
-        `}
-          lang="jsx"
-        />
+        <Code code={sharedCounterExamples.react} lang="jsx" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={4}>
-        <Code
-          code={`
-<template>
-  <div>
-    <button @click="decrement">-</button>
-    <span>{{ count }}</span>
-    <button @click="increment">+</button>
-  </div>
-</template>
-
-<script setup>
-import { useStore } from '@nanostores/vue'
-import { count, increment, decrement } from '../stores/sharedCounterStore'
-
-const count = useStore(count)
-</script>
-        `}
-          lang="vue"
-        />
+        <Code code={sharedCounterExamples.vue} lang="vue" theme="aurora-x" class="p-4" />
       </TabPanel>
     </Tabs>
   </SectionContainer>
@@ -200,128 +116,19 @@ const count = useStore(count)
     <h2 class="text-2xl font-semibold md:text-3xl">Shared Form Code Examples</h2>
     <Tabs labels={["store.ts", "Astro", "Svelte", "React", "Vue"]}>
       <TabPanel index={0}>
-        <Code
-          code={`
-import { map } from 'nanostores'
-
-export const formData = map({ name: '', email: '' })
-
-export function updateForm(field, value) {
-  formData.setKey(field, value)
-}
-        `}
-          lang="typescript"
-        />
+        <Code code={sharedFormExamples.store} lang="typescript" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={1}>
-        <Code
-          code={`
----
-import { formData, updateForm } from '../stores/sharedFormStore'
----
-
-<form>
-  <input 
-    type="text" 
-    value={formData.get().name} 
-    onchange={(e) => updateForm('name', e.target.value)}
-  />
-  <input 
-    type="email" 
-    value={formData.get().email} 
-    onchange={(e) => updateForm('email', e.target.value)}
-  />
-</form>
-
-<script>
-  import { formData } from '../stores/sharedFormStore'
-  
-  formData.subscribe(value => {
-    console.log('Form updated:', value)
-  })
-</script>
-        `}
-          lang="astro"
-        />
+        <Code code={sharedFormExamples.astro} lang="astro" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={2}>
-        <Code
-          code={`
-<script>
-import { formData, updateForm } from '../stores/sharedFormStore'
-</script>
-
-<form>
-  <input 
-    type="text" 
-    bind:value={$formData.name} 
-    on:input={(e) => updateForm('name', e.target.value)}
-  />
-  <input 
-    type="email" 
-    bind:value={$formData.email} 
-    on:input={(e) => updateForm('email', e.target.value)}
-  />
-</form>
-        `}
-          lang="svelte"
-        />
+        <Code code={sharedFormExamples.svelte} lang="svelte" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={3}>
-        <Code
-          code={`
-import { useStore } from '@nanostores/react'
-import { formData, updateForm } from '../stores/sharedFormStore'
-
-export function ReactForm() {
-  const $formData = useStore(formData)
-  
-  return (
-    <form>
-      <input 
-        type="text" 
-        value={$formData.name} 
-        onChange={(e) => updateForm('name', e.target.value)}
-      />
-      <input 
-        type="email" 
-        value={$formData.email} 
-        onChange={(e) => updateForm('email', e.target.value)}
-      />
-    </form>
-  )
-}
-        `}
-          lang="jsx"
-        />
+        <Code code={sharedFormExamples.react} lang="jsx" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={4}>
-        <Code
-          code={`
-<template>
-  <form>
-    <input 
-      type="text" 
-      :value="formData.name" 
-      @input="(e) => updateForm('name', e.target.value)"
-    />
-    <input 
-      type="email" 
-      :value="formData.email" 
-      @input="(e) => updateForm('email', e.target.value)"
-    />
-  </form>
-</template>
-
-<script setup>
-import { useStore } from '@nanostores/vue'
-import { formData, updateForm } from '../stores/sharedFormStore'
-
-const formData = useStore(formData)
-</script>
-        `}
-          lang="vue"
-        />
+        <Code code={sharedFormExamples.vue} lang="vue" theme="aurora-x" class="p-4" />
       </TabPanel>
     </Tabs>
   </SectionContainer>

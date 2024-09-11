@@ -3,21 +3,22 @@ import Layout from "@layouts/Layout.astro";
 import SectionContainer from "@layouts/SectionContainer.astro";
 import Tabs from "@components/Tabs/Tabs.astro";
 import TabPanel from "@components/Tabs/TabPanel.astro";
-import { Code } from "astro:components";
 import H1Gradient from "@components/H1Gradient.astro";
-
+import { Code } from "astro:components";
+import { independentCounterExamples, independentFormExamples } from "@data/snippets";
+// Counters
 import AstroCounterIndependent from "@components/handle-state/astro/AstroCounterIndependent.astro";
 import SvelteCounterIndependent from "@components/handle-state/svelte/SvelteCounterIndependent.svelte";
 import { ReactCounterIndependent } from "@components/handle-state/react/ReactCounterIndependent";
 import VueCounterIndependent from "@components/handle-state/vue/VueCounterIndependent.vue";
-
+// Forms
 import { ReactFormIndependent } from "@components/handle-state/react/ReactFormIndependent";
 import SvelteFormIndependent from "@components/handle-state/svelte/SvelteFormIndependent.svelte";
 import AstroFormIndependent from "@components/handle-state/astro/AstroFormIndependent.astro";
 import VueFormIndependent from "@components/handle-state/vue/VueFormIndependent.vue";
 ---
 
-<Layout title="Independent State Management with Nanostores in Astro">
+<Layout title="Independent State Management with Nanostores in Astro" showPersistent={true}>
   <SectionContainer
     innerClasses="flex flex-col items-center justify-center gap-6 text-center text-lg"
   >
@@ -66,106 +67,23 @@ import VueFormIndependent from "@components/handle-state/vue/VueFormIndependent.
     <Tabs labels={["store.ts", "Astro", "Svelte", "React", "Vue"]}>
       <TabPanel index={0}>
         <Code
-          code={`
-import { atom } from 'nanostores'
-
-export const astroCount = atom(0)
-export const svelteCount = atom(0)
-export const reactCount = atom(0)
-export const vueCount = atom(0)
-
-export function increment(store) {
-  store.set(store.get() + 1)
-}
-
-export function decrement(store) {
-  store.set(store.get() - 1)
-}
-        `}
+          code={independentCounterExamples.store}
           lang="typescript"
+          theme="aurora-x"
+          class="p-4"
         />
       </TabPanel>
       <TabPanel index={1}>
-        <Code
-          code={`
----
-import { astroCount, increment, decrement } from '../stores/counterStore'
----
-
-<div>
-  <button onclick={decrement(astroCount)}>-</button>
-  <span>{astroCount.get()}</span>
-  <button onclick={increment(astroCount)}>+</button>
-</div>
-
-<script>
-  import { astroCount } from '../stores/counterStore'
-  
-  astroCount.subscribe(value => {
-    document.querySelector('span').textContent = value
-  })
-</script>
-        `}
-          lang="astro"
-        />
+        <Code code={independentCounterExamples.astro} lang="astro" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={2}>
-        <Code
-          code={`
-<script>
-import { svelteCount, increment, decrement } from '../stores/counterStore'
-</script>
-
-<div>
-  <button on:click={() => decrement(svelteCount)}>-</button>
-  <span>{$svelteCount}</span>
-  <button on:click={() => increment(svelteCount)}>+</button>
-</div>
-        `}
-          lang="svelte"
-        />
+        <Code code={independentCounterExamples.svelte} lang="svelte" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={3}>
-        <Code
-          code={`
-import { useStore } from '@nanostores/react'
-import { reactCount, increment, decrement } from '../stores/counterStore'
-
-export function ReactCounter() {
-  const count = useStore(reactCount)
-  
-  return (
-    <div>
-      <button onClick={() => decrement(reactCount)}>-</button>
-      <span>{count}</span>
-      <button onClick={() => increment(reactCount)}>+</button>
-    </div>
-  )
-}
-        `}
-          lang="jsx"
-        />
+        <Code code={independentCounterExamples.react} lang="jsx" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={4}>
-        <Code
-          code={`
-<template>
-  <div>
-    <button @click="decrement(vueCount)">-</button>
-    <span>{{ count }}</span>
-    <button @click="increment(vueCount)">+</button>
-  </div>
-</template>
-
-<script setup>
-import { useStore } from '@nanostores/vue'
-import { vueCount, increment, decrement } from '../stores/counterStore'
-
-const count = useStore(vueCount)
-</script>
-        `}
-          lang="vue"
-        />
+        <Code code={independentCounterExamples.vue} lang="vue" theme="aurora-x" class="p-4" />
       </TabPanel>
     </Tabs>
   </SectionContainer>
@@ -201,131 +119,19 @@ const count = useStore(vueCount)
     <h2 class="text-2xl font-semibold md:text-3xl">Form Code Examples</h2>
     <Tabs labels={["store.ts", "Astro", "Svelte", "React", "Vue"]}>
       <TabPanel index={0}>
-        <Code
-          code={`
-import { map } from 'nanostores'
-
-export const astroForm = map({ name: '', email: '' })
-export const svelteForm = map({ name: '', email: '' })
-export const reactForm = map({ name: '', email: '' })
-export const vueForm = map({ name: '', email: '' })
-
-export function updateForm(store, field, value) {
-  store.setKey(field, value)
-}
-        `}
-          lang="typescript"
-        />
+        <Code code={independentFormExamples.store} lang="typescript" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={1}>
-        <Code
-          code={`
----
-import { astroForm, updateForm } from '../stores/formStore'
----
-
-<form>
-  <input 
-    type="text" 
-    value={astroForm.get().name} 
-    onchange={(e) => updateForm(astroForm, 'name', e.target.value)}
-  />
-  <input 
-    type="email" 
-    value={astroForm.get().email} 
-    onchange={(e) => updateForm(astroForm, 'email', e.target.value)}
-  />
-</form>
-
-<script>
-  import { astroForm } from '../stores/formStore'
-  
-  astroForm.subscribe(value => {
-    console.log('Form updated:', value)
-  })
-</script>
-        `}
-          lang="astro"
-        />
+        <Code code={independentFormExamples.astro} lang="astro" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={2}>
-        <Code
-          code={`
-<script>
-import { svelteForm, updateForm } from '../stores/formStore'
-</script>
-
-<form>
-  <input 
-    type="text" 
-    bind:value={$svelteForm.name} 
-    on:input={(e) => updateForm(svelteForm, 'name', e.target.value)}
-  />
-  <input 
-    type="email" 
-    bind:value={$svelteForm.email} 
-    on:input={(e) => updateForm(svelteForm, 'email', e.target.value)}
-  />
-</form>
-        `}
-          lang="svelte"
-        />
+        <Code code={independentFormExamples.svelte} lang="svelte" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={3}>
-        <Code
-          code={`
-import { useStore } from '@nanostores/react'
-import { reactForm, updateForm } from '../stores/formStore'
-
-export function ReactForm() {
-  const form = useStore(reactForm)
-  
-  return (
-    <form>
-      <input 
-        type="text" 
-        value={form.name} 
-        onChange={(e) => updateForm(reactForm, 'name', e.target.value)}
-      />
-      <input 
-        type="email" 
-        value={form.email} 
-        onChange={(e) => updateForm(reactForm, 'email', e.target.value)}
-      />
-    </form>
-  )
-}
-        `}
-          lang="jsx"
-        />
+        <Code code={independentFormExamples.react} lang="jsx" theme="aurora-x" class="p-4" />
       </TabPanel>
       <TabPanel index={4}>
-        <Code
-          code={`
-<template>
-  <form>
-    <input 
-      type="text" 
-      :value="form.name" 
-      @input="(e) => updateForm(vueForm, 'name', e.target.value)"
-    />
-    <input 
-      type="email" 
-      :value="form.email" 
-      @input="(e) => updateForm(vueForm, 'email', e.target.value)"
-    />
-  </form>
-</template>
-
-<script setup>
-import { useStore } from '@nanostores/vue'
-import { vueForm, updateForm } from '../stores/formStore'
-
-const form = useStore(vueForm)
-</script>
-        `}
-          lang="vue"
-        />
+        <Code code={independentFormExamples.vue} lang="vue" theme="aurora-x" class="p-4" />
       </TabPanel>
     </Tabs>
   </SectionContainer>

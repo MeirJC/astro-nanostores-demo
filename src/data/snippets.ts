@@ -83,3 +83,19 @@ export const sharedFormExamples: Snippet = {
 
   vue: '<template>\n\t<form>\n\t\t<input \n\t\t\ttype="text" \n\t\t\t:value="formData.name" \n\t\t\t@input="(e) => updateForm(\'name\', e.target.value)"\n\t\t/>\n\t\t<input \n\t\t\ttype="email" \n\t\t\t:value="formData.email" \n\t\t\t@input="(e) => updateForm(\'email\', e.target.value)"\n\t\t/>\n\t</form>\n</template>\n\n<script setup>\nimport { useStore } from \'@nanostores/vue\'\nimport { formData, updateForm } from \'../stores/sharedFormStore\'\n\nconst formData = useStore(formData)\n</script>',
 };
+
+export const persistentStateExamples = {
+  store:
+    "import { persistentAtom } from '@nanostores/persistent'\n\nexport const persistentCounter = persistentAtom('persistentCounter', 0, {\n\tencode: JSON.stringify,\n\tdecode: JSON.parse\n})\n\nexport function incrementPersistent() {\n\tpersistentCounter.set(persistentCounter.get() + 1)\n}\n\nexport function decrementPersistent() {\n\tpersistentCounter.set(persistentCounter.get() - 1)\n}\n\nexport function resetPersistent() {\n\tpersistentCounter.set(0)\n}",
+
+  astro:
+    "---\nimport { persistentCounter, incrementPersistent, decrementPersistent, resetPersistent } from '../stores/persistentCounterStore'\n---\n\n<div>\n\t<button onclick={decrementPersistent}>-</button>\n\t<span>{persistentCounter.get()}</span>\n\t<button onclick={incrementPersistent}>+</button>\n\t<button onclick={resetPersistent}>Reset</button>\n</div>\n\n<script>\n\timport { persistentCounter } from '../stores/persistentCounterStore'\n\t\n\tpersistentCounter.subscribe(value => {\n\t\tdocument.querySelector('span').textContent = value\n\t})\n</script>",
+
+  svelte:
+    "<script>\nimport { persistentCounter, incrementPersistent, decrementPersistent, resetPersistent } from '../stores/persistentCounterStore'\n</script>\n\n<div>\n\t<button on:click={decrementPersistent}>-</button>\n\t<span>{$persistentCounter}</span>\n\t<button on:click={incrementPersistent}>+</button>\n\t<button on:click={resetPersistent}>Reset</button>\n</div>",
+
+  react:
+    "import { useStore } from '@nanostores/react'\nimport { persistentCounter, incrementPersistent, decrementPersistent, resetPersistent } from '../stores/persistentCounterStore'\n\nexport function PersistentCounter() {\n\tconst count = useStore(persistentCounter)\n\t\n\treturn (\n\t\t<div>\n\t\t\t<button onClick={decrementPersistent}>-</button>\n\t\t\t<span>{count}</span>\n\t\t\t<button onClick={incrementPersistent}>+</button>\n\t\t\t<button onClick={resetPersistent}>Reset</button>\n\t\t</div>\n\t)\n}",
+
+  vue: '<template>\n\t<div>\n\t\t<button @click="decrementPersistent">-</button>\n\t\t<span>{{ count }}</span>\n\t\t<button @click="incrementPersistent">+</button>\n\t\t<button @click="resetPersistent">Reset</button>\n\t</div>\n</template>\n\n<script setup>\nimport { useStore } from \'@nanostores/vue\'\nimport { persistentCounter, incrementPersistent, decrementPersistent, resetPersistent } from \'../stores/persistentCounterStore\'\n\nconst count = useStore(persistentCounter)\n</script>',
+};

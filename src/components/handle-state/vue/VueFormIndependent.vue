@@ -1,20 +1,15 @@
 <script setup lang="ts">
 import { useStore } from "@nanostores/vue";
 import { vueFormState } from "@stores/handeling-state/independentFormStore";
+import { reactive } from 'vue';
 
-const form = useStore(vueFormState);
-
-function handleChange(field: string, event: Event) {
-  const target = event.target as HTMLInputElement;
-  vueFormState.set({
-    ...form.value,
-    [field]: target.type === "checkbox" ? target.checked : target.value,
-  });
-}
+const storeForm = useStore(vueFormState);
+const form = reactive({ ...storeForm.value });
 
 function handleSubmit(event: Event) {
   event.preventDefault();
-  console.log("Vue Form Submitted:", form.value);
+  vueFormState.set({ ...form });
+  console.log("Vue Form Submitted:", form);
 }
 </script>
 
@@ -24,27 +19,26 @@ function handleSubmit(event: Event) {
     <div class="space-y-4">
       <div>
         <label for="vue-iso-firstName" class="block text-sm font-medium text-vue-700">First Name</label>
-        <input type="text" id="vue-iso-firstName" v-model="form.firstName" @input="handleChange('firstName', $event)"
+        <input type="text" id="vue-iso-firstName" v-model="form.firstName"
           class="mt-1 block w-full rounded-md border-vue-300 shadow-sm focus:border-vue-500 focus:ring focus:ring-vue-200" />
       </div>
       <div>
         <label for="vue-iso-lastName" class="block text-sm font-medium text-vue-700">Last Name</label>
-        <input type="text" id="vue-iso-lastName" v-model="form.lastName" @input="handleChange('lastName', $event)"
+        <input type="text" id="vue-iso-lastName" v-model="form.lastName"
           class="mt-1 block w-full rounded-md border-vue-300 shadow-sm focus:border-vue-500 focus:ring focus:ring-vue-200" />
       </div>
       <div>
         <label for="vue-iso-email" class="block text-sm font-medium text-vue-700">Email</label>
-        <input type="email" id="vue-iso-email" v-model="form.email" @input="handleChange('email', $event)"
+        <input type="email" id="vue-iso-email" v-model="form.email"
           class="mt-1 block w-full rounded-md border-vue-300 shadow-sm focus:border-vue-500 focus:ring focus:ring-vue-200" />
       </div>
       <div>
         <label for="vue-iso-password" class="block text-sm font-medium text-vue-700">Password</label>
-        <input type="password" id="vue-iso-password" v-model="form.password" @input="handleChange('password', $event)"
+        <input type="password" id="vue-iso-password" v-model="form.password"
           class="mt-1 block w-full rounded-md border-vue-300 shadow-sm focus:border-vue-500 focus:ring focus:ring-vue-200" />
       </div>
       <div class="flex items-center">
         <input type="checkbox" id="vue-iso-agreeTerms" v-model="form.agreeTerms"
-          @change="handleChange('agreeTerms', $event)"
           class="h-4 w-4 rounded border-vue-300 text-vue-600 focus:ring-vue-500" />
         <label for="vue-iso-agreeTerms" class="ml-2 block text-sm text-vue-700">I agree to the terms and
           conditions</label>

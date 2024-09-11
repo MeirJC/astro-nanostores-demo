@@ -6,47 +6,79 @@ import PersistentCounter from "@components/handle-state/persistent/PersistentCou
 
 interface Props {
   title: string;
-  description?: string;
+  description: string;
   keywords?: string;
   showPersistent?: boolean;
+  ogImage?: string;
+  isArticle?: boolean;
 }
 
-// const { title, description = "Default description", keywords = "Default keywords" } = Astro.props;
-const { title, showPersistent = false } = Astro.props;
+const {
+  title,
+  description,
+  keywords = "Astro, Nanostores, State Management, React, Vue, Svelte, JavaScript, TypeScript",
+  showPersistent = false,
+  ogImage = "/og-image.jpg",
+  isArticle = false,
+} = Astro.props;
 
 import astroLogo from "@assets/astro-logo-white.svg";
 import nanostoresLogo from "@assets/nanostores-logo.svg";
 
 const currentPath = Astro.url.pathname;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const hashnodeBlog = "https://hashnode.com/@MeirJC";
+const articleUrl =
+  "https://meirjc.hashnode.dev/state-management-in-astro-a-deep-dive-into-nanostores";
+const publishDate = "2024-09-12T05:15:00Z";
 ---
 
 <!doctype html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Meir Josef Cohen" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- Keywords -->
-    <!-- <meta name="keywords" content="Astro, Nanostores, Svelte, JavaScript, TypeScript, State Management, React, Vue" /> -->
-    <!-- Canonical -->
-    <!-- <link rel="canonical" href={Astro.url} /> -->
-    <!-- Og tags -->
-    <!-- <meta property="og:title" content={title} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:description" content="Your site description" />
-    <meta name="twitter:card" content="summary_large_image" /> -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
 
-    <!-- Description  -->
-    <!-- <meta name="description" content={description} /> -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={isArticle ? "article" : "website"} />
+    <meta property="og:url" content={isArticle ? articleUrl : Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.url)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={isArticle ? articleUrl : Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
 
     <meta name="theme-color" content="#101826" />
 
+    <!-- Link to Hashnode article and blog -->
+    <meta property="article:publisher" content={hashnodeBlog} />
+    {
+      isArticle && (
+        <>
+          <meta property="article:author" content={hashnodeBlog} />
+          <meta property="article:published_time" content={publishDate} />
+          <link rel="canonical" href={articleUrl} />
+        </>
+      )
+    }
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
   </head>
   <body class="bg-image flex min-h-screen flex-col overflow-x-hidden bg-gray-900 text-beige">
     <Navbar

@@ -30,6 +30,7 @@ export const navItems: NavItem[] = [
       { href: "/handeling-state", text: "Preface" },
       { href: "/handeling-state/independent-state", text: "Independent State Demo" },
       { href: "/handeling-state/shared-state", text: "Shared State Demo" },
+      { href: "/handeling-state/persistent-state", text: "Persistent State Demo" },
     ],
   },
   // {

@@ -1,0 +1,96 @@
+---
+import Layout from "@layouts/Layout.astro";
+import SectionContainer from "@layouts/SectionContainer.astro";
+import H1Gradient from "@components/H1Gradient.astro";
+import Tabs from "@components/Tabs/Tabs.astro";
+import TabPanel from "@components/Tabs/TabPanel.astro";
+import { Code } from "astro:components";
+import { persistentStateExamples } from "@data/snippets";
+---
+
+<Layout
+  title="Persistent State Management with Nanostores in Astro"
+  description="Learn how to implement persistent state in Astro using Nanostores. Discover techniques for maintaining state across page reloads and browser sessions."
+  keywords="Nanostores, Astro, Persistent State, State Management, Web Storage, React, Vue, Svelte"
+  showPersistent={true}
+  isArticle={true}
+>
+  <SectionContainer innerClasses="flex flex-col items-center justify-center gap-6 text-center">
+    <H1Gradient text="Persistent State Management<br/>with Nanostores in Astro" />
+    <p class="font-mono text-lg italic md:text-xl">
+      Maintaining state across page reloads and browser sessions
+    </p>
+  </SectionContainer>
+
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">Introduction to Persistent State</h2>
+    <p>
+      Persistent state management is crucial for maintaining user data across page reloads or even
+      browser sessions. In Astro projects, we can achieve this using @nanostores/persistent, an
+      extension of Nanostores that leverages browser storage mechanisms.
+    </p>
+    <p>
+      This approach is particularly useful for storing user preferences, authentication tokens, or
+      any data that should survive page refreshes.
+    </p>
+  </SectionContainer>
+
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">Setting Up Persistent Store</h2>
+    <p>Let's look at how to set up a persistent counter using @nanostores/persistent:</p>
+    <Tabs labels={["store.ts", "Astro", "Svelte", "React", "Vue"]}>
+      <TabPanel index={0}>
+        <Code code={persistentStateExamples.store} lang="typescript" theme="aurora-x" class="p-4" />
+      </TabPanel>
+      <TabPanel index={1}>
+        <Code code={persistentStateExamples.astro} lang="astro" theme="aurora-x" class="p-4" />
+      </TabPanel>
+      <TabPanel index={2}>
+        <Code code={persistentStateExamples.svelte} lang="svelte" theme="aurora-x" class="p-4" />
+      </TabPanel>
+      <TabPanel index={3}>
+        <Code code={persistentStateExamples.react} lang="jsx" theme="aurora-x" class="p-4" />
+      </TabPanel>
+      <TabPanel index={4}>
+        <Code code={persistentStateExamples.vue} lang="vue" theme="aurora-x" class="p-4" />
+      </TabPanel>
+    </Tabs>
+  </SectionContainer>
+
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">Key Features of Persistent State</h2>
+    <ul class="list-outside list-disc space-y-2 pl-5">
+      <li>State persists across page reloads</li>
+      <li>Can use different storage mechanisms (localStorage, sessionStorage)</li>
+      <li>Seamless integration with existing Nanostores setup</li>
+      <li>Type-safe with TypeScript support</li>
+    </ul>
+  </SectionContainer>
+
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">Best Practices and Considerations</h2>
+    <ul class="list-outside list-disc space-y-2 pl-5">
+      <li>Use persistent state for non-sensitive data only</li>
+      <li>Consider data expiration and cleanup strategies</li>
+      <li>Be mindful of storage limits in browsers</li>
+      <li>Provide fallback mechanisms for users with storage restrictions</li>
+    </ul>
+  </SectionContainer>
+  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
+    <h2 class="text-2xl font-semibold md:text-3xl">Thank You!</h2>
+    <p>
+      Thank you for exploring this demonstration of shared state management using Nanostores in
+      Astro! We hope you found this example illuminating and enjoyed seeing how seamlessly different
+      frameworks can work together when sharing state.
+    </p>
+    <p>
+      Remember, this is just the tip of the iceberg when it comes to state management in
+      multi-framework Astro projects. We encourage you to experiment further, try out different
+      scenarios, and see how Nanostores can simplify your state management needs.
+    </p>
+    <p>
+      If you have any questions or want to dive deeper into any aspect of this demo, don't hesitate
+      to reach out or explore the accompanying article and source code. Happy coding!
+    </p>
+  </SectionContainer>
+</Layout>

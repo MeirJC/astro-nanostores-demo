@@ -42,7 +42,8 @@ const { labels } = Astro.props;
     connectedCallback() {
       const tabList = this.querySelector('[role="tablist"]');
       const tabs = [...tabList.querySelectorAll('[role="tab"]')];
-      const panels = [...this.querySelectorAll('[role="tabpanel"]')];
+      // src/components/Tabs/Tabs.astro:45:13 - warning ts(6133): 'panels' is declared but its value is never read.
+      // const panels = [...this.querySelectorAll('[role="tabpanel"]')];
 
       tabList.addEventListener("click", this.switchTab);
       tabList.addEventListener("keydown", this.handleKeydown);
@@ -50,8 +51,8 @@ const { labels } = Astro.props;
       // Show the first tab by default
       this.switchTab({ target: tabs[0] });
     }
-
-    switchTab(event) {
+    // src/components/Tabs/Tabs.astro:54:15 - warning ts(7044): Parameter 'event' implicitly has an 'any' type, but a better type may be inferred from usage.
+    switchTab(event: any) {
       const tab = event.target.closest('[role="tab"]');
       if (!tab) return;
 
@@ -69,15 +70,16 @@ const { labels } = Astro.props;
       tab.setAttribute("tabindex", "0");
       targetPanel.removeAttribute("hidden");
     }
-
-    handleKeydown(event) {
+    // src/components/Tabs/Tabs.astro:73:19 - warning ts(7044): Parameter 'event' implicitly has an 'any' type, but a better type may be inferred from usage.
+    handleKeydown(event: any) {
       const tab = event.target.closest('[role="tab"]');
       if (!tab) return;
 
       const tabs = [...tab.closest('[role="tablist"]').querySelectorAll('[role="tab"]')];
       const index = tabs.indexOf(tab);
 
-      let newTab;
+      // src/components/Tabs/Tabs.astro:80:11 - warning ts(7043): Variable 'newTab' implicitly has an 'any' type, but a better type may be inferred from usage.
+      let newTab: Element | undefined;
       switch (event.key) {
         case "ArrowLeft":
           newTab = tabs[index - 1] || tabs[tabs.length - 1];
@@ -97,7 +99,7 @@ const { labels } = Astro.props;
 
       event.preventDefault();
       this.switchTab({ target: newTab });
-      newTab.focus();
+      (newTab as HTMLElement).focus();
     }
   }
 

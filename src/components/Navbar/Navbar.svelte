@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
-  import { spring } from 'svelte/motion';
-  import Logo from './Logo.svelte';
-  import DesktopMenu from './DesktopMenu.svelte';
-  import MobileMenu from './MobileMenu.svelte';
+  import { onMount, onDestroy } from "svelte";
+  import { spring } from "svelte/motion";
+  import Logo from "./Logo.svelte";
+  import DesktopMenu from "./DesktopMenu.svelte";
+  import MobileMenu from "./MobileMenu.svelte";
 
   export let astroLogo: string;
   export let nanostoresLogo: string;
@@ -17,7 +17,7 @@
 
   const translateY = spring(0, {
     stiffness: 1.5,
-    damping: 1.0
+    damping: 1.0,
   });
 
   function toggleMenu() {
@@ -28,21 +28,21 @@
   function handleScroll() {
     const currentScrollY = window.scrollY;
     clearTimeout(scrollTimer);
-    
+
     if (currentScrollY < lastScrollY) {
       isVisible = true;
     } else if (currentScrollY > lastScrollY && currentScrollY > navbar.clientHeight) {
       isVisible = false;
     }
     lastScrollY = currentScrollY;
-    
+
     scrollTimer = setTimeout(() => {
       translateY.set(isVisible ? 0 : -navbar.clientHeight);
     }, 50);
   }
 
   onMount(() => {
-    const mediaQuery = window.matchMedia('(max-width: 1024px)');
+    const mediaQuery = window.matchMedia("(max-width: 1024px)");
     isMobile = mediaQuery.matches;
 
     const handleResize = (e: MediaQueryListEvent) => {
@@ -52,12 +52,12 @@
       }
     };
 
-    mediaQuery.addEventListener('change', handleResize);
-    window.addEventListener('scroll', handleScroll);
+    mediaQuery.addEventListener("change", handleResize);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      mediaQuery.removeEventListener('change', handleResize);
-      window.removeEventListener('scroll', handleScroll);
+      mediaQuery.removeEventListener("change", handleResize);
+      window.removeEventListener("scroll", handleScroll);
     };
   });
 
@@ -75,7 +75,12 @@
     <Logo {astroLogo} {nanostoresLogo} />
 
     {#if isMobile}
-      <button on:click={toggleMenu} class="text-beige">
+      <button
+        on:click={toggleMenu}
+        class="text-beige"
+        aria-label="Toggle Mobile Navigation Menu"
+        title="Toggle Mobile Navigation Menu"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"

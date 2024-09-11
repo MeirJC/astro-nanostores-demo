@@ -75,7 +75,7 @@ export const socialLinks: SocialLinks = {
   },
   hashnodeArticle1: {
     name: "Hashnode",
-    url: "https://hashnode.com/@MeirJCARTICLLLL",
+    url: "https://meirjc.hashnode.dev/state-management-in-astro-a-deep-dive-into-nanostores",
     icon: hashnodeIcon,
   },
   x: {

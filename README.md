@@ -67,6 +67,6 @@ npm run dev # or pnpm run dev or yarn run dev
 **Meir J Cohen**
 
 - GitHub: [@MeirJC](https://github.com/MeirJC)
-- LinkedIn: [Meir Jacob Cohen](https://www.linkedin.com/in/meirjcohen/)
+- LinkedIn: [Meir Josef Cohen](https://www.linkedin.com/in/meirjcohen/)
 - Twitter/X: [@MeirJC](https://x.com/MeirJC")
 - Hashnode: [@MeirJC](https://hashnode.com/@MeirJC)

@@ -61,7 +61,12 @@ const { githubProfile, githubProjectRepo, linkedin, hashnodeBlog, x, hashnodeArt
         </li>
         <li>
           Connect with me:
-          <a href={githubProfile.url} target="_blank">
+          <a
+            href={githubProfile.url}
+            target="_blank"
+            title={`Follow me on ${githubProfile.name}`}
+            aria-label={`Follow me on ${githubProfile.name}`}
+          >
             <Image
               class="mx-1.5 inline-block size-7 transition-transform duration-300 hover:scale-110"
               src={githubProfile.icon}
@@ -70,7 +75,12 @@ const { githubProfile, githubProjectRepo, linkedin, hashnodeBlog, x, hashnodeArt
               quality={90}
             />
           </a> |
-          <a href={linkedin.url} target="_blank">
+          <a
+            href={linkedin.url}
+            target="_blank"
+            title={`Follow me on ${linkedin.name}`}
+            aria-label={`Follow me on ${linkedin.name}`}
+          >
             <Image
               class="mx-1.5 inline-block size-7 transition-transform duration-300 hover:scale-110"
               src={linkedin.icon}
@@ -79,7 +89,12 @@ const { githubProfile, githubProjectRepo, linkedin, hashnodeBlog, x, hashnodeArt
               quality={90}
             />
           </a> |
-          <a href={x.url} target="_blank">
+          <a
+            href={x.url}
+            target="_blank"
+            title={`Follow me on ${x.name}`}
+            aria-label={`Follow me on ${x.name}`}
+          >
             <Image
               class="mx-1.5 inline-block size-7 transition-transform duration-300 hover:scale-110"
               src={x.icon}
@@ -88,7 +103,12 @@ const { githubProfile, githubProjectRepo, linkedin, hashnodeBlog, x, hashnodeArt
               quality={90}
             />
           </a> |
-          <a href={hashnodeBlog.url} target="_blank">
+          <a
+            href={hashnodeBlog.url}
+            target="_blank"
+            title={`Follow me on ${hashnodeBlog.name}`}
+            aria-label={`Follow me on ${hashnodeBlog.name}`}
+          >
             <Image
               class="mx-1.5 inline-block size-7 transition-transform duration-300 hover:scale-110"
               src={hashnodeBlog.icon}

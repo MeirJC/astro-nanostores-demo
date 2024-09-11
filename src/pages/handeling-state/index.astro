@@ -111,13 +111,21 @@ const { githubProjectRepo, hashnodeArticle1 } = socialLinks;
     <h3 class="mb-4 text-xl font-semibold">Resources</h3>
     <ul class="list-inside list-disc">
       <li>
-        Full Article: <a href={hashnodeArticle1.url} class="text-amber-300 hover:underline"
-          >Read the complete guide here</a
+        Full Article: <a
+          target="_blank"
+          href={hashnodeArticle1.url}
+          class="text-amber-300 hover:underline"
+          title="Read the complete article"
+          aria-label="Read the complete article on my Hashnode blog">Read the complete guide here</a
         >
       </li>
       <li>
-        GitHub Repository: <a href={githubProjectRepo.url} class="text-amber-300 hover:underline"
-          >View the code examples</a
+        GitHub Repository: <a
+          href={githubProjectRepo.url}
+          class="text-amber-300 hover:underline"
+          title="View the code examples"
+          aria-label="View the code examples on GitHub"
+          target="_blank">View the code examples</a
         >
       </li>
     </ul>

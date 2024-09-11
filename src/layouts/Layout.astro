@@ -1,5 +1,4 @@
 ---
-import SpeedInsights from "@vercel/speed-insights/astro";
 import Navbar from "@components/Navbar/Navbar.svelte";
 import Footer from "@components/Footer.astro";
 import PersistentCounter from "@components/handle-state/persistent/PersistentCounter.astro";
@@ -93,7 +92,6 @@ const publishDate = "2024-09-12T05:15:00Z";
       {showPersistent && <PersistentCounter />}
     </main>
     <Footer />
-    <SpeedInsights />
   </body>
 </html>
 <style is:global>

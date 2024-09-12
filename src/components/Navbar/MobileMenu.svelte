@@ -10,11 +10,7 @@
   const dispatch = createEventDispatcher();
 
   function toggleSubmenu(index: number) {
-    if (index === 0) {
-      window.location.href = navItems[0].href;
-    } else {
-      openSubmenu = openSubmenu === index ? null : index;
-    }
+    openSubmenu = openSubmenu === index ? null : index;
   }
 </script>
 
@@ -25,20 +21,17 @@
   <ul class="container mx-auto px-4 space-y-4">
     {#each navItems as item, index}
       <li>
-        <!-- if index is 0, also navigate to the item.href (homepage)-->
-        <button
-          class="flex items-center justify-between w-full text-beige text-xl py-2 {currentPath.startsWith(
-            item.href
-          )
-            ? 'text-astro-500 font-bold'
-            : ''}"
-          on:click={() => {
-            toggleSubmenu(index);
-          }}
-          aria-expanded={openSubmenu === index}
-        >
-          {item.text}
-          {#if item.subItems}
+        {#if item.subItems}
+          <button
+            class="flex items-center justify-between w-full text-beige text-xl py-2 {currentPath.startsWith(
+              item.href
+            )
+              ? 'text-astro-500 font-bold'
+              : ''}"
+            on:click={() => toggleSubmenu(index)}
+            aria-expanded={openSubmenu === index}
+          >
+            {item.text}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6 transition-transform duration-200 {openSubmenu === index
@@ -55,8 +48,19 @@
                 d="M19 9l-7 7-7-7"
               />
             </svg>
-          {/if}
-        </button>
+          </button>
+        {:else}
+          <a
+            href={item.href}
+            class="block w-full text-beige text-xl py-2 {currentPath.startsWith(item.href)
+              ? 'text-astro-500 font-bold'
+              : ''}"
+            on:click={() => dispatch("close")}
+          >
+            {item.text}
+          </a>
+        {/if}
+
         {#if item.subItems && openSubmenu === index}
           <ul transition:slide={{ duration: 200 }} class="ml-4 mt-2 space-y-2">
             {#each item.subItems as subItem}

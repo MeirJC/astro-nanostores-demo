@@ -61,62 +61,68 @@ const { githubProfile, githubProjectRepo, linkedin, hashnodeBlog, x, hashnodeArt
         </li>
         <li>
           Connect with me:
-          <a
-            href={githubProfile.url}
-            target="_blank"
-            title={`Follow me on ${githubProfile.name}`}
-            aria-label={`Follow me on ${githubProfile.name}`}
-          >
-            <Image
-              class="mx-1.5 inline-block size-7 transition-transform duration-300 hover:scale-110"
-              src={githubProfile.icon}
-              alt={githubProfile.name}
-              format="webp"
-              quality={90}
-            />
-          </a> |
-          <a
-            href={linkedin.url}
-            target="_blank"
-            title={`Follow me on ${linkedin.name}`}
-            aria-label={`Follow me on ${linkedin.name}`}
-          >
-            <Image
-              class="mx-1.5 inline-block size-7 transition-transform duration-300 hover:scale-110"
-              src={linkedin.icon}
-              alt={linkedin.name}
-              format="webp"
-              quality={90}
-            />
-          </a> |
-          <a
-            href={x.url}
-            target="_blank"
-            title={`Follow me on ${x.name}`}
-            aria-label={`Follow me on ${x.name}`}
-          >
-            <Image
-              class="mx-1.5 inline-block size-7 transition-transform duration-300 hover:scale-110"
-              src={x.icon}
-              alt={x.name}
-              format="webp"
-              quality={90}
-            />
-          </a> |
-          <a
-            href={hashnodeBlog.url}
-            target="_blank"
-            title={`Follow me on ${hashnodeBlog.name}`}
-            aria-label={`Follow me on ${hashnodeBlog.name}`}
-          >
-            <Image
-              class="mx-1.5 inline-block size-7 transition-transform duration-300 hover:scale-110"
-              src={hashnodeBlog.icon}
-              alt={hashnodeBlog.name}
-              format="webp"
-              quality={90}
-            />
-          </a>
+          <div class="my-3 sm:inline-block">
+            <a
+              href={githubProfile.url}
+              target="_blank"
+              title={`Follow me on ${githubProfile.name}`}
+              aria-label={`Follow me on ${githubProfile.name}`}
+            >
+              <Image
+                class="mx-1.5 inline-block size-7 transition-transform duration-300 hover:scale-110"
+                src={githubProfile.icon}
+                alt={githubProfile.name}
+                format="webp"
+                quality={90}
+              />
+              <span class="sr-only">{`Follow me on ${githubProfile.name}`}</span>
+            </a> |
+            <a
+              href={linkedin.url}
+              target="_blank"
+              title={`Follow me on ${linkedin.name}`}
+              aria-label={`Follow me on ${linkedin.name}`}
+            >
+              <Image
+                class="mx-1.5 inline-block size-7 transition-transform duration-300 hover:scale-110"
+                src={linkedin.icon}
+                alt={linkedin.name}
+                format="webp"
+                quality={90}
+              />
+              <span class="sr-only">{`Follow me on ${linkedin.name}`}</span>
+            </a> |
+            <a
+              href={x.url}
+              target="_blank"
+              title={`Follow me on ${x.name}`}
+              aria-label={`Follow me on ${x.name}`}
+            >
+              <Image
+                class="mx-1.5 inline-block size-7 transition-transform duration-300 hover:scale-110"
+                src={x.icon}
+                alt={x.name}
+                format="webp"
+                quality={90}
+              />
+              <span class="sr-only">{`Follow me on ${x.name}`}</span>
+            </a> |
+            <a
+              href={hashnodeBlog.url}
+              target="_blank"
+              title={`Follow me on ${hashnodeBlog.name}`}
+              aria-label={`Follow me on ${hashnodeBlog.name}`}
+            >
+              <Image
+                class="mx-1.5 inline-block size-7 transition-transform duration-300 hover:scale-110"
+                src={hashnodeBlog.icon}
+                alt={hashnodeBlog.name}
+                format="webp"
+                quality={90}
+              />
+              <span class="sr-only">{`Follow me on ${hashnodeBlog.name}`}</span>
+            </a>
+          </div>
         </li>
       </ul>
     </div>
@@ -171,26 +177,5 @@ const { githubProfile, githubProjectRepo, linkedin, hashnodeBlog, x, hashnodeArt
     <p>
       No advanced degree required - just bring your curiosity and a willingness to try new things!
     </p>
-  </SectionContainer>
-
-  <SectionContainer innerClasses="flex flex-col gap-4 text-lg">
-    <h2 class="text-2xl font-semibold md:text-3xl">About the Author</h2>
-    <div class="space-y-4 rounded-lg bg-gray-100/10 p-6">
-      <h3 class="text-xl font-semibold md:text-2xl">Meir J Cohen</h3>
-      <p class="">
-        Hey there! I'm Meir, a full-stack web developer with a passion for AI integration and a
-        habit of turning coffee into code. I'm all about crafting web solutions that make both
-        developers and users go "Wow!"
-      </p>
-      <p class="">
-        Currently, I'm juggling end-to-end projects in Israel by day and exploring AI integrations
-        with a US-based startup by night.
-      </p>
-      <p>
-        I'm here to share insights, sprinkle some coding enthusiasm, and maybe crack a bad
-        programming joke or two. Let's learn, grow, and navigate this wild tech landscape together.
-        Got questions? Want to geek out about code? Don't be shy - drop me a line! 🤙
-      </p>
-    </div>
   </SectionContainer>
 </Layout>

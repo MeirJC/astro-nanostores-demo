@@ -3,7 +3,7 @@
 ---
 
 <button
-  id="resetButton"
+  id="resetButtonPersistent"
   class="mr-4 flex h-10 w-20 items-center justify-center rounded-lg border-2 border-astro-500 transition-colors duration-300 hover:border-astro-600 hover:bg-astro-500/20 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-astro-300"
 >
   Reset
@@ -12,7 +12,9 @@
 <script>
   import { resetPersistent } from "@stores/handeling-state/persistentConterStore";
 
-  document.getElementById("resetButton").addEventListener("click", () => {
-    resetPersistent();
-  });
+  if (document) {
+    document.getElementById("resetButtonPersistent")?.addEventListener("click", () => {
+      resetPersistent();
+    });
+  }
 </script>

@@ -16,7 +16,7 @@
   }
 </script>
 
-<form on:submit={handleSubmit} class="p-4 bg-svelte-100 rounded-lg shadow-md text-black">
+<form onsubmit={handleSubmit} class="p-4 bg-svelte-100 rounded-lg shadow-md text-black">
   <h2 class="mb-4 text-center text-2xl font-bold text-svelte-800">Svelte Form (Shared State)</h2>
   <div class="space-y-4">
     <div>
@@ -28,7 +28,7 @@
         id="svelte-firstName"
         name="firstName"
         bind:value={$formState.firstName}
-        on:input={handleChange}
+        oninput={handleChange}
         class="mt-1 block w-full rounded-md border-svelte-300 shadow-sm focus:border-svelte-500 focus:ring focus:ring-svelte-200"
       />
     </div>
@@ -41,7 +41,7 @@
         id="svelte-lastName"
         name="lastName"
         bind:value={$formState.lastName}
-        on:input={handleChange}
+        oninput={handleChange}
         class="mt-1 block w-full rounded-md border-svelte-300 shadow-sm focus:border-svelte-500 focus:ring focus:ring-svelte-200"
       />
     </div>
@@ -52,7 +52,7 @@
         id="svelte-email"
         name="email"
         bind:value={$formState.email}
-        on:input={handleChange}
+        oninput={handleChange}
         class="mt-1 block w-full rounded-md border-svelte-300 shadow-sm focus:border-svelte-500 focus:ring focus:ring-svelte-200"
       />
     </div>
@@ -64,7 +64,7 @@
         id="svelte-password"
         name="password"
         bind:value={$formState.password}
-        on:input={handleChange}
+        oninput={handleChange}
         class="mt-1 block w-full rounded-md border-svelte-300 shadow-sm focus:border-svelte-500 focus:ring focus:ring-svelte-200"
       />
     </div>
@@ -74,7 +74,7 @@
         id="svelte-agreeTerms"
         name="agreeTerms"
         bind:checked={$formState.agreeTerms}
-        on:change={handleChange}
+        onchange={handleChange}
         class="h-4 w-4 rounded border-svelte-300 text-svelte-600 focus:ring-svelte-500"
       />
       <label for="svelte-agreeTerms" class="ml-2 block text-sm text-svelte-700"

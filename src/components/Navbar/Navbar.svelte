@@ -5,15 +5,19 @@
   import DesktopMenu from "./DesktopMenu.svelte";
   import MobileMenu from "./MobileMenu.svelte";
 
-  export let astroLogo: string;
-  export let nanostoresLogo: string;
-  export let currentPath: string;
+  interface Props {
+    astroLogo: string;
+    nanostoresLogo: string;
+    currentPath: string;
+  }
 
-  let isOpen = false;
-  let isMobile = false;
+  let { astroLogo, nanostoresLogo, currentPath }: Props = $props();
+
+  let isOpen = $state(false);
+  let isMobile = $state(false);
   let isVisible = true;
   let lastScrollY = 0;
-  let navbar: HTMLElement;
+  let navbar: HTMLElement = $state();
 
   const translateY = spring(0, {
     stiffness: 1.5,
@@ -76,7 +80,7 @@
 
     {#if isMobile}
       <button
-        on:click={toggleMenu}
+        onclick={toggleMenu}
         class="text-beige"
         aria-label="Toggle Mobile Navigation Menu"
         title="Toggle Mobile Navigation Menu"

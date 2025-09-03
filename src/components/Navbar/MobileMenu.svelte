@@ -3,9 +3,13 @@
   import { navItems } from "@data/links";
   import { createEventDispatcher } from "svelte";
 
-  export let currentPath: string;
+  interface Props {
+    currentPath: string;
+  }
 
-  let openSubmenu: number | null = null;
+  let { currentPath }: Props = $props();
+
+  let openSubmenu: number | null = $state(null);
 
   const dispatch = createEventDispatcher();
 
@@ -28,7 +32,7 @@
             )
               ? 'text-astro-500 font-bold'
               : ''}"
-            on:click={() => toggleSubmenu(index)}
+            onclick={() => toggleSubmenu(index)}
             aria-expanded={openSubmenu === index}
           >
             {item.text}
@@ -55,7 +59,7 @@
             class="block w-full text-beige text-xl py-2 {currentPath.startsWith(item.href)
               ? 'text-astro-500 font-bold'
               : ''}"
-            on:click={() => dispatch("close")}
+            onclick={() => dispatch("close")}
           >
             {item.text}
           </a>
@@ -68,7 +72,7 @@
                 <a
                   href={subItem.href}
                   class="text-beige hover:text-astro-300 block py-2"
-                  on:click={() => dispatch("close")}
+                  onclick={() => dispatch("close")}
                 >
                   {subItem.text}
                 </a>

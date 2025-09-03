@@ -17,44 +17,44 @@
     incrementShared,
   } from "@stores/handeling-state/funMathCombinedStore";
 
-  $: result = $funResult;
+  let result = $derived($funResult);
 </script>
 
 <div class="bg-gray-800 rounded-lg p-6 mt-8 shadow-lg">
   <h3 class="text-2xl font-bold text-center text-beige mb-4">State Management Fun!</h3>
   <div class="grid grid-cols-2 gap-4 mb-6">
     <button
-      on:click={incrementPersistent}
+      onclick={incrementPersistent}
       class="bg-astro-500 text-white px-4 py-2 rounded hover:bg-astro-600 transition-colors"
     >
       Persistent: {$persistentCounter}
     </button>
     <button
-      on:click={reactIncrement}
+      onclick={reactIncrement}
       class="bg-react-500 text-white px-4 py-2 rounded hover:bg-react-600 transition-colors"
     >
       React: {$reactCount}
     </button>
     <button
-      on:click={svelteIncrement}
+      onclick={svelteIncrement}
       class="bg-svelte-500 text-white px-4 py-2 rounded hover:bg-svelte-600 transition-colors"
     >
       Svelte: {$svelteCount}
     </button>
     <button
-      on:click={astroIncrement}
+      onclick={astroIncrement}
       class="bg-astro-500 text-white px-4 py-2 rounded hover:bg-astro-600 transition-colors"
     >
       Astro: {$astroCount}
     </button>
     <button
-      on:click={vueIncrement}
+      onclick={vueIncrement}
       class="bg-vue-500 text-white px-4 py-2 rounded hover:bg-vue-600 transition-colors"
     >
       Vue: {$vueCount}
     </button>
     <button
-      on:click={incrementShared}
+      onclick={incrementShared}
       class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition-colors"
     >
       Shared: {$sharedCount}

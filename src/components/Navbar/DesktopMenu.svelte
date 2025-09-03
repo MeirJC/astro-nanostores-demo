@@ -2,9 +2,13 @@
   import { navItems } from "@data/links";
   import Submenu from "./Submenu.svelte";
 
-  export let currentPath: string;
+  interface Props {
+    currentPath: string;
+  }
 
-  let openSubmenu: number | null = null;
+  let { currentPath }: Props = $props();
+
+  let openSubmenu: number | null = $state(null);
   let hoverTimeout: number;
 
   function openSubmenuWithDelay(index: number) {
@@ -35,8 +39,8 @@
   {#each navItems as item, index}
     <li
       class="relative"
-      on:mouseenter={() => openSubmenuWithDelay(index)}
-      on:mouseleave={closeSubmenuWithDelay}
+      onmouseenter={() => openSubmenuWithDelay(index)}
+      onmouseleave={closeSubmenuWithDelay}
     >
       <a
         href={item.href}
@@ -45,7 +49,7 @@
         )
           ? 'text-astro-500 font-bold'
           : ''}"
-        on:keydown={(e) => handleKeydown(e, index)}
+        onkeydown={(e) => handleKeydown(e, index)}
         aria-haspopup={item.subItems ? "true" : "false"}
         aria-expanded={openSubmenu === index}
       >

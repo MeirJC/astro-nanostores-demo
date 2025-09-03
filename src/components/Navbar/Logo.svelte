@@ -1,6 +1,10 @@
 <script lang="ts">
-  export let astroLogo: string;
-  export let nanostoresLogo: string;
+  interface Props {
+    astroLogo: string;
+    nanostoresLogo: string;
+  }
+
+  let { astroLogo, nanostoresLogo }: Props = $props();
 </script>
 
 <a

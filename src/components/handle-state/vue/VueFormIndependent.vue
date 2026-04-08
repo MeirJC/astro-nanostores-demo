@@ -25,7 +25,7 @@ function handleSubmit(event: Event) {
           type="text"
           id="vue-iso-firstName"
           v-model="form.firstName"
-          class="mt-1 block w-full rounded-md border-vue-300 shadow-sm focus:border-vue-500 focus:ring focus:ring-vue-200"
+          class="mt-1 block w-full rounded-md border-vue-300 shadow-xs focus:border-vue-500 focus:ring focus:ring-vue-200"
         />
       </div>
       <div>
@@ -36,7 +36,7 @@ function handleSubmit(event: Event) {
           type="text"
           id="vue-iso-lastName"
           v-model="form.lastName"
-          class="mt-1 block w-full rounded-md border-vue-300 shadow-sm focus:border-vue-500 focus:ring focus:ring-vue-200"
+          class="mt-1 block w-full rounded-md border-vue-300 shadow-xs focus:border-vue-500 focus:ring focus:ring-vue-200"
         />
       </div>
       <div>
@@ -45,7 +45,7 @@ function handleSubmit(event: Event) {
           type="email"
           id="vue-iso-email"
           v-model="form.email"
-          class="mt-1 block w-full rounded-md border-vue-300 shadow-sm focus:border-vue-500 focus:ring focus:ring-vue-200"
+          class="mt-1 block w-full rounded-md border-vue-300 shadow-xs focus:border-vue-500 focus:ring focus:ring-vue-200"
         />
       </div>
       <div>
@@ -56,7 +56,7 @@ function handleSubmit(event: Event) {
           type="password"
           id="vue-iso-password"
           v-model="form.password"
-          class="mt-1 block w-full rounded-md border-vue-300 shadow-sm focus:border-vue-500 focus:ring focus:ring-vue-200"
+          class="mt-1 block w-full rounded-md border-vue-300 shadow-xs focus:border-vue-500 focus:ring focus:ring-vue-200"
         />
       </div>
       <div class="flex items-center">

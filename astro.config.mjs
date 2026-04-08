@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 import svelte from "@astrojs/svelte";
 import react from "@astrojs/react";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 
 import vue from "@astrojs/vue";
 
@@ -9,10 +9,12 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
   integrations: [
     svelte(),
     react(),
-    tailwind(),
     vue(),
     sitemap({
       changefreq: "weekly",

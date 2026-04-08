@@ -33,7 +33,7 @@ function handleSubmit(event: Event) {
           id="vue-firstName"
           :value="form.firstName"
           @input="handleChange('firstName', $event)"
-          class="mt-1 block w-full rounded-md border-vue-300 shadow-sm focus:border-vue-500 focus:ring focus:ring-vue-200"
+          class="mt-1 block w-full rounded-md border-vue-300 shadow-xs focus:border-vue-500 focus:ring focus:ring-vue-200"
         />
       </div>
       <div>
@@ -43,7 +43,7 @@ function handleSubmit(event: Event) {
           id="vue-lastName"
           :value="form.lastName"
           @input="handleChange('lastName', $event)"
-          class="mt-1 block w-full rounded-md border-vue-300 shadow-sm focus:border-vue-500 focus:ring focus:ring-vue-200"
+          class="mt-1 block w-full rounded-md border-vue-300 shadow-xs focus:border-vue-500 focus:ring focus:ring-vue-200"
         />
       </div>
       <div>
@@ -53,7 +53,7 @@ function handleSubmit(event: Event) {
           id="vue-email"
           :value="form.email"
           @input="handleChange('email', $event)"
-          class="mt-1 block w-full rounded-md border-vue-300 shadow-sm focus:border-vue-500 focus:ring focus:ring-vue-200"
+          class="mt-1 block w-full rounded-md border-vue-300 shadow-xs focus:border-vue-500 focus:ring focus:ring-vue-200"
         />
       </div>
       <div>
@@ -63,7 +63,7 @@ function handleSubmit(event: Event) {
           id="vue-password"
           :value="form.password"
           @input="handleChange('password', $event)"
-          class="mt-1 block w-full rounded-md border-vue-300 shadow-sm focus:border-vue-500 focus:ring focus:ring-vue-200"
+          class="mt-1 block w-full rounded-md border-vue-300 shadow-xs focus:border-vue-500 focus:ring focus:ring-vue-200"
         />
       </div>
       <div class="flex items-center">

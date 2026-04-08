@@ -29,7 +29,7 @@
         name="firstName"
         bind:value={$svelteFormState.firstName}
         oninput={handleChange}
-        class="mt-1 block w-full rounded-md border-svelte-300 shadow-sm focus:border-svelte-500 focus:ring focus:ring-svelte-200"
+        class="mt-1 block w-full rounded-md border-svelte-300 shadow-xs focus:border-svelte-500 focus:ring focus:ring-svelte-200"
       />
     </div>
     <div>
@@ -42,7 +42,7 @@
         name="lastName"
         bind:value={$svelteFormState.lastName}
         oninput={handleChange}
-        class="mt-1 block w-full rounded-md border-svelte-300 shadow-sm focus:border-svelte-500 focus:ring focus:ring-svelte-200"
+        class="mt-1 block w-full rounded-md border-svelte-300 shadow-xs focus:border-svelte-500 focus:ring focus:ring-svelte-200"
       />
     </div>
     <div>
@@ -53,7 +53,7 @@
         name="email"
         bind:value={$svelteFormState.email}
         oninput={handleChange}
-        class="mt-1 block w-full rounded-md border-svelte-300 shadow-sm focus:border-svelte-500 focus:ring focus:ring-svelte-200"
+        class="mt-1 block w-full rounded-md border-svelte-300 shadow-xs focus:border-svelte-500 focus:ring focus:ring-svelte-200"
       />
     </div>
     <div>
@@ -66,7 +66,7 @@
         name="password"
         bind:value={$svelteFormState.password}
         oninput={handleChange}
-        class="mt-1 block w-full rounded-md border-svelte-300 shadow-sm focus:border-svelte-500 focus:ring focus:ring-svelte-200"
+        class="mt-1 block w-full rounded-md border-svelte-300 shadow-xs focus:border-svelte-500 focus:ring focus:ring-svelte-200"
       />
     </div>
     <div class="flex items-center">

@@ -11,7 +11,7 @@ const { className = "", text } = Astro.props;
 
 <h1
   class={twMerge(
-    "bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 bg-clip-text text-transparent text-4xl font-semibold md:text-6xl",
+    "bg-linear-to-r from-amber-400 via-amber-300 to-yellow-400 bg-clip-text text-transparent text-4xl font-semibold md:text-6xl",
     className
   )}
   set:html={text}

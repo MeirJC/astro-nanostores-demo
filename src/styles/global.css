@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-beige: #fbf8e9;
+
+  --color-astro-50: #F3E8FF;
+  --color-astro-100: #E1CFFF;
+  --color-astro-200: #C3A6FF;
+  --color-astro-300: #A57CFF;
+  --color-astro-400: #8853FF;
+  --color-astro-500: #673AB8;
+  --color-astro-600: #5E33A5;
+  --color-astro-700: #542C92;
+  --color-astro-800: #4B267F;
+  --color-astro-900: #411F6C;
+
+  --color-svelte-50: #FFF0E6;
+  --color-svelte-100: #FFD9BF;
+  --color-svelte-200: #FFC299;
+  --color-svelte-300: #FFAB73;
+  --color-svelte-400: #FF945C;
+  --color-svelte-500: #FF3D01;
+  --color-svelte-600: #E63601;
+  --color-svelte-700: #CC3001;
+  --color-svelte-800: #B32A01;
+  --color-svelte-900: #992301;
+
+  --color-react-50: #E3F8FF;
+  --color-react-100: #B3ECFF;
+  --color-react-200: #81DEFD;
+  --color-react-300: #5ED0FA;
+  --color-react-400: #40C3F7;
+  --color-react-500: #61DAFB;
+  --color-react-600: #2BB0ED;
+  --color-react-700: #1992D4;
+  --color-react-800: #127FBF;
+  --color-react-900: #0B69A3;
+
+  --color-vue-50: #E6F7F1;
+  --color-vue-100: #B3E8D4;
+  --color-vue-200: #80D8B8;
+  --color-vue-300: #4DC89B;
+  --color-vue-400: #1ABB7F;
+  --color-vue-500: #42B883;
+  --color-vue-600: #3AA473;
+  --color-vue-700: #329063;
+  --color-vue-800: #2A7C53;
+  --color-vue-900: #226843;
+}
+
+@utility container {
+  margin-inline: auto;
+}

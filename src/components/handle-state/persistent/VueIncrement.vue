@@ -9,7 +9,7 @@ const increment = () => {
 <template>
   <button
     @click="increment"
-    class="flex size-10 items-center justify-center rounded-lg border-2 border-vue-500 px-4 transition-colors hover:border-vue-600 hover:bg-vue-500/20 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-vue-300"
+    class="flex size-10 items-center justify-center rounded-lg border-2 border-vue-500 px-4 transition-colors hover:border-vue-600 hover:bg-vue-500/20 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-vue-300"
   >
     +
   </button>

@@ -31,7 +31,7 @@ export function ReactFormIndependent() {
             name="firstName"
             value={$form.firstName}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-react-300 shadow-sm focus:border-react-500 focus:ring focus:ring-react-200"
+            className="mt-1 block w-full rounded-md border-react-300 shadow-xs focus:border-react-500 focus:ring focus:ring-react-200"
           />
         </div>
         <div>
@@ -44,7 +44,7 @@ export function ReactFormIndependent() {
             name="lastName"
             value={$form.lastName}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-react-300 shadow-sm focus:border-react-500 focus:ring focus:ring-react-200"
+            className="mt-1 block w-full rounded-md border-react-300 shadow-xs focus:border-react-500 focus:ring focus:ring-react-200"
           />
         </div>
         <div>
@@ -57,7 +57,7 @@ export function ReactFormIndependent() {
             name="email"
             value={$form.email}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-react-300 shadow-sm focus:border-react-500 focus:ring focus:ring-react-200"
+            className="mt-1 block w-full rounded-md border-react-300 shadow-xs focus:border-react-500 focus:ring focus:ring-react-200"
           />
         </div>
         <div>
@@ -70,7 +70,7 @@ export function ReactFormIndependent() {
             name="password"
             value={$form.password}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-react-300 shadow-sm focus:border-react-500 focus:ring focus:ring-react-200"
+            className="mt-1 block w-full rounded-md border-react-300 shadow-xs focus:border-react-500 focus:ring focus:ring-react-200"
           />
         </div>
         <div className="flex items-center">

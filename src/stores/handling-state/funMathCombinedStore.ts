@@ -1,16 +1,16 @@
 // src/stores/funMathCombinedStore.ts
 import { computed } from "nanostores";
-import { persistentCounter } from "@stores/handeling-state/persistentConterStore";
+import { $persistentCounter } from "@stores/handling-state/persistentCounterStore";
 import {
-  reactCount,
-  svelteCount,
-  astroCount,
-  vueCount,
-} from "@stores/handeling-state/independentCounterStore";
-import { count as sharedCount } from "@stores/handeling-state/sharedCounterStore";
+  $reactCount,
+  $svelteCount,
+  $astroCount,
+  $vueCount,
+} from "@stores/handling-state/independentCounterStore";
+import { $count as $sharedCount } from "@stores/handling-state/sharedCounterStore";
 
-export const funResult = computed(
-  [persistentCounter, reactCount, svelteCount, astroCount, vueCount, sharedCount],
+export const $funResult = computed(
+  [$persistentCounter, $reactCount, $svelteCount, $astroCount, $vueCount, $sharedCount],
   (persistent, react, svelte, astro, vue, shared) => {
     const total = persistent + react + svelte + astro + vue + shared;
     let emoji = "🤔";
@@ -54,14 +54,14 @@ export {
   incrementPersistent,
   decrementPersistent,
   resetPersistent,
-} from "@stores/handeling-state/persistentConterStore";
+} from "@stores/handling-state/persistentCounterStore";
 export {
   reactIncrement,
   svelteIncrement,
   astroIncrement,
   vueIncrement,
-} from "@stores/handeling-state/independentCounterStore";
+} from "@stores/handling-state/independentCounterStore";
 export {
   increment as incrementShared,
   decrement as decrementShared,
-} from "@stores/handeling-state/sharedCounterStore";
+} from "@stores/handling-state/sharedCounterStore";

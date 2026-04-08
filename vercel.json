@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/handeling-state",
+      "destination": "/handling-state",
+      "permanent": true
+    },
+    {
+      "source": "/handeling-state/:path*",
+      "destination": "/handling-state/:path*",
+      "permanent": true
+    }
+  ]
+}

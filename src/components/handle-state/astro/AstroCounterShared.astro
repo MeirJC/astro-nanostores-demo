@@ -1,20 +1,20 @@
 ---
-import { count } from "@stores/handeling-state/sharedCounterStore";
+import { $count } from "@stores/handling-state/sharedCounterStore";
 ---
 
-<div class="rounded-lg bg-astro-100 p-4 shadow-md">
-  <h2 class="mb-4 text-center text-2xl font-bold text-astro-800">Astro Counter (Shared State)</h2>
+<div class="bg-astro-100 rounded-lg p-4 shadow-md">
+  <h2 class="text-astro-800 mb-4 text-center text-2xl font-bold">Astro Counter (Shared State)</h2>
   <div class="flex items-center justify-center gap-6 text-3xl font-semibold">
     <button
       id="astroDecrement"
-      class="rounded bg-astro-500 px-4 py-2 text-white transition-colors hover:bg-astro-600"
+      class="bg-astro-500 hover:bg-astro-600 rounded px-4 py-2 text-white transition-colors"
     >
       -
     </button>
-    <p id="astroCount" class="text-astro-600">{count.get()}</p>
+    <p id="astroCount" class="text-astro-600">{$count.get()}</p>
     <button
       id="astroIncrement"
-      class="rounded bg-astro-500 px-4 py-2 text-white transition-colors hover:bg-astro-600"
+      class="bg-astro-500 hover:bg-astro-600 rounded px-4 py-2 text-white transition-colors"
     >
       +
     </button>
@@ -22,7 +22,7 @@ import { count } from "@stores/handeling-state/sharedCounterStore";
 </div>
 
 <script>
-  import { count, increment, decrement } from "@stores/handeling-state/sharedCounterStore";
+  import { $count, increment, decrement } from "@stores/handling-state/sharedCounterStore";
 
   const decrementBtn = document.getElementById("astroDecrement");
   const incrementBtn = document.getElementById("astroIncrement");
@@ -30,20 +30,16 @@ import { count } from "@stores/handeling-state/sharedCounterStore";
 
   decrementBtn?.addEventListener("click", () => {
     decrement();
-    updateCount();
   });
 
   incrementBtn?.addEventListener("click", () => {
     increment();
-    updateCount();
   });
 
-  function updateCount() {
-    if (countDisplay) {
-      countDisplay.textContent = count.get().toString();
-    }
-  }
-
   // Subscribe to store changes
-  count.subscribe(updateCount);
+  $count.subscribe((value) => {
+    if (countDisplay) {
+      countDisplay.textContent = value.toString();
+    }
+  });
 </script>

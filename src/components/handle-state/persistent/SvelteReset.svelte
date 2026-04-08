@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { resetPersistent } from "@stores/handeling-state/persistentConterStore";
+  import { resetPersistent } from "@stores/handling-state/persistentCounterStore";
 </script>
 
 <button

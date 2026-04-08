@@ -1,50 +1,50 @@
 ---
-import { formState } from "@stores/handeling-state/sharedFormStore";
+import { $formState } from "@stores/handling-state/sharedFormStore";
 ---
 
-<form id="astroForm" class="rounded-lg bg-astro-100 p-4 text-gray-900 shadow-md">
-  <h2 class="mb-4 text-center text-2xl font-bold text-astro-800">Astro Form (Shared State)</h2>
+<form id="astroForm" class="bg-astro-100 rounded-lg p-4 text-gray-900 shadow-md">
+  <h2 class="text-astro-800 mb-4 text-center text-2xl font-bold">Astro Form (Shared State)</h2>
   <div class="space-y-4">
     <div>
-      <label for="astro-firstName" class="block text-sm font-medium text-astro-700"
+      <label for="astro-firstName" class="text-astro-700 block text-sm font-medium"
         >First Name</label
       >
       <input
         type="text"
         id="astro-firstName"
         name="firstName"
-        value={formState.get().firstName}
-        class="mt-1 block w-full rounded-md border-astro-300 shadow-xs focus:outline-hidden focus:ring focus:ring-astro-200"
+        value={$formState.get().firstName}
+        class="border-astro-300 focus:ring-astro-200 mt-1 block w-full rounded-md shadow-xs focus:ring focus:outline-hidden"
       />
     </div>
     <div>
-      <label for="astro-lastName" class="block text-sm font-medium text-astro-700">Last Name</label>
+      <label for="astro-lastName" class="text-astro-700 block text-sm font-medium">Last Name</label>
       <input
         type="text"
         id="astro-lastName"
         name="lastName"
-        value={formState.get().lastName}
-        class="mt-1 block w-full rounded-md border-astro-300 shadow-xs focus:outline-hidden focus:ring focus:ring-astro-200"
+        value={$formState.get().lastName}
+        class="border-astro-300 focus:ring-astro-200 mt-1 block w-full rounded-md shadow-xs focus:ring focus:outline-hidden"
       />
     </div>
     <div>
-      <label for="astro-email" class="block text-sm font-medium text-astro-700">Email</label>
+      <label for="astro-email" class="text-astro-700 block text-sm font-medium">Email</label>
       <input
         type="email"
         id="astro-email"
         name="email"
-        value={formState.get().email}
-        class="mt-1 block w-full rounded-md border-astro-300 shadow-xs focus:outline-hidden focus:ring focus:ring-astro-200"
+        value={$formState.get().email}
+        class="border-astro-300 focus:ring-astro-200 mt-1 block w-full rounded-md shadow-xs focus:ring focus:outline-hidden"
       />
     </div>
     <div>
-      <label for="astro-password" class="block text-sm font-medium text-astro-700">Password</label>
+      <label for="astro-password" class="text-astro-700 block text-sm font-medium">Password</label>
       <input
         type="password"
         id="astro-password"
         name="password"
-        value={formState.get().password}
-        class="mt-1 block w-full rounded-md border-astro-300 shadow-xs focus:outline-hidden focus:ring focus:ring-astro-200"
+        value={$formState.get().password}
+        class="border-astro-300 focus:ring-astro-200 mt-1 block w-full rounded-md shadow-xs focus:ring focus:outline-hidden"
       />
     </div>
     <div class="flex items-center">
@@ -52,10 +52,10 @@ import { formState } from "@stores/handeling-state/sharedFormStore";
         type="checkbox"
         id="astro-agreeTerms"
         name="agreeTerms"
-        checked={formState.get().agreeTerms}
-        class="h-4 w-4 rounded border-astro-300 text-astro-600 focus:ring-astro-500"
+        checked={$formState.get().agreeTerms}
+        class="border-astro-300 text-astro-600 focus:ring-astro-500 h-4 w-4 rounded"
       />
-      <label for="astro-agreeTerms" class="ml-2 block text-sm text-astro-700"
+      <label for="astro-agreeTerms" class="text-astro-700 ml-2 block text-sm"
         >I agree to the terms and conditions</label
       >
     </div>
@@ -63,7 +63,7 @@ import { formState } from "@stores/handeling-state/sharedFormStore";
   <div class="mt-6">
     <button
       type="submit"
-      class="w-full rounded bg-astro-500 px-4 py-2 text-white transition-colors hover:bg-astro-600"
+      class="bg-astro-500 hover:bg-astro-600 w-full rounded px-4 py-2 text-white transition-colors"
     >
       Submit
     </button>
@@ -71,25 +71,25 @@ import { formState } from "@stores/handeling-state/sharedFormStore";
 </form>
 
 <script>
-  import { formState } from "@stores/handeling-state/sharedFormStore";
+  import { $formState } from "@stores/handling-state/sharedFormStore";
 
   const form = document.getElementById("astroForm");
 
   form?.addEventListener("input", (event) => {
     const target = event.target as HTMLInputElement;
     const { name, value, type, checked } = target;
-    formState.set({
-      ...formState.get(),
-      [name]: type === "checkbox" ? checked : value,
-    });
+    $formState.setKey(
+      name as keyof import("@stores/handling-state/sharedFormStore").FormData,
+      type === "checkbox" ? checked : value
+    );
   });
 
   form?.addEventListener("submit", (event) => {
     event.preventDefault();
-    console.log("Astro Form Submitted:", formState.get());
+    console.log("Astro Form Submitted:", $formState.get());
   });
 
-  formState.subscribe((state) => {
+  $formState.subscribe((state) => {
     Object.entries(state).forEach(([key, value]) => {
       const element = document.getElementById(`astro-${key}`) as HTMLInputElement;
       if (element) {

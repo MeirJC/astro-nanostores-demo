@@ -24,13 +24,13 @@ export type SocialLinks = {
 export const navItems: NavItem[] = [
   { href: "/", text: "Home" },
   {
-    href: "/handeling-state",
-    text: "Handeling State",
+    href: "/handling-state",
+    text: "Handling State",
     subItems: [
-      { href: "/handeling-state", text: "Preface" },
-      { href: "/handeling-state/independent-state", text: "Independent State Demo" },
-      { href: "/handeling-state/shared-state", text: "Shared State Demo" },
-      { href: "/handeling-state/persistent-state", text: "Persistent State Demo" },
+      { href: "/handling-state", text: "Preface" },
+      { href: "/handling-state/independent-state", text: "Independent State Demo" },
+      { href: "/handling-state/shared-state", text: "Shared State Demo" },
+      { href: "/handling-state/persistent-state", text: "Persistent State Demo" },
     ],
   },
   // {

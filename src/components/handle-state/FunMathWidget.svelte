@@ -1,21 +1,21 @@
 <script lang="ts">
-  import { persistentCounter } from "@stores/handeling-state/persistentConterStore";
+  import { $persistentCounter as persistentCounter } from "@stores/handling-state/persistentCounterStore";
   import {
-    reactCount,
-    svelteCount,
-    astroCount,
-    vueCount,
-  } from "@stores/handeling-state/independentCounterStore";
-  import { count as sharedCount } from "@stores/handeling-state/sharedCounterStore";
+    $reactCount as reactCount,
+    $svelteCount as svelteCount,
+    $astroCount as astroCount,
+    $vueCount as vueCount,
+  } from "@stores/handling-state/independentCounterStore";
+  import { $count as sharedCount } from "@stores/handling-state/sharedCounterStore";
   import {
-    funResult,
+    $funResult as funResult,
     incrementPersistent,
     reactIncrement,
     svelteIncrement,
     astroIncrement,
     vueIncrement,
     incrementShared,
-  } from "@stores/handeling-state/funMathCombinedStore";
+  } from "@stores/handling-state/funMathCombinedStore";
 
   let result = $derived($funResult);
 </script>

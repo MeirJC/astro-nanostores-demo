@@ -1,18 +1,15 @@
 <script lang="ts">
-  import { svelteFormState } from "@stores/handeling-state/independentFormStore";
+  import { $svelteFormState as svelteFormState } from "@stores/handling-state/independentFormStore";
 
   function handleChange(event: Event) {
     const target = event.target as HTMLInputElement;
     const { name, value, type, checked } = target;
-    $svelteFormState = {
-      ...$svelteFormState,
-      [name]: type === "checkbox" ? checked : value,
-    };
+    svelteFormState.setKey(name, type === "checkbox" ? checked : value);
   }
 
   function handleSubmit(event: Event) {
     event.preventDefault();
-    console.log("Svelte Form Submitted:", $svelteFormState);
+    console.log("Svelte Form Submitted:", svelteFormState.get());
   }
 </script>
 
@@ -27,7 +24,7 @@
         type="text"
         id="svelte-iso-firstName"
         name="firstName"
-        bind:value={$svelteFormState.firstName}
+        value={$svelteFormState.firstName}
         oninput={handleChange}
         class="mt-1 block w-full rounded-md border-svelte-300 shadow-xs focus:border-svelte-500 focus:ring focus:ring-svelte-200"
       />
@@ -40,7 +37,7 @@
         type="text"
         id="svelte-iso-lastName"
         name="lastName"
-        bind:value={$svelteFormState.lastName}
+        value={$svelteFormState.lastName}
         oninput={handleChange}
         class="mt-1 block w-full rounded-md border-svelte-300 shadow-xs focus:border-svelte-500 focus:ring focus:ring-svelte-200"
       />
@@ -51,7 +48,7 @@
         type="email"
         id="svelte-iso-email"
         name="email"
-        bind:value={$svelteFormState.email}
+        value={$svelteFormState.email}
         oninput={handleChange}
         class="mt-1 block w-full rounded-md border-svelte-300 shadow-xs focus:border-svelte-500 focus:ring focus:ring-svelte-200"
       />
@@ -64,7 +61,7 @@
         type="password"
         id="svelte-iso-password"
         name="password"
-        bind:value={$svelteFormState.password}
+        value={$svelteFormState.password}
         oninput={handleChange}
         class="mt-1 block w-full rounded-md border-svelte-300 shadow-xs focus:border-svelte-500 focus:ring focus:ring-svelte-200"
       />
@@ -74,7 +71,7 @@
         type="checkbox"
         id="svelte-iso-agreeTerms"
         name="agreeTerms"
-        bind:checked={$svelteFormState.agreeTerms}
+        checked={$svelteFormState.agreeTerms}
         onchange={handleChange}
         class="h-4 w-4 rounded border-svelte-300 text-svelte-600 focus:ring-svelte-500"
       />

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { persistentCounter } from "@stores/handeling-state/persistentConterStore";
+  import { $persistentCounter as persistentCounter } from "@stores/handling-state/persistentCounterStore";
 </script>
 
 <div

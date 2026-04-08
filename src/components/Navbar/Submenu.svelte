@@ -1,21 +1,17 @@
 <script lang="ts">
-  import { createBubbler } from 'svelte/legacy';
-
-  const bubble = createBubbler();
-  import { slide } from 'svelte/transition';
-
   interface Props {
     items: Array<{ href: string; text: string }>;
+    onmouseenter?: (e: MouseEvent) => void;
+    onmouseleave?: (e: MouseEvent) => void;
   }
 
-  let { items }: Props = $props();
+  let { items, onmouseenter, onmouseleave }: Props = $props();
 </script>
 
 <ul
-  transition:slide={{ duration: 200 }}
   class="absolute left-0 mt-2 space-y-2 bg-gray-800 rounded-md p-2"
-  onmouseenter={bubble('mouseenter')}
-  onmouseleave={bubble('mouseleave')}
+  {onmouseenter}
+  {onmouseleave}
 >
   {#each items as subItem}
     <li>

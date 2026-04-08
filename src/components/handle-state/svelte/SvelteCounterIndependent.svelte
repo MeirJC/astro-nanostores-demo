@@ -1,9 +1,9 @@
 <script lang="ts">
   import {
-    svelteCount,
+    $svelteCount as svelteCount,
     svelteIncrement,
     svelteDecrement,
-  } from "@stores/handeling-state/independentCounterStore";
+  } from "@stores/handling-state/independentCounterStore";
 </script>
 
 <div class="p-4 bg-svelte-100 rounded-lg shadow-md">

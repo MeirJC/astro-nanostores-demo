@@ -74,7 +74,11 @@
         {/if}
       </a>
       {#if item.subItems && openSubmenu === index}
-        <Submenu items={item.subItems} on:mouseleave={closeSubmenuWithDelay} />
+        <Submenu
+          items={item.subItems}
+          onmouseenter={() => openSubmenuWithDelay(index)}
+          onmouseleave={closeSubmenuWithDelay}
+        />
       {/if}
     </li>
   {/each}

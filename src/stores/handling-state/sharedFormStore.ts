@@ -1,4 +1,4 @@
-import { atom } from "nanostores";
+import { map } from "nanostores";
 
 export interface FormData {
   firstName: string;
@@ -8,7 +8,7 @@ export interface FormData {
   agreeTerms: boolean;
 }
 
-export const formState = atom<FormData>({
+export const $formState = map<FormData>({
   firstName: "",
   lastName: "",
   email: "",

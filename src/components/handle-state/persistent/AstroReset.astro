@@ -4,13 +4,13 @@
 
 <button
   id="resetButtonPersistent"
-  class="mr-4 flex h-10 w-20 items-center justify-center rounded-lg border-2 border-astro-500 transition-colors duration-300 hover:border-astro-600 hover:bg-astro-500/20 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-astro-300"
+  class="border-astro-500 hover:border-astro-600 hover:bg-astro-500/20 focus-visible:ring-astro-300 mr-4 flex h-10 w-20 items-center justify-center rounded-lg border-2 transition-colors duration-300 focus-visible:ring-1 focus-visible:outline-hidden"
 >
   Reset
 </button>
 
 <script>
-  import { resetPersistent } from "@stores/handeling-state/persistentConterStore";
+  import { resetPersistent } from "@stores/handling-state/persistentCounterStore";
 
   if (document) {
     document.getElementById("resetButtonPersistent")?.addEventListener("click", () => {

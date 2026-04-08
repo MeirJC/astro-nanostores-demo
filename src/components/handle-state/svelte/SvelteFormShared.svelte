@@ -1,18 +1,15 @@
 <script lang="ts">
-  import { formState } from "@stores/handeling-state/sharedFormStore";
+  import { $formState as formState } from "@stores/handling-state/sharedFormStore";
 
   function handleChange(event: Event) {
     const target = event.target as HTMLInputElement;
     const { name, value, type, checked } = target;
-    $formState = {
-      ...$formState,
-      [name]: type === "checkbox" ? checked : value,
-    };
+    formState.setKey(name, type === "checkbox" ? checked : value);
   }
 
   function handleSubmit(event: Event) {
     event.preventDefault();
-    console.log("Svelte Form Submitted:", $formState);
+    console.log("Svelte Form Submitted:", formState.get());
   }
 </script>
 
@@ -27,7 +24,7 @@
         type="text"
         id="svelte-firstName"
         name="firstName"
-        bind:value={$formState.firstName}
+        value={$formState.firstName}
         oninput={handleChange}
         class="mt-1 block w-full rounded-md border-svelte-300 shadow-xs focus:border-svelte-500 focus:ring focus:ring-svelte-200"
       />
@@ -40,7 +37,7 @@
         type="text"
         id="svelte-lastName"
         name="lastName"
-        bind:value={$formState.lastName}
+        value={$formState.lastName}
         oninput={handleChange}
         class="mt-1 block w-full rounded-md border-svelte-300 shadow-xs focus:border-svelte-500 focus:ring focus:ring-svelte-200"
       />
@@ -51,7 +48,7 @@
         type="email"
         id="svelte-email"
         name="email"
-        bind:value={$formState.email}
+        value={$formState.email}
         oninput={handleChange}
         class="mt-1 block w-full rounded-md border-svelte-300 shadow-xs focus:border-svelte-500 focus:ring focus:ring-svelte-200"
       />
@@ -63,7 +60,7 @@
         type="password"
         id="svelte-password"
         name="password"
-        bind:value={$formState.password}
+        value={$formState.password}
         oninput={handleChange}
         class="mt-1 block w-full rounded-md border-svelte-300 shadow-xs focus:border-svelte-500 focus:ring focus:ring-svelte-200"
       />
@@ -73,7 +70,7 @@
         type="checkbox"
         id="svelte-agreeTerms"
         name="agreeTerms"
-        bind:checked={$formState.agreeTerms}
+        checked={$formState.agreeTerms}
         onchange={handleChange}
         class="h-4 w-4 rounded border-svelte-300 text-svelte-600 focus:ring-svelte-500"
       />

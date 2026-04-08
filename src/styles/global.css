@@ -3,48 +3,48 @@
 @theme {
   --color-beige: #fbf8e9;
 
-  --color-astro-50: #F3E8FF;
-  --color-astro-100: #E1CFFF;
-  --color-astro-200: #C3A6FF;
-  --color-astro-300: #A57CFF;
-  --color-astro-400: #8853FF;
-  --color-astro-500: #673AB8;
-  --color-astro-600: #5E33A5;
-  --color-astro-700: #542C92;
-  --color-astro-800: #4B267F;
-  --color-astro-900: #411F6C;
+  --color-astro-50: #f3e8ff;
+  --color-astro-100: #e1cfff;
+  --color-astro-200: #c3a6ff;
+  --color-astro-300: #a57cff;
+  --color-astro-400: #8853ff;
+  --color-astro-500: #673ab8;
+  --color-astro-600: #5e33a5;
+  --color-astro-700: #542c92;
+  --color-astro-800: #4b267f;
+  --color-astro-900: #411f6c;
 
-  --color-svelte-50: #FFF0E6;
-  --color-svelte-100: #FFD9BF;
-  --color-svelte-200: #FFC299;
-  --color-svelte-300: #FFAB73;
-  --color-svelte-400: #FF945C;
-  --color-svelte-500: #FF3D01;
-  --color-svelte-600: #E63601;
-  --color-svelte-700: #CC3001;
-  --color-svelte-800: #B32A01;
+  --color-svelte-50: #fff0e6;
+  --color-svelte-100: #ffd9bf;
+  --color-svelte-200: #ffc299;
+  --color-svelte-300: #ffab73;
+  --color-svelte-400: #ff945c;
+  --color-svelte-500: #ff3d01;
+  --color-svelte-600: #e63601;
+  --color-svelte-700: #cc3001;
+  --color-svelte-800: #b32a01;
   --color-svelte-900: #992301;
 
-  --color-react-50: #E3F8FF;
-  --color-react-100: #B3ECFF;
-  --color-react-200: #81DEFD;
-  --color-react-300: #5ED0FA;
-  --color-react-400: #40C3F7;
-  --color-react-500: #61DAFB;
-  --color-react-600: #2BB0ED;
-  --color-react-700: #1992D4;
-  --color-react-800: #127FBF;
-  --color-react-900: #0B69A3;
+  --color-react-50: #e3f8ff;
+  --color-react-100: #b3ecff;
+  --color-react-200: #81defd;
+  --color-react-300: #5ed0fa;
+  --color-react-400: #40c3f7;
+  --color-react-500: #61dafb;
+  --color-react-600: #2bb0ed;
+  --color-react-700: #1992d4;
+  --color-react-800: #127fbf;
+  --color-react-900: #0b69a3;
 
-  --color-vue-50: #E6F7F1;
-  --color-vue-100: #B3E8D4;
-  --color-vue-200: #80D8B8;
-  --color-vue-300: #4DC89B;
-  --color-vue-400: #1ABB7F;
-  --color-vue-500: #42B883;
-  --color-vue-600: #3AA473;
+  --color-vue-50: #e6f7f1;
+  --color-vue-100: #b3e8d4;
+  --color-vue-200: #80d8b8;
+  --color-vue-300: #4dc89b;
+  --color-vue-400: #1abb7f;
+  --color-vue-500: #42b883;
+  --color-vue-600: #3aa473;
   --color-vue-700: #329063;
-  --color-vue-800: #2A7C53;
+  --color-vue-800: #2a7c53;
   --color-vue-900: #226843;
 }
 

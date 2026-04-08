@@ -1,17 +1,14 @@
 <script lang="ts">
-  import { slide } from "svelte/transition";
   import { navItems } from "@data/links";
-  import { createEventDispatcher } from "svelte";
 
   interface Props {
     currentPath: string;
+    onclose: () => void;
   }
 
-  let { currentPath }: Props = $props();
+  let { currentPath, onclose }: Props = $props();
 
   let openSubmenu: number | null = $state(null);
-
-  const dispatch = createEventDispatcher();
 
   function toggleSubmenu(index: number) {
     openSubmenu = openSubmenu === index ? null : index;
@@ -19,7 +16,6 @@
 </script>
 
 <div
-  transition:slide={{ duration: 300 }}
   class="fixed inset-0 z-40 bg-gray-900/90 backdrop-blur-md pt-20"
 >
   <ul class="container mx-auto px-4 space-y-4">
@@ -59,20 +55,20 @@
             class="block w-full text-beige text-xl py-2 {currentPath.startsWith(item.href)
               ? 'text-astro-500 font-bold'
               : ''}"
-            onclick={() => dispatch("close")}
+            onclick={onclose}
           >
             {item.text}
           </a>
         {/if}
 
         {#if item.subItems && openSubmenu === index}
-          <ul transition:slide={{ duration: 200 }} class="ml-4 mt-2 space-y-2">
+          <ul class="ml-4 mt-2 space-y-2">
             {#each item.subItems as subItem}
               <li>
                 <a
                   href={subItem.href}
                   class="text-beige hover:text-astro-300 block py-2"
-                  onclick={() => dispatch("close")}
+                  onclick={onclose}
                 >
                   {subItem.text}
                 </a>

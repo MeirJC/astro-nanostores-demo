@@ -19,11 +19,11 @@ export default defineConfig({
     sitemap({
       changefreq: "weekly",
       priority: 0.7,
-      lastmod: new Date("2024-09-12T05:15:00Z"),
+      lastmod: new Date("2026-04-08T00:00:00Z"),
       serialize(item) {
         if (item.url === "https://astro-nanostores-demo.vercel.app/") {
           item.priority = 1.0;
-        } else if (item.url.includes("/handeling-state/")) {
+        } else if (item.url.includes("/handling-state/")) {
           item.priority = 0.8;
         }
         return item;

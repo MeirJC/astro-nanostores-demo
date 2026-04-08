@@ -107,5 +107,5 @@
 </nav>
 
 {#if isMobile && isOpen}
-  <MobileMenu {currentPath} on:close={toggleMenu} />
+  <MobileMenu {currentPath} onclose={toggleMenu} />
 {/if}
